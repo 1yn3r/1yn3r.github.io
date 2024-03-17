@@ -1,3 +1,5 @@
+<h1 align="center">Hi 👋, I'm Cuong</h1>
+
 
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 <br>
