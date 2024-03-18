@@ -51,21 +51,86 @@
 </div>
 
 
+
+### 📈 User Statistics
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r">
+          <img width="705" src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true">
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r">
+          <img width="715" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula"/>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://activity-graph.herokuapp.com/graph?username=lucthienphong1120">
+          <img width="705" src="https://activity-graph.herokuapp.com/graph?username=lucthienphong1120&theme=dracula">
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th>
+        <a href="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula"/>
+        </a>
+      </th>
+      <th>
+        <a href="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula"/>
+        </a>
+      </th>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula"/>
+        </a>
+      </td>
+      <td>
+        <a href="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula"/>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 align="center">👽 Where to find me 👽</h2>
 <br>
 <!-- https://icons8.com -->
 <div align="center">
   <a href="https://facebook.com/1yn3r" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="trungquandev-facebook" />
+    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="1yn3r-facebook" />
   </a>
   <a href="https://www.linkedin.com/in/1yn3r" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="trungquandev-linkedin" />
+    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="1yn3r-linkedin" />
   </a>
   <a href="https://instagram.com/__1yn3r" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="trungquandev-instagram" />
+    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="1yn3r-instagram" />
   </a>
   <a href="mailto:hc223390@gmail.com" target="top">
-    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="trungquandev-email" />
+    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="1yn3r-email" />
   </a>
 </div>
 
