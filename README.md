@@ -54,7 +54,7 @@
 
 
 <h2 align="center">📈 User Statistics 📈</h2>
-
+<div align="center">
 <table>
   <tbody>
     <tr>
@@ -77,8 +77,8 @@
   <tbody>
     <tr>
       <td>
-        <a href="https://activity-graph.herokuapp.com/graph?username=lucthienphong1120">
-          <img width="705" src="https://activity-graph.herokuapp.com/graph?username=lucthienphong1120&theme=dracula">
+        <a href="https://activity-graph.herokuapp.com/graph?username=1yn3r">
+          <img width="705" src="https://activity-graph.herokuapp.com/graph?username=1yn3r&theme=dracula">
         </a>
       </td>
     </tr>
@@ -115,7 +115,7 @@
     </tr>
   </tbody>
 </table>
-
+</div>
 <h2 align="center">👽 Where to find me 👽</h2>
 <br>
 <!-- https://icons8.com -->
