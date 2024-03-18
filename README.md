@@ -65,7 +65,7 @@
       </td>
     </tr>
   </tbody>
-  <tbody>
+  <tbody align="center>
     <tr>
       <td>
         <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r">
