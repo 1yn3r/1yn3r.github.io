@@ -56,7 +56,7 @@
 <h2 align="center">📈 User Statistics 📈</h2>
 <div align="center">
 <table>
-  <tbody>
+  <tbody align="center>
     <tr>
       <td>
         <a href="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r">
