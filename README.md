@@ -39,14 +39,9 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-
-
-
-
-
 <h2 align="center">🔥 GitHub Stats 🔥</h2>
 <!-- https://github.com/anuraghazra/github-readme-stats -->
-<br>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <div align=center>
   <a href="#" title="1yn3r">
     <img width="315" align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=1yn3r&hide=c%23,powershell,Mathematica,Ruby,Objective-C,Objective-C%2b%2b,Cuda&title_color=61dafb&text_color=ffffff&icon_color=61dafb&bg_color=20232a&langs_count=8&layout=compact&border_color=61dafb&hide_border=true" />
@@ -56,7 +51,7 @@
   </a>
 </div>
 
-<br>
+
 <h2 align="center">👽 Where to find me 👽</h2>
 <br>
 <!-- https://icons8.com -->
