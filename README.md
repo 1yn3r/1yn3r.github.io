@@ -19,11 +19,11 @@
 &nbsp;
 <span><img src="https://img.shields.io/badge/Kali Linux-282C34?logo=Kali Linux&logoColor=557C94" alt="Kali Linux logo" title="Kali Linux" height="25" /></span>
 &nbsp;
+<span><img src="https://img.shields.io/badge/CentOS-282C34?logo=Kali Linux&logoColor=262577" alt="CentOS logo" title="CentOS" height="25" /></span>
+&nbsp;
 <span><img src="https://img.shields.io/badge/Handlebars.js-282C34?logo=Handlebars.js&logoColor=000000" alt="Handlebars.js logo" title="Handlebars" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Python-282C34?logo=Python&logoColor=3776AB" alt="Python logo" title="Python" height="25" /></span>
-&nbsp;
-<span><img src="https://img.shields.io/badge/ReactJS-282C34?logo=react&logoColor=61DAFB" alt="ReactJS logo" title="ReactJS" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Node.js-282C34?logo=node.js&logoColor=00F200" alt="Node.js logo" title="Node.js" height="25" /></span>
 &nbsp;
@@ -39,8 +39,7 @@
 &nbsp;
 <span><img src="https://img.shields.io/badge/VS%20Code-282C34?logo=visual-studio-code&logoColor=007ACC" alt="Visual Studio Code logo" title="Visual Studio Code" height="25" /></span>
 &nbsp;
-<span><img src="https://img.shields.io/badge/WordPress-282C34?logo=wordPress&logoColor=21759B" alt="WordPress logo" title="WordPress" height="25" /></span>
-&nbsp;
+
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
