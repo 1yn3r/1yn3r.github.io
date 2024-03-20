@@ -17,7 +17,7 @@
 <!-- https://simpleicons.org/ -->
 <span><img src="https://img.shields.io/badge/JavaScript-282C34?logo=javascript&logoColor=F7DF1E" alt="JavaScript logo" title="JavaScript" height="25" /></span>
 &nbsp;
-<span><img src="https://img.shields.io/badge/Python-000000?style=for-the-badge&logo=GitHub&logoColor=#3776AB" alt="JavaScript logo" title="JavaScript" height="25" /></span>
+<span><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=GitHub&logoColor=#3776AB" alt="JavaScript logo" title="JavaScript" height="25" /></span>
 &nbsp;
 
 <span><img src="https://img.shields.io/badge/ReactJS-282C34?logo=react&logoColor=61DAFB" alt="ReactJS logo" title="ReactJS" height="25" /></span>
