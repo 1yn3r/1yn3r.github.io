@@ -19,7 +19,7 @@
 &nbsp;
 <span><img src="https://img.shields.io/badge/Kali Linux-282C34?logo=Kali Linux&logoColor=557C94" alt="Kali Linux logo" title="Kali Linux" height="25" /></span>
 &nbsp;
-<span><img src="https://img.shields.io/badge/CentOS-282C34?logo=Kali Linux&logoColor=262577" alt="CentOS logo" title="CentOS" height="25" /></span>
+<span><img src="https://img.shields.io/badge/CentOS-282C34?logo=centos&logoColor=262577" alt="centos logo" title="centos" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Handlebars.js-282C34?logo=Handlebars.js&logoColor=000000" alt="Handlebars.js logo" title="Handlebars" height="25" /></span>
 &nbsp;
