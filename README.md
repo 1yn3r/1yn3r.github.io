@@ -25,7 +25,7 @@
 &nbsp;
 <span><img src="https://img.shields.io/badge/Python-282C34?logo=Python&logoColor=3776AB" alt="Python logo" title="Python" height="25" /></span>
 &nbsp;
-<span><img src="https://img.shields.io/badge/cplusplus-282C34?logo=cplusplus&logoColor=A8B9CC" alt="C++ logo" title="C++" height="25" /></span>
+<span><img src="https://img.shields.io/badge/cplusplus-282C34?logo=cplusplus&logoC++=A8B9CC" alt="cplusplus logo" title="cplusplus" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Node.js-282C34?logo=node.js&logoColor=00F200" alt="Node.js logo" title="Node.js" height="25" /></span>
 &nbsp;
