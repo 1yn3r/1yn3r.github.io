@@ -9,6 +9,8 @@
   - 🪐 Operating Systems (Windows & Linux)
   - 🖥️ Website Developer
   - 📝 Writeups and Documenting
+ 
+  - 
 [![p4p1's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)][tryhackme]
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
