@@ -1,7 +1,6 @@
 ### `$ whoami`
 
 ### Hi there, I'm HC ✔️ 
-<img src="https://tryhackme.com/badge/1281785">
 
 <img src="https://tryhackme-badges.s3.amazonaws.com/0x8088.png" alt="TryHackMe">
 
