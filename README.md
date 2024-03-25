@@ -1,6 +1,6 @@
 ### `$ whoami`
 
-### Hi there, I'm HC ✔️ 
+### Hi there, I'm Cường ✔️ 
 
 <img src="https://tryhackme-badges.s3.amazonaws.com/0x8088.png" alt="TryHackMe">
 
