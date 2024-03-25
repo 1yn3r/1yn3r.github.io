@@ -14,7 +14,8 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
-![1yn3r's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)
+<img src="https://tryhackme-badges.s3.amazonaws.com/1yn3r.png" alt="TryHackMe">
+
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
 <!-- https://simpleicons.org/ -->
