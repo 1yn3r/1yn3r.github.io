@@ -11,7 +11,7 @@
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
     
-[![1yn3r's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)]
+![1yn3r's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
 <!-- https://simpleicons.org/ -->
