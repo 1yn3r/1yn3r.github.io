@@ -3,7 +3,7 @@
 ### Hi there, I'm HC ✔️ 
 <img src="https://tryhackme.com/badge/1281785">
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<img src="https://tryhackme-badges.s3.amazonaws.com/0x8088.png" alt="TryHackMe">
 
 - 🇻🇳 : I'm from VietNam
 - ❤️ : I'm passionate about:
