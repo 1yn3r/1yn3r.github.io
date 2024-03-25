@@ -1,6 +1,6 @@
 ### `$ whoami`
 
-### Hi there, I'm Cường ✔️ 
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%239315B7&lines=What's+up!+I'm+Cường+-+aka+1yn3r)](https://git.io/typing-svg)
 
 <img src="https://tryhackme-badges.s3.amazonaws.com/0x8088.png" alt="TryHackMe">
 
