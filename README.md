@@ -2,15 +2,15 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%239315B7&lines=What's+up!+I'm+Cường+-+aka+1yn3r)](https://git.io/typing-svg)
 
-
+<!-- BLOG-POST-LIST:START -->
 - 🇻🇳 : I'm from VietNam
 - ❤️ : I'm passionate about:
   - 🔐 Cyber Security
   - 🪐 Operating Systems (Windows & Linux)
   - 🖥️ Website Developer
   - 📝 Writeups and Documenting
- 
-  - 
+ <!-- BLOG-POST-LIST:END -->
+    
 [![p4p1's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)][tryhackme]
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
