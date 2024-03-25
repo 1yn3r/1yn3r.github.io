@@ -10,7 +10,8 @@
   - 🖥️ Website Developer
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
-    
+ 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 ![1yn3r's tryhackme stats](https://raw.githubusercontent.com/1yn3r/1yn3r/master/assets/thm_propic.png)
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
