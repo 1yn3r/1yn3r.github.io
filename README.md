@@ -7,7 +7,6 @@
 - ❤️ : I'm passionate about:
   - 🔐 Cyber Security
   - 🪐 Operating Systems (Windows & Linux)
-  - 🖥️ Website Developer
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
  
