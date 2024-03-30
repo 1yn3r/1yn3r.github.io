@@ -11,10 +11,10 @@
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
  
-<img href=https://tryhackme.com/p/1yn3r src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<img  src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
-<img src="https://tryhackme-badges.s3.amazonaws.com/1yn3r.png" alt="TryHackMe">
+<img href=https://tryhackme.com/p/1yn3r src="https://tryhackme-badges.s3.amazonaws.com/1yn3r.png" alt="TryHackMe">
 
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
