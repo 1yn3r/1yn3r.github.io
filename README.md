@@ -13,7 +13,7 @@
  
 <img  src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<script src="https://tryhackme.com/badge/1281785"></script>
+[![TryHackMe Badge](<script src="https://tryhackme.com/badge/1281785"></script>)
 [![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/1yn3r.png)](https://tryhackme.com/p/1yn3r)
 
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
