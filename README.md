@@ -6,7 +6,6 @@
 - 🇻🇳 : I'm from VietNam
 - ❤️ : I'm passionate about:
   - 🔐 Cyber Security
-  - 🛡️ Security Operations Center (SOC)
   - 🪐 Operating Systems (Windows & Linux)
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
