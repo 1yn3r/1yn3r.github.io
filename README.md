@@ -6,6 +6,7 @@
 - 🇻🇳 : I'm from VietNam
 - ❤️ : I'm passionate about:
   - 🔐 Cyber Security
+  - 🕵️‍♂️ Penetration Testing
   - 🪐 Operating Systems (Windows & Linux)
   - 📝 Writeups and Documenting
  <!-- BLOG-POST-LIST:END -->
