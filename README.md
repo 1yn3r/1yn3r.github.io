@@ -2,14 +2,12 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%239315B7&lines=What's+up!+I'm+Cường+-+aka+1yn3r)](https://git.io/typing-svg)
 
-<!-- BLOG-POST-LIST:START -->
-- 🇻🇳 : I'm from VietNam
-- ❤️ : I'm passionate about:
-  - 🔐 Cyber Security
-  - 🕵️‍♂️ Penetration Testing
-  - 🪐 Operating Systems (Windows & Linux)
-  - 📝 Writeups and Documenting
- <!-- BLOG-POST-LIST:END -->
+- 🇻🇳 From VietNam  
+- 🔐 Focused on **Penetration Testing & Red Teaming**  
+- 🕵️ Experienced in **Web/App Exploitation & Active Directory Attacks**  
+- 📚 Writing **CTF Writeups & Pentest Reports**  
+- 🧰 Building **Automation Tools for Recon & Exploitation**
+ 
  
 <img  src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
