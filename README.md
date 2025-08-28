@@ -13,6 +13,18 @@
 
 [![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/1yn3r.png)](https://tryhackme.com/p/1yn3r)
 
+## ⚔️ Pentest Toolset
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
+![Bash](https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white)
+![Kali Linux](https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white)
+![Metasploit](https://img.shields.io/badge/Metasploit-2e2e2e?logo=metasploit&logoColor=blue)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white)
+![Burp Suite](https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white)
+![Nmap](https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white)
+![Impacket](https://img.shields.io/badge/Impacket-2E3440?logo=python&logoColor=yellow)
+![BloodHound](https://img.shields.io/badge/BloodHound-800000?logo=graph&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
 
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
