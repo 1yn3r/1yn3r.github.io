@@ -17,6 +17,32 @@
 
 ---
 
+## 🧑‍💻 Kỹ năng Pentest
+
+### 🔟 OWASP Top 10 (Web Security)
+- **A01 – Broken Access Control** → IDOR, Privilege Escalation  
+- **A02 – Cryptographic Failures** → Weak SSL/TLS, Insecure Hash, Hardcoded Secrets  
+- **A03 – Injection** → SQLi, Command Injection, NoSQL Injection  
+- **A04 – Insecure Design** → Logic Flaws, Business Logic Abuse  
+- **A05 – Security Misconfiguration** → Default creds, Open admin panels, Misconfigured CORS  
+- **A06 – Vulnerable & Outdated Components** → Old libs, Unpatched CVEs  
+- **A07 – Identification & Authentication Failures** → Broken JWT, Weak session, MFA bypass  
+- **A08 – Software & Data Integrity Failures** → Insecure deserialization, Supply chain attack  
+- **A09 – Security Logging & Monitoring Failures** → Lack of alerts, Undetected brute-force  
+- **A10 – Server-Side Request Forgery (SSRF)** → Pivoting, Cloud metadata leaks  
+
+---
+
+### ⚔️ Kỹ thuật Pentest chuyên sâu
+- **Web Exploitation**: XSS (Stored/Reflected/DOM), SSTI, LFI/RFI, File Upload Bypass, CSRF, Open Redirect  
+- **Active Directory Attacks**: Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync, Golden Ticket, ADCS abuse  
+- **Network Attacks**: SMB/LDAP/FTP enum, MITM, ARP Spoofing, DNS Tunneling, Reverse Shells with Netcat  
+- **Password Cracking**: John the Ripper, Hashcat (NTLM, bcrypt, Kerberos tickets)  
+- **Privilege Escalation**: Linux privesc (SUID, Cron, PATH hijack), Windows privesc (UAC bypass, Token Impersonation, JuicyPotato)  
+- **Post-Exploitation**: Persistence, Credential dumping (Mimikatz, LSASS dump), Lateral Movement  
+- **Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics  
+
+---
 ## ⚔️ Pentest Toolset
 
 ### 🔍 Recon & Scanning
