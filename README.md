@@ -2,7 +2,7 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%23F75C7E&lines=Hello!+I'm+1yn3r;Pentester+%7C+Security+Researcher;Active+Directory+Exploitation;Web+App+Security;CTF+Player)](https://git.io/typing-svg)
 
----
+
 
 - 🇻🇳 From VietNam  
 - 🔐 Focused on **Penetration Testing & Red Teaming**  
@@ -13,8 +13,6 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 [![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/1yn3r.png)](https://tryhackme.com/p/1yn3r)
-
----
 
 ## 🧑‍💻 Kỹ năng Pentest
 
@@ -30,7 +28,6 @@
 - **A09 – Security Logging & Monitoring Failures** → Lack of alerts, Undetected brute-force  
 - **A10 – Server-Side Request Forgery (SSRF)** → Pivoting, Cloud metadata leaks  
 
----
 
 ### ⚔️ Kỹ thuật Pentest chuyên sâu
 - **Web Exploitation**: XSS (Stored/Reflected/DOM), SSTI, LFI/RFI, File Upload Bypass, CSRF, Open Redirect  
@@ -39,9 +36,10 @@
 - **Password Cracking**: John the Ripper, Hashcat (NTLM, bcrypt, Kerberos tickets)  
 - **Privilege Escalation**: Linux privesc (SUID, Cron, PATH hijack), Windows privesc (UAC bypass, Token Impersonation, JuicyPotato)  
 - **Post-Exploitation**: Persistence, Credential dumping (Mimikatz, LSASS dump), Lateral Movement  
-- **Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics  
+- **Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics
+-  
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
----
 ## ⚔️ Pentest Toolset
 
 ### 🔍 Recon & Scanning
@@ -74,7 +72,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
 ![Bash](https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white)
 
----
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 ## 🛡️ Featured Pentest Projects
 - 🔐 [Active Directory Attack Simulation](https://github.com/1yn3r/ad-attack-sim)  
@@ -86,7 +84,7 @@
 - 🎯 [CTF Writeups](https://github.com/1yn3r/ctf-writeups)  
   *Documenting pwn/reverse/crypto/web/forensics challenges*  
 
----
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
