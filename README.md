@@ -54,7 +54,7 @@
 <!-- https://simpleicons.org/ -->
 <span><img src="https://img.shields.io/badge/JavaScript-282C34?logo=javascript&logoColor=F7DF1E" alt="JavaScript logo" title="JavaScript" height="25" /></span>
 &nbsp;
-<span><img src="https://img.shields.io/badge/Kali Linux-282C34?logo=Kali Linux&logoColor=#557C94" alt="Kali Linux logo" title="Kali Linux" height="25" /></span>
+
 &nbsp;
 <span><img src="https://img.shields.io/badge/CentOS-282C34?logo=centos&logoColor=#262577" alt="centos logo" title="centos" height="25" /></span>
 &nbsp;
