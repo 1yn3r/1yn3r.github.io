@@ -39,7 +39,6 @@
 - **Privilege Escalation**: Linux privesc (SUID, Cron, PATH hijack), Windows privesc (UAC bypass, Token Impersonation, JuicyPotato)  
 - **Post-Exploitation**: Persistence, Credential dumping (Mimikatz, LSASS dump), Lateral Movement  
 - **Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics
--  
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 ## ⚔️ Pentest Toolset
