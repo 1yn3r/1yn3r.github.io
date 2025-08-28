@@ -14,7 +14,7 @@
 
 
 ### TryHackMe
-[![TryHackMe Badge](assets/tryhackme.png)](https://tryhackme.com/p/1yn3r)
+[![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/1yn3r.png)](https://tryhackme.com/p/1yn3r)
 
 ## 🧑‍💻 Kỹ năng Pentest
 
