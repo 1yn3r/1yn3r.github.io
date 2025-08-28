@@ -18,13 +18,36 @@
 ![Bash](https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white)
 ![Kali Linux](https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white)
 ![Metasploit](https://img.shields.io/badge/Metasploit-2e2e2e?logo=metasploit&logoColor=blue)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white)
 ![Burp Suite](https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white)
 ![Nmap](https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white)
+![Nikto](https://img.shields.io/badge/Nikto-2E3440?logo=apache&logoColor=orange)
+![John the Ripper](https://img.shields.io/badge/John%20the%20Ripper-222?logo=openvpn&logoColor=yellow)
+![Netcat](https://img.shields.io/badge/Netcat-000000?logo=gnu&logoColor=white)
 ![Impacket](https://img.shields.io/badge/Impacket-2E3440?logo=python&logoColor=yellow)
 ![BloodHound](https://img.shields.io/badge/BloodHound-800000?logo=graph&logoColor=white)
+![Hydra](https://img.shields.io/badge/Hydra-222222?logo=gnu-bash&logoColor=lime)
+![Sqlmap](https://img.shields.io/badge/sqlmap-yellow?logo=database&logoColor=black)
+![Gobuster](https://img.shields.io/badge/Gobuster-333333?logo=linux&logoColor=red)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+
+---
+
+## 🛡️ Featured Pentest Projects
+- 🔐 [Active Directory Attack Simulation](https://github.com/1yn3r/ad-attack-sim)  
+  *Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration*  
+
+- 🕵️ [WebApp Pentest Toolkit](https://github.com/1yn3r/webapp-toolkit)  
+  *Recon automation (dirsearch/gobuster), SQLi/XSS fuzzing, auth bypass testing*  
+
+- 📊 [IDS Benchmark: Snort vs Suricata](https://github.com/1yn3r/ids-benchmark)  
+  *Comparing detection rates, false positives, throughput with PCAP replay*  
+
+- 🎯 [CTF Writeups](https://github.com/1yn3r/ctf-writeups)  
+  *Documenting pwn/reverse/crypto/web/forensics challenges*  
+
+---
 
 <h2 align="center">🛠 Technologies and Tools 🛠</h2>
 
