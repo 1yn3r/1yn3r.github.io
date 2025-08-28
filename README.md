@@ -88,22 +88,6 @@
 
 ---
 
-## 🛡️ Featured Pentest Projects
-- 🔐 [Active Directory Attack Simulation](https://github.com/1yn3r/ad-attack-sim)  
-  *Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration*  
-
-- 🕵️ [WebApp Pentest Toolkit](https://github.com/1yn3r/webapp-toolkit)  
-  *Recon automation (dirsearch/gobuster), SQLi/XSS fuzzing, auth bypass testing*  
-
-- 📊 [IDS Benchmark: Snort vs Suricata](https://github.com/1yn3r/ids-benchmark)  
-  *Comparing detection rates, false positives, throughput with PCAP replay*  
-
-- 🎯 [CTF Writeups](https://github.com/1yn3r/ctf-writeups)  
-  *Documenting pwn/reverse/crypto/web/forensics challenges*  
-
----
-
-
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
