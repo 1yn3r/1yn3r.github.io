@@ -1,36 +1,68 @@
 ### `$ whoami`
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%239315B7&lines=What's+up!+I'm+Cường+-+aka+1yn3r)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%23F75C7E&lines=Hello!+I'm+1yn3r;Pentester+%7C+Security+Researcher;Active+Directory+Exploitation;Web+App+Security;CTF+Player)](https://git.io/typing-svg)
+
+---
 
 - 🇻🇳 From VietNam  
 - 🔐 Focused on **Penetration Testing & Red Teaming**  
-- 🕵️ Experienced in **Web/App Exploitation & Active Directory Attacks**  
+- 🕵️ Skilled in **Web Exploitation, AD Attacks, Network Pentest**  
 - 📚 Writing **CTF Writeups & Pentest Reports**  
-- 🧰 Building **Automation Tools for Recon & Exploitation**
- 
- 
-<img  src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+- 🧰 Building **Automation Scripts for Recon & Exploitation**
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 [![TryHackMe Badge](https://tryhackme-badges.s3.amazonaws.com/1yn3r.png)](https://tryhackme.com/p/1yn3r)
+[![HackTheBox](https://www.hackthebox.com/badge/image/<htb-id>)](https://app.hackthebox.com/profile/<htb-id>)
+
+---
 
 ## ⚔️ Pentest Toolset
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
-![Bash](https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white)
-![Kali Linux](https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white)
+
+### 🔍 Recon & Scanning
+![Nmap](https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white)
+![Gobuster](https://img.shields.io/badge/Gobuster-333333?logo=linux&logoColor=red)
+![Nikto](https://img.shields.io/badge/Nikto-2E3440?logo=apache&logoColor=orange)
+![dirsearch](https://img.shields.io/badge/dirsearch-121011?logo=linux&logoColor=white)
+
+### 💥 Exploitation
 ![Metasploit](https://img.shields.io/badge/Metasploit-2e2e2e?logo=metasploit&logoColor=blue)
 ![Burp Suite](https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white)
-![Nmap](https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white)
-![Nikto](https://img.shields.io/badge/Nikto-2E3440?logo=apache&logoColor=orange)
-![John the Ripper](https://img.shields.io/badge/John%20the%20Ripper-222?logo=openvpn&logoColor=yellow)
-![Netcat](https://img.shields.io/badge/Netcat-000000?logo=gnu&logoColor=white)
+![sqlmap](https://img.shields.io/badge/sqlmap-yellow?logo=database&logoColor=black)
+![Hydra](https://img.shields.io/badge/Hydra-222222?logo=gnu-bash&logoColor=lime)
+
+### 🛠 Post-Exploitation & AD
 ![Impacket](https://img.shields.io/badge/Impacket-2E3440?logo=python&logoColor=yellow)
 ![BloodHound](https://img.shields.io/badge/BloodHound-800000?logo=graph&logoColor=white)
-![Hydra](https://img.shields.io/badge/Hydra-222222?logo=gnu-bash&logoColor=lime)
-![Sqlmap](https://img.shields.io/badge/sqlmap-yellow?logo=database&logoColor=black)
-![Gobuster](https://img.shields.io/badge/Gobuster-333333?logo=linux&logoColor=red)
+![Mimikatz](https://img.shields.io/badge/Mimikatz-333333?logo=windows&logoColor=blue)
+
+### 🔑 Password Cracking
+![John the Ripper](https://img.shields.io/badge/John%20the%20Ripper-222?logo=openvpn&logoColor=yellow)
+![Hashcat](https://img.shields.io/badge/Hashcat-222222?logo=linux&logoColor=cyan)
+
+### 🌐 Network & Others
+![Netcat](https://img.shields.io/badge/Netcat-000000?logo=gnu&logoColor=white)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white)
+![Kali Linux](https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
+![Bash](https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white)
+
+---
+
+## 🛡️ Featured Pentest Projects
+- 🔐 [Active Directory Attack Simulation](https://github.com/1yn3r/ad-attack-sim)  
+  *Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration*  
+
+- 🕵️ [WebApp Pentest Toolkit](https://github.com/1yn3r/webapp-toolkit)  
+  *Recon automation (dirsearch/gobuster), SQLi/XSS fuzzing, auth bypass testing*  
+
+- 📊 [IDS Benchmark: Snort vs Suricata](https://github.com/1yn3r/ids-benchmark)  
+  *Comparing detection rates, false positives, throughput with PCAP replay*  
+
+- 🎯 [CTF Writeups](https://github.com/1yn3r/ctf-writeups)  
+  *Documenting pwn/reverse/crypto/web/forensics challenges*  
 
 ---
 
