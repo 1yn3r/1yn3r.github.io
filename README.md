@@ -78,9 +78,6 @@
 - 🔐 [Active Directory Attack Simulation](https://github.com/1yn3r/ad-attack-sim)  
   *Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration*  
 
-- 🕵️ [WebApp Pentest Toolkit](https://github.com/1yn3r/webapp-toolkit)  
-  *Recon automation (dirsearch/gobuster), SQLi/XSS fuzzing, auth bypass testing*  
-
 - 🎯 [CTF Writeups](https://github.com/1yn3r/ctf-writeups)  
   *Documenting pwn/reverse/crypto/web/forensics challenges*  
 
