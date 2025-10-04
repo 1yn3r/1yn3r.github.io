@@ -1,12 +1,11 @@
-### `$ whoami`
-
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%23F75C7E&lines=Hello!+I'm+1yn3r;Pentester+%7C+Security+Researcher;Active+Directory+Exploitation;Web+App+Security;CTF+Player)](https://git.io/typing-svg)
-
+### `$ whoami`  
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Hack&color=%23F75C7E&lines=Hello!+I'm+1yn3r;Pentester+%7C+Security+Researcher;Active+Directory+Exploitation;Web+App+Security;CTF+Player)  (https://git.io/typing-svg)  
 
 
-- 🇻🇳 From VietNam  
-- 🔐 Focused on **Penetration Testing & Red Teaming**  
-- 🕵️ Skilled in **Web Exploitation, AD Attacks, Network Pentest**  
+  
+- 🇻🇳 From VietNam    
+- 🔐 Focused on **Penetration Testing & Red Teaming**    
+- 🕵️ Skilled in **Web Exploitation, AD Attacks, Network Pentest**    
 - 📚 Writing **CTF Writeups & Pentest Reports**  
 - 🧰 Building **Automation Scripts for Recon & Exploitation**
 
@@ -167,5 +166,6 @@
 <br>
 
 
-#   1 y n 3 r . g i t h u b . i o  
+#   1 y n 3 r . g i t h u b . i o 
+ 
  
