@@ -4,317 +4,605 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1yn3r - Pentester & Security Researcher</title>
+    <!-- Link to Google Fonts for 'Poppins' and 'Jost' as seen in the template -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
+        /* CSS will go here */
+        :root {
+            /* Define your primary colors for easy reuse */
+            --primary-dark: #0A192F; /* Dark blue/black for background */
+            --secondary-dark: #1F2A3F; /* Slightly lighter dark for sections */
+            --accent-blue: #007bff; /* Bright blue for accents */
+            --accent-pink: #F75C7E; /* From your typing SVG */
+            --text-light: #E0E0E0; /* Light text color */
+            --text-muted: #8892B0; /* Muted text for descriptions */
+            --card-bg: #112240; /* Card background color */
+        }
+
         body {
-            font-family: 'Hack', monospace; /* Using Hack for a coding feel */
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif; /* A modern, clean font */
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e; /* Dark background */
-            color: #e0e0e0; /* Light text */
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
-        /* Container for content */
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header / Navbar --- */
+        .navbar {
+            background-color: transparent; /* Or a slight dark background */
             padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute; /* To overlay on the hero section */
+            width: 100%;
+            z-index: 1000;
         }
 
-        /* Header/Hero Section */
-        .hero {
-            background-color: #0f3460; /* A darker blue */
-            color: #fff;
-            padding: 50px 0;
-            text-align: center;
+        .navbar .logo {
+            font-family: 'Jost', sans-serif; /* A distinct font for the logo */
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--accent-pink); /* Using your pink accent */
+            text-decoration: none;
+            margin-left: 20px;
         }
 
-        .hero h1 {
+        .navbar .nav-links {
+            list-style: none;
             margin: 0;
-            font-size: 3em;
-            color: #e94560; /* Your accent color */
+            padding: 0;
+            display: flex;
+            margin-right: 20px;
         }
 
-        .hero p {
-            font-size: 1.2em;
-            margin-top: 10px;
+        .navbar .nav-links li {
+            margin-left: 30px;
         }
 
-        /* Section Styling */
-        .section {
-            background-color: #16213e; /* Slightly lighter dark blue */
-            padding: 40px 0;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .navbar .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        .section h2 {
-            text-align: center;
-            color: #e94560;
+        .navbar .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .navbar .contact-btn {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-right: 20px;
+        }
+
+        .navbar .contact-btn:hover {
+            background-color: darken(var(--accent-blue), 10%); /* You'd use a specific color value here */
+        }
+
+
+        /* --- Hero Section (Top Banner) --- */
+        .hero-section {
+            background-image: url('YOUR_GENERATED_BANNER_IMAGE_URL_HERE'); /* Use the image I generated */
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 100px; /* Adjust padding as needed */
+            text-align: left; /* Align text to left as in template */
+            color: white;
+            position: relative;
+            z-index: 1; /* Ensure content is above background */
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: -1;
+        }
+
+        .hero-section .hero-content {
+            max-width: 600px; /* Constrain width as in template */
+            margin-left: 10%; /* Adjust as needed */
+        }
+
+        .hero-section p.sub-heading {
+            color: var(--accent-pink);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin: 10px 0 20px;
+            line-height: 1.2;
+            color: white; /* Ensure text is visible over dark overlay */
+        }
+
+        .hero-section p.description {
+            font-size: 1.1em;
+            color: var(--text-muted);
             margin-bottom: 30px;
-            font-size: 2em;
-            border-bottom: 2px solid #e94560;
-            display: inline-block;
-            padding-bottom: 5px;
         }
 
-        /* List Styling */
-        ul {
+        .hero-section .btn {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-section .btn:hover {
+            background-color: darken(var(--accent-blue), 10%);
+        }
+
+        /* --- General Section Styling --- */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 50px; /* Space from previous section */
+        }
+
+        .section-heading h2 {
+            font-size: 2.5em;
+            color: var(--accent-pink);
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Card Layout (for 3-card sections) --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card .icon {
+            font-size: 3em; /* Use an icon font or image */
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+
+        .card .read-more {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .card .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Image + List Section (e.g., for OWASP Top 10) --- */
+        .image-list-section {
+            background-color: var(--secondary-dark);
+            padding: 80px 0;
+        }
+
+        .image-list-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .image-list-content .image-col {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-list-content .image-col img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .image-list-content .list-col {
+            flex: 1;
+        }
+
+        .image-list-content .list-col h3 {
+            font-size: 2em;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .image-list-content .list-col ul {
             list-style: none;
             padding: 0;
         }
 
-        ul li {
-            background-color: #0f3460;
+        .image-list-content .list-col li {
+            background-color: var(--card-bg);
+            padding: 15px 20px;
             margin-bottom: 10px;
-            padding: 15px;
-            border-left: 5px solid #e94560;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Skill Badges (if you want to implement them as images or text) */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .skill-badge {
-            background-color: #333;
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 5px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 15px;
         }
 
-        /* Project Cards */
-        .project-card {
-            background-color: #0f3460;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+        .image-list-content .list-col li span.icon {
+            color: var(--accent-pink);
+            font-size: 1.2em;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
+        .image-list-content .list-col li p {
+            margin: 0;
+            color: var(--text-light);
         }
 
-        .project-card h3 {
-            color: #f75c7e; /* Another accent */
-            margin-top: 0;
-        }
 
-        .project-card a {
-            color: #4CAF50; /* Green for links */
-            text-decoration: none;
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* Social Links */
-        .social-links {
+        /* --- Stats Section --- */
+        .stats-section {
+            background-color: var(--primary-dark);
+            padding: 80px 0;
             text-align: center;
-            margin-top: 30px;
         }
 
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3em;
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 1.1em;
+            color: var(--text-muted);
+        }
+
+        .stats-section img {
+            max-width: 100%; /* Ensure GitHub stats images are responsive */
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px; /* Slight roundness */
+        }
+
+
+        /* --- Projects Section (adapted from "Pricing Plans") --- */
+        .projects-section {
+            background-color: var(--secondary-dark);
+            padding: 80px 0;
+        }
+
+        .project-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger cards */
+            gap: 30px;
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .project-card-item {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left; /* Align text to left */
+        }
+
+        .project-card-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card-item h3 {
+            color: var(--accent-pink);
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .project-card-item p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .project-card-item a.view-project-btn {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            display: inline-block; /* Allow padding */
+        }
+
+        .project-card-item a.view-project-btn:hover {
+            background-color: darken(var(--accent-blue), 10%);
+        }
+
+        /* --- Social Links / Contact Section (adapted from "Send us a Message") --- */
+        .contact-section {
+            background-color: var(--primary-dark);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .social-icons-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .social-icon-item a {
+            display: block;
             transition: transform 0.3s ease;
         }
 
-        .social-links a:hover {
-            transform: translateY(-5px);
+        .social-icon-item a:hover {
+            transform: translateY(-10px) scale(1.05);
         }
 
-        .social-links img {
-            width: 60px; /* Adjust size as needed */
-            height: 60px;
-            border-radius: 50%; /* Make them circular */
+        .social-icon-item img {
+            width: 70px; /* Adjust size */
+            height: 70px;
+            border-radius: 50%; /* Circular */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Responsive Design */
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #0A192F;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Responsive Design (Basic) --- */
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
+            .navbar .nav-links {
+                display: none; /* Hide nav links on smaller screens for simplicity, or implement a hamburger menu */
             }
-
-            .hero h1 {
+            .navbar {
+                justify-content: center; /* Center logo if nav links are hidden */
+            }
+            .hero-section {
+                padding: 100px 0 50px;
+                text-align: center;
+            }
+            .hero-section .hero-content {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+            .hero-section h1 {
                 font-size: 2.5em;
             }
-
-            .hero p {
-                font-size: 1em;
+            .image-list-content {
+                flex-direction: column; /* Stack image and list vertically */
+            }
+            .cards-grid, .project-cards-grid {
+                grid-template-columns: 1fr; /* Single column for cards */
+            }
+            .stats-grid {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <!-- The image generated earlier can go here -->
-        <img src="YOUR_GENERATED_BANNER_IMAGE_URL_HERE" alt="1yn3r's Cyber Security Portfolio Banner" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-        <h1>Hello! I'm 1yn3r</h1>
-        <p>Pentester | Security Researcher</p>
-        <p>Active Directory Exploitation | Web App Security | CTF Player</p>
-        <p>From VietNam 🇻🇳</p>
-    </header>
+    <nav class="navbar container">
+        <a href="#" class="logo">1yn3r</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+    </nav>
 
-    <div class="container">
-        <!-- About Section -->
-        <section class="section">
-            <h2>About Me</h2>
-            <ul>
-                <li>🔐 Focused on **Penetration Testing & Red Teaming**</li>
-                <li>🕵️ Skilled in **Web Exploitation, AD Attacks, Network Pentest**</li>
-                <li>📚 Writing **CTF Writeups & Pentest Reports**</li>
-                <li>🧰 Building **Automation Scripts for Recon & Exploitation**</li>
-            </ul>
-        </section>
+    <section class="hero-section">
+        <div class="container hero-content">
+            <p class="sub-heading">Hello! I'm 1yn3r</p>
+            <h1>Penetration Tester & Security Researcher</h1>
+            <p class="description">Focused on Red Teaming, Web Exploitation, Active Directory Attacks, and building automation scripts.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
 
-        <!-- TryHackMe Section -->
-        <section class="section">
-            <h2>TryHackMe</h2>
-            <div style="text-align: center;">
-                <a href="https://tryhackme.com/p/1yn3r" target="_blank">
-                    <img src="assets/tryhackme.png" alt="TryHackMe Badge" style="max-width: 200px; height: auto;">
-                </a>
+    <!-- Adapt "Cyber Security Solutions" (3 cards) for key skills -->
+    <section id="skills" class="section-heading">
+        <h2>My Expertise</h2>
+        <p>A deep dive into the areas I specialize in for robust security assessments.</p>
+        <div class="container cards-grid">
+            <div class="card">
+                <!-- You could use an icon library like Font Awesome here, e.g., <i class="fas fa-globe"></i> -->
+                <span class="icon">🌐</span>
+                <h3>Web Exploitation</h3>
+                <p>Mastering XSS, SQLi, LFI/RFI, File Upload Bypass, and CSRF to secure web applications.</p>
+                <a href="#" class="read-more">Learn More</a>
             </div>
-        </section>
-
-        <!-- Pentest Skills Section -->
-        <section class="section">
-            <h2>🧑‍💻 Kỹ năng Pentest</h2>
-
-            <h3>🔟 OWASP Top 10 (Web Security)</h3>
-            <ul>
-                <li>**A01 – Broken Access Control** → IDOR, Privilege Escalation</li>
-                <li>**A02 – Cryptographic Failures** → Weak SSL/TLS, Insecure Hash, Hardcoded Secrets</li>
-                <li>**A03 – Injection** → SQLi, Command Injection, NoSQL Injection</li>
-                <li>**A04 – Insecure Design** → Logic Flaws, Business Logic Abuse</li>
-                <li>**A05 – Security Misconfiguration** → Default creds, Open admin panels, Misconfigured CORS</li>
-                <li>**A06 – Vulnerable & Outdated Components** → Old libs, Unpatched CVEs</li>
-                <li>**A07 – Identification & Authentication Failures** → Broken JWT, Weak session, MFA bypass</li>
-                <li>**A08 – Software & Data Integrity Failures** → Insecure deserialization, Supply chain attack</li>
-                <li>**A09 – Security Logging & Monitoring Failures** → Lack of alerts, Undetected brute-force</li>
-                <li>**A10 – Server-Side Request Forgery (SSRF)** → Pivoting, Cloud metadata leaks</li>
-            </ul>
-
-            <h3>⚔️ Kỹ thuật Pentest chuyên sâu</h3>
-            <ul>
-                <li>**Web Exploitation**: XSS (Stored/Reflected/DOM), SSTI, LFI/RFI, File Upload Bypass, CSRF, Open Redirect</li>
-                <li>**Active Directory Attacks**: Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync, Golden Ticket, ADCS abuse</li>
-                <li>**Network Attacks**: SMB/LDAP/FTP enum, MITM, ARP Spoofing, DNS Tunneling, Reverse Shells with Netcat</li>
-                <li>**Password Cracking**: John the Ripper, Hashcat (NTLM, bcrypt, Kerberos tickets)</li>
-                <li>**Privilege Escalation**: Linux privesc (SUID, Cron, PATH hijack), Windows privesc (UAC bypass, Token Impersonation, JuicyPotato)</li>
-                <li>**Post-Exploitation**: Persistence, Credential dumping (Mimikatz, LSASS dump), Lateral Movement</li>
-                <li>**Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics</li>
-            </ul>
-        </section>
-
-        <!-- Pentest Toolset Section -->
-        <section class="section">
-            <h2>⚔️ Pentest Toolset</h2>
-            <p style="text-align: center;">(You would place your skill badges here, either as actual image badges or styled text)</p>
-            <div class="skills-grid">
-                <!-- Example of how to add a badge, you'd repeat this for all your tools -->
-                <span class="skill-badge">
-                    <img src="https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white" alt="Nmap Badge">
-                    Nmap
-                </span>
-                <span class="skill-badge">
-                    <img src="https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white" alt="Burp Suite Badge">
-                    Burp Suite
-                </span>
-                <span class="skill-badge">
-                    <img src="https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white" alt="Kali Linux Badge">
-                    Kali Linux
-                </span>
-                <!-- ... add more badges like this ... -->
+            <div class="card">
+                <span class="icon">👑</span>
+                <h3>Active Directory Attacks</h3>
+                <p>Expert in Kerberoasting, Golden Ticket, DCSync, and ADCS abuse for network penetration.</p>
+                <a href="#" class="read-more">Learn More</a>
             </div>
-            <p>You can replace the `span` tags with `img` tags directly using the shield URLs you provided in your original content. Make sure to adjust the `max-width` of the `img` tags inside the `skills-grid` if they are too big.</p>
-        </section>
-
-        <!-- Featured Pentest Projects Section -->
-        <section class="section">
-            <h2>🛡️ Featured Pentest Projects</h2>
-            <div class="project-card">
-                <h3>🔐 Active Directory Attack Simulation</h3>
-                <p>Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration</p>
-                <p><a href="https://github.com/1yn3r/ad-attack-sim" target="_blank">View Project on GitHub</a></p>
+            <div class="card">
+                <span class="icon">📡</span>
+                <h3>Network Pentest</h3>
+                <p>Proficient in SMB/LDAP enum, MITM, ARP Spoofing, and advanced reverse shell techniques.</p>
+                <a href="#" class="read-more">Learn More</a>
             </div>
-            <div class="project-card">
-                <h3>🎯 CTF Writeups</h3>
-                <p>Documenting pwn/reverse/crypto/web/forensics challenges</p>
-                <p><a href="https://github.com/1yn3r/ctf-writeups" target="_blank">View Writeups on GitHub</a></p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- User Statistics Section -->
-        <section class="section">
-            <h2 align="center">📈 User Statistics 📈</h2>
-            <div align="center">
+    <!-- Adapt "24/7 Cyber Security Operation Center" for OWASP Top 10 -->
+    <section class="image-list-section">
+        <div class="container image-list-content">
+            <div class="image-col">
+                <!-- You could place another image here, perhaps a lock icon or a shield -->
+                <img src="https://via.placeholder.com/500x400?text=OWASP+Top+10" alt="OWASP Top 10 Security">
+            </div>
+            <div class="list-col">
+                <h3>OWASP Top 10 Expertise</h3>
+                <ul>
+                    <li><span class="icon">✅</span> <p>A01 – Broken Access Control: IDOR, Privilege Escalation</p></li>
+                    <li><span class="icon">✅</span> <p>A03 – Injection: SQLi, Command Injection, NoSQL Injection</p></li>
+                    <li><span class="icon">✅</span> <p>A05 – Security Misconfiguration: Default creds, Open admin panels, Misconfigured CORS</p></li>
+                    <li><span class="icon">✅</span> <p>A06 – Vulnerable & Outdated Components: Old libs, Unpatched CVEs</p></li>
+                    <li><span class="icon">✅</span> <p>A10 – Server-Side Request Forgery (SSRF): Pivoting, Cloud metadata leaks</p></li>
+                    <!-- Add more from your OWASP list here -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adapt "We're Working With" - Could be tools or omitted -->
+    <!-- For simplicity, I'm omitting "We're Working With" in this initial HTML structure.
+         If you want to add your toolset here with badges, let me know! -->
+
+    <!-- Adapt "We Spend 30,000 Hours Protecting Thousands of Clients" for GitHub Stats -->
+    <section id="stats" class="stats-section">
+        <h2 align="center">📈 User Statistics 📈</h2>
+        <div class="container">
+            <p>Dive into my activity and contributions on GitHub.</p>
+            <div class="stats-grid">
                 <!-- Replace these with your actual GitHub stat image URLs -->
-                <p>
-                    <a href="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r">
-                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true" alt="GitHub Streak Stats" style="max-width: 100%; height: auto;">
-                    </a>
-                </p>
-                <p>
-                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r">
-                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula" alt="GitHub Profile Details" style="max-width: 100%; height: auto;">
-                    </a>
-                </p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r">
-                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula" alt="Repos Per Language" style="max-width: 100%; height: auto;">
-                    </a>
-                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&">
-                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula" alt="Most Commit Language" style="max-width: 100%; height: auto;">
-                    </a>
-                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r">
-                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula" alt="GitHub Stats" style="max-width: 100%; height: auto;">
-                    </a>
-                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r">
-                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula" alt="Productive Time" style="max-width: 100%; height: auto;">
-                    </a>
-                </div>
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true" alt="GitHub Streak Stats">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula" alt="GitHub Profile Details">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula" alt="Repos Per Language">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula" alt="Most Commit Language">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula" alt="GitHub Stats">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula" alt="Productive Time">
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Social Links Section -->
-        <section class="section">
-            <h2 align="center">👽 Where to find me 👽</h2>
-            <div class="social-links">
+    <!-- Adapt "Our Flexible Pricing Plans" for Featured Projects -->
+    <section id="projects" class="projects-section">
+        <h2 align="center">🛡️ Featured Pentest Projects</h2>
+        <div class="container project-cards-grid">
+            <div class="project-card-item">
+                <h3>🔐 Active Directory Attack Simulation</h3>
+                <p>Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration scripts.</p>
+                <a href="https://github.com/1yn3r/ad-attack-sim" target="_blank" class="view-project-btn">View Project</a>
+            </div>
+            <div class="project-card-item">
+                <h3>🎯 CTF Writeups</h3>
+                <p>Comprehensive documentation of pwn/reverse/crypto/web/forensics challenges and solutions.</p>
+                <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" class="view-project-btn">View Writeups</a>
+            </div>
+            <!-- Add more projects here if you have them, maintaining the card structure -->
+        </div>
+    </section>
+
+    <!-- Adapt "Send us a Message" for Social Links -->
+    <section id="contact" class="contact-section">
+        <h2 align="center">👽 Where to find me 👽</h2>
+        <p>Connect with me across various platforms.</p>
+        <div class="container social-icons-grid">
+            <div class="social-icon-item">
                 <a href="https://facebook.com/1yn3r" target="blank">
                     <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="1yn3r-facebook" />
                 </a>
+            </div>
+            <div class="social-icon-item">
                 <a href="https://www.linkedin.com/in/1yn3r" target="blank">
                     <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="1yn3r-linkedin" />
                 </a>
+            </div>
+            <div class="social-icon-item">
                 <a href="https://instagram.com/__1yn3r" target="blank">
                     <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="1yn3r-instagram" />
                 </a>
+            </div>
+            <div class="social-icon-item">
                 <a href="mailto:hc223390@gmail.com" target="top">
                     <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="1yn3r-email" />
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div><!-- End container -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 1yn3r. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
