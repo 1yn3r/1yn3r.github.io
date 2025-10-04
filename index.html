@@ -1,281 +1,323 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>1yn3r — Pentester & Security Researcher</title>
-  <meta name="description" content="1yn3r — Pentester | Security Researcher | Active Directory Exploitation | Web App Security | CTF Player" />
-  <style>
-    :root{
-      --bg:#0f0f12;
-      --card:#0f1720;
-      --muted:#9aa4b2;
-      --accent:#F75C7E;
-      --glass: rgba(255,255,255,0.03);
-      --maxw:1100px;
-      --radius:12px;
-      color-scheme: dark;
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#050507 0%, #071021 60%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      display:flex;
-      justify-content:center;
-      padding:36px 20px;
-    }
-    .wrap{
-      width:100%;
-      max-width:var(--maxw);
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      border-radius:var(--radius);
-      padding:26px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-      margin-bottom:20px;
-    }
-    header.top{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .profile-left{
-      display:flex;
-      gap:16px;
-      align-items:center;
-    }
-    .avatar{
-      width:96px;height:96px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);
-      background:linear-gradient(90deg,#111 0%, #0b1220 100%);
-      display:flex;align-items:center;justify-content:center;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover}
-    h1{margin:0;font-size:22px;color:var(--accent)}
-    p.lead{margin:4px 0 0;color:var(--muted)}
-    nav.inline a{
-      color:#cfe8ff;
-      text-decoration:none;
-      background:transparent;
-      padding:8px 12px;border-radius:8px;
-      border:1px solid transparent;
-      transition:all .18s;
-    }
-    nav.inline a:hover{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.03)}
-    .typing-svg{display:block;width:100%;max-width:680px;margin:12px 0}
-    section{margin-top:18px}
-    h2.section-title{font-size:18px;margin:0 0 12px;color:#fff}
-    .grid{
-      display:grid;
-      gap:12px;
-    }
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .skill-list{display:flex;flex-direction:column;gap:10px}
-    .skill-item{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-    .badges{display:flex;flex-wrap:wrap;gap:8px}
-    .projects ul{padding-left:18px;margin:0}
-    footer{margin-top:18px;color:var(--muted);font-size:14px;text-align:center}
-    .fullwidth-img{width:100%;height:auto;border-radius:10px;margin-top:12px}
-    .contact-icons{display:flex;gap:12px;justify-content:center;align-items:center}
-    .contact-icons img{width:56px;height:56px}
-    pre.md-code{background:#07101a;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.03)}
-    /* responsive */
-    @media (max-width:760px){
-      .grid.cols-2{grid-template-columns:1fr}
-      .profile-left{flex-direction:row}
-      .avatar{width:72px;height:72px}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiz Cyber</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1e;
+            color: #fff;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #1f2535;
+            padding: 20px 0;
+            color: #fff;
+        }
+
+        header .logo h1 {
+            display: inline-block;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: inline-block;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #ff4c4c;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .services {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .services .service-cards {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .service-card {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .partner-logos img {
+            width: 120px;
+            height: auto;
+            margin: 0 15px;
+        }
+
+        .stats {
+            background-color: #34495e;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .pricing-plans {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .plan {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+        }
+
+        .team {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .member {
+            width: 30%;
+            text-align: center;
+        }
+
+        .member img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        footer {
+            background-color: #1f2535;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer form input, footer form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 50%;
+        }
+
+        footer form button {
+            padding: 10px 20px;
+            background-color: #ff4c4c;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <main class="card" role="main">
-      <header class="top">
-        <div class="profile-left">
-          <div class="avatar" aria-hidden="true">
-            <!-- use your gif as avatar if you prefer -->
-            <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="1yn3r avatar">
-          </div>
-          <div>
-            <h1>`$ whoami` — 1yn3r</h1>
-            <p class="lead">Pentester • Security Researcher • Active Directory Exploitation • Web App Security • CTF Player</p>
-            <div style="margin-top:8px">
-              <a class="typing-svg" href="https://git.io/typing-svg" target="_blank" rel="noopener">
-                <img src="https://readme-typing-svg.herokuapp.com?font=Hack&color=%23F75C7E&lines=Hello!+I'm+1yn3r;Pentester+%7C+Security+Researcher;Active+Directory+Exploitation;Web+App+Security;CTF+Player" alt="typing svg">
-              </a>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Whiz Cyber</h1>
             </div>
-          </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <nav class="inline" aria-label="quick links">
-          <a href="#skills">Kỹ năng</a>
-          <a href="#tools">Toolset</a>
-          <a href="#projects">Dự án</a>
-          <a href="#contact">Liên hệ</a>
-        </nav>
-      </header>
+    <section class="hero">
+        <div class="container">
+            <h1>We Provide Cyber Solutions For Your Security</h1>
+            <p>Cyber attacks are inevitable, but with our solution, you will be always safe and sound.</p>
+            <button>Get Started</button>
+            <button>Contact</button>
+        </div>
+    </section>
 
-      <section id="intro">
-        <p style="margin:12px 0 0;color:var(--muted)">
-          <span>🇻🇳 From VietNam</span> · <strong style="color:#fff">Focused on Penetration Testing &amp; Red Teaming</strong> ·
-          <span>🧰 Building automation scripts for recon &amp; exploitation</span>
-        </p>
-        <img class="fullwidth-img" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="decorative">
-      </section>
-
-      <section id="tryhackme" style="margin-top:18px;">
-        <h2 class="section-title">TryHackMe</h2>
-        <a href="https://tryhackme.com/p/1yn3r" target="_blank" rel="noopener">
-          <img src="assets/tryhackme.png" alt="TryHackMe Badge" style="height:48px">
-        </a>
-      </section>
-
-      <section id="skills">
-        <h2 class="section-title">🧑‍💻 Kỹ năng Pentest</h2>
-
-        <div class="grid cols-2" style="margin-top:8px">
-          <div>
-            <h3 style="margin:0 0 8px;color:#fff">🔟 OWASP Top 10 (Web Security)</h3>
-            <div class="skill-list">
-              <div class="skill-item"><strong>A01 – Broken Access Control</strong> → IDOR, Privilege Escalation</div>
-              <div class="skill-item"><strong>A02 – Cryptographic Failures</strong> → Weak SSL/TLS, Insecure Hash, Hardcoded Secrets</div>
-              <div class="skill-item"><strong>A03 – Injection</strong> → SQLi, Command Injection, NoSQL Injection</div>
-              <div class="skill-item"><strong>A04 – Insecure Design</strong> → Logic Flaws, Business Logic Abuse</div>
-              <div class="skill-item"><strong>A05 – Security Misconfiguration</strong> → Default creds, Open admin panels, Misconfigured CORS</div>
-              <div class="skill-item"><strong>A06 – Vulnerable &amp; Outdated Components</strong> → Old libs, Unpatched CVEs</div>
-              <div class="skill-item"><strong>A07 – Identification &amp; Authentication Failures</strong> → Broken JWT, Weak session, MFA bypass</div>
-              <div class="skill-item"><strong>A08 – Software &amp; Data Integrity Failures</strong> → Insecure deserialization, Supply chain attack</div>
-              <div class="skill-item"><strong>A09 – Security Logging &amp; Monitoring Failures</strong> → Lack of alerts, Undetected brute-force</div>
-              <div class="skill-item"><strong>A10 – SSRF</strong> → Pivoting, Cloud metadata leaks</div>
+    <section class="services">
+        <h2>Cyber Security Solutions</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Finger Print Security</h3>
+                <p>Our innovative solutions in finger print security.</p>
+                <button>More Info</button>
             </div>
-          </div>
-
-          <div>
-            <h3 style="margin:0 0 8px;color:#fff">⚔️ Kỹ thuật Pentest chuyên sâu</h3>
-            <div class="skill-list">
-              <div class="skill-item"><strong>Web Exploitation</strong>: XSS (Stored/Reflected/DOM), SSTI, LFI/RFI, File Upload Bypass, CSRF, Open Redirect</div>
-              <div class="skill-item"><strong>Active Directory Attacks</strong>: Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync, Golden Ticket, ADCS abuse</div>
-              <div class="skill-item"><strong>Network Attacks</strong>: SMB/LDAP/FTP enum, MITM, ARP Spoofing, DNS Tunneling, Reverse Shells</div>
-              <div class="skill-item"><strong>Password Cracking</strong>: John the Ripper, Hashcat (NTLM, bcrypt, Kerberos)</div>
-              <div class="skill-item"><strong>Privilege Escalation</strong>: Linux SUID/Cron/PATH hijack, Windows UAC bypass, Token Impersonation</div>
-              <div class="skill-item"><strong>Post-Exploitation</strong>: Persistence, Credential dumping (Mimikatz), Lateral Movement</div>
-              <div class="skill-item"><strong>Detection Evasion</strong>: LOLBins, Obfuscated payloads, AV/EDR bypass basics</div>
+            <div class="service-card">
+                <h3>Face Recognition Security</h3>
+                <p>Advanced face recognition technology.</p>
+                <button>More Info</button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="tools">
-        <h2 class="section-title">⚔️ Pentest Toolset</h2>
-
-        <div class="grid" style="margin-top:8px">
-          <div class="card" style="padding:12px;background:transparent;border:0;box-shadow:none">
-            <h3 style="margin:0 0 8px;color:#fff">🔍 Recon &amp; Scanning</h3>
-            <div class="badges">
-              <img alt="Nmap" src="https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white">
-              <img alt="Gobuster" src="https://img.shields.io/badge/Gobuster-333333?logo=linux&logoColor=red">
-              <img alt="Nikto" src="https://img.shields.io/badge/Nikto-2E3440?logo=apache&logoColor=orange">
-              <img alt="dirsearch" src="https://img.shields.io/badge/dirsearch-121011?logo=linux&logoColor=white">
+            <div class="service-card">
+                <h3>Network Security</h3>
+                <p>We ensure your network is always secure.</p>
+                <button>More Info</button>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="card" style="padding:12px;background:transparent;border:0;box-shadow:none">
-            <h3 style="margin:0 0 8px;color:#fff">💥 Exploitation</h3>
-            <div class="badges">
-              <img alt="Metasploit" src="https://img.shields.io/badge/Metasploit-2e2e2e?logo=metasploit&logoColor=blue">
-              <img alt="Burp Suite" src="https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white">
-              <img alt="sqlmap" src="https://img.shields.io/badge/sqlmap-yellow?logo=database&logoColor=black">
-              <img alt="Hydra" src="https://img.shields.io/badge/Hydra-222222?logo=gnu-bash&logoColor=lime">
+    <section class="partners">
+        <h2>We're Working With</h2>
+        <div class="partner-logos">
+            <img src="partner1.png" alt="Partner 1">
+            <img src="partner2.png" alt="Partner 2">
+            <img src="partner3.png" alt="Partner 3">
+            <img src="partner4.png" alt="Partner 4">
+        </div>
+    </section>
+
+    <section class="stats">
+        <h2>We Spend 30,000 Hours Per Year to Virus Threats</h2>
+        <div class="stats-container">
+            <div class="stat">
+                <h3>2K+</h3>
+                <p>Clients Protected</p>
             </div>
-          </div>
-
-          <div class="card" style="padding:12px;background:transparent;border:0;box-shadow:none">
-            <h3 style="margin:0 0 8px;color:#fff">🛠 Post-Exploitation &amp; AD</h3>
-            <div class="badges">
-              <img alt="Impacket" src="https://img.shields.io/badge/Impacket-2E3440?logo=python&logoColor=yellow">
-              <img alt="BloodHound" src="https://img.shields.io/badge/BloodHound-800000?logo=graph&logoColor=white">
-              <img alt="Mimikatz" src="https://img.shields.io/badge/Mimikatz-333333?logo=windows&logoColor=blue">
+            <div class="stat">
+                <h3>17M+</h3>
+                <p>Threats Neutralized</p>
             </div>
-          </div>
-
-          <div class="card" style="padding:12px;background:transparent;border:0;box-shadow:none">
-            <h3 style="margin:0 0 8px;color:#fff">🔑 Password Cracking &amp; Network</h3>
-            <div class="badges">
-              <img alt="John the Ripper" src="https://img.shields.io/badge/John%20the%20Ripper-222?logo=openvpn&logoColor=yellow">
-              <img alt="Hashcat" src="https://img.shields.io/badge/Hashcat-222222?logo=linux&logoColor=cyan">
-              <img alt="Netcat" src="https://img.shields.io/badge/Netcat-000000?logo=gnu&logoColor=white">
-              <img alt="Wireshark" src="https://img.shields.io/badge/Wireshark-1679A7?logo=wireshark&logoColor=white">
-              <img alt="Kali Linux" src="https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white">
-              <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white">
-              <img alt="Git" src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white">
-              <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff">
-              <img alt="Bash" src="https://img.shields.io/badge/Bash-121011?logo=gnu-bash&logoColor=white">
+            <div class="stat">
+                <h3>18K+</h3>
+                <p>Operations Completed</p>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <section id="projects">
-        <h2 class="section-title">🛡️ Featured Pentest Projects</h2>
-        <div class="projects" style="margin-top:8px">
-          <ul>
-            <li>
-              🔐 <a href="https://github.com/1yn3r/ad-attack-sim" target="_blank" rel="noopener">Active Directory Attack Simulation</a> — Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration
-            </li>
-            <li>
-              🎯 <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" rel="noopener">CTF Writeups</a> — Documenting pwn/reverse/crypto/web/forensics challenges
-            </li>
-          </ul>
+    <section class="pricing">
+        <h2>Our Flexible Pricing Plans</h2>
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>$120</h3>
+                <p>Basic Package</p>
+                <button>Purchase Now</button>
+            </div>
+            <div class="plan">
+                <h3>$180</h3>
+                <p>Standard Package</p>
+                <button>Purchase Now</button>
+            </div>
+            <div class="plan">
+                <h3>$200</h3>
+                <p>Premium Package</p>
+                <button>Purchase Now</button>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="stats" style="margin-top:16px">
-        <h2 class="section-title">📈 User Statistics</h2>
-        <div style="text-align:center;margin-top:12px">
-          <a href="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r" target="_blank" rel="noopener">
-            <img width="705" src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true" alt="streak stats">
-          </a>
-          <div style="height:12px"></div>
-          <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r" target="_blank" rel="noopener">
-            <img width="715" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula" alt="profile details">
-          </a>
+    <section class="team">
+        <h2>Expert Team Who are Behind the Security</h2>
+        <div class="team-members">
+            <div class="member">
+                <img src="team1.jpg" alt="Team Member 1">
+                <h3>Monica G. Cyber</h3>
+            </div>
+            <div class="member">
+                <img src="team2.jpg" alt="Team Member 2">
+                <h3>Douglas Parked</h3>
+            </div>
+            <div class="member">
+                <img src="team3.jpg" alt="Team Member 3">
+                <h3>Christen Avaer</h3>
+            </div>
         </div>
+    </section>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-          <a href="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r" target="_blank" rel="noopener">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula" alt="repos per language">
-          </a>
-          <a href="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&" target="_blank" rel="noopener">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula" alt="most commit language">
-          </a>
+    <footer>
+        <div class="container">
+            <form>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <textarea placeholder="Message"></textarea>
+                <button type="submit">Send</button>
+            </form>
         </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-          <a href="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r" target="_blank" rel="noopener">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula" alt="stats">
-          </a>
-          <a href="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r" target="_blank" rel="noopener">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula" alt="productive time">
-          </a>
-        </div>
-      </section>
-
-      <section id="contact" style="margin-top:18px">
-        <h2 class="section-title">👽 Where to find me</h2>
-        <div class="contact-icons" style="margin-top:10px">
-          <a href="https://facebook.com/1yn3r" target="_blank" rel="noopener">
-            <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="facebook">
-          </a>
-          <a href="https://www.linkedin.com/in/1yn3r" target="_blank" rel="noopener">
-            <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="linkedin">
-          </a>
-          <a href="https://instagram.com/__1yn3r" target="_blank" rel="noopener">
-            <img src="https://img.icons8.com/bubbles/1
+    </footer>
+</body>
+</html>
