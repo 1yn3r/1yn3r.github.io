@@ -3,479 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security - Data Protection</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>1yn3r - Pentester & Security Researcher</title>
     <style>
-        /* General Styles */
-        :root {
-            --primary-blue: #0A1448;
-            --secondary-blue: #007bff; /* A lighter blue for highlights */
-            --text-light: #f0f0f0;
-            --text-dark: #333;
-            --button-yellow: #FFC107;
-            --button-hover-yellow: #e0a800;
-        }
-
-        * {
+        /* General Body Styles */
+        body {
+            font-family: 'Hack', monospace; /* Using Hack for a coding feel */
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #1a1a2e; /* Dark background */
+            color: #e0e0e0; /* Light text */
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            background-color: var(--primary-blue);
-            color: var(--text-light);
-            overflow-x: hidden; /* Prevent horizontal scroll from decorations */
-        }
-
+        /* Container for content */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            color: var(--text-light);
-            font-weight: 800;
-        }
-
-        /* Header */
-        .header {
-            background-color: var(--primary-blue);
-            padding: 20px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .logo i {
-            font-size: 2rem;
-            margin-right: 10px;
-            color: var(--secondary-blue);
-        }
-
-        .nav-links ul {
-            display: flex;
-        }
-
-        .nav-links ul li {
-            margin-left: 30px;
-        }
-
-        .nav-links ul li a {
-            color: var(--text-light);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links ul li a:hover {
-            color: var(--secondary-blue);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background-color: var(--primary-blue);
-            padding: 80px 0 0;
-            position: relative;
+            width: 80%;
+            margin: auto;
             overflow: hidden;
-            min-height: calc(100vh - 80px); /* Adjust based on header height */
-            display: flex;
-            align-items: center;
+            padding: 20px 0;
         }
 
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 2;
+        /* Header/Hero Section */
+        .hero {
+            background-color: #0f3460; /* A darker blue */
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
         }
 
-        .hero-text {
-            flex: 1;
-            max-width: 50%;
-            padding-right: 50px;
+        .hero h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #e94560; /* Your accent color */
         }
 
-        .hero-text h1 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            line-height: 1.1;
-        }
-
-        .hero-text h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--secondary-blue);
-            margin-bottom: 15px;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .hero-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 350px;
-        }
-
-        .hero-form input[type="text"],
-        .hero-form input[type="email"] {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 15px 20px;
-            border-radius: 5px;
-            color: var(--text-light);
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .hero-form input[type="text"]::placeholder,
-        .hero-form input[type="email"]::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .hero-form button {
-            background-color: var(--button-yellow);
-            color: var(--text-dark);
-            padding: 15px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-form button:hover {
-            background-color: var(--button-hover-yellow);
-        }
-
-        .hero-form button i {
-            margin-left: 10px;
+        .hero p {
             font-size: 1.2em;
+            margin-top: 10px;
         }
 
-        .hero-image {
-            flex: 1;
-            text-align: right;
-            position: relative;
-            z-index: 2;
+        /* Section Styling */
+        .section {
+            background-color: #16213e; /* Slightly lighter dark blue */
+            padding: 40px 0;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .hexagon-frame {
-            position: relative;
-            width: 500px; /* Adjust size of the hexagon */
-            height: 500px;
-            background-color: transparent;
-            transform: rotate(30deg);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        .section h2 {
+            text-align: center;
+            color: #e94560;
+            margin-bottom: 30px;
+            font-size: 2em;
+            border-bottom: 2px solid #e94560;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* List Styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #0f3460;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-left: 5px solid #e94560;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skill Badges (if you want to implement them as images or text) */
+        .skills-grid {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .hexagon-frame::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: var(--secondary-blue); /* Inner fill for background image */
-            transform: scale(0.98);
-            clip-path: inherit;
-        }
-
-        .hexagon-image-wrapper {
-            position: absolute;
-            width: calc(100% - 20px); /* Adjust border thickness */
-            height: calc(100% - 20px);
-            background-image: url('https://i.ibb.co/LdQwF4r/hacker-hero.png'); /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-            transform: rotate(-30deg); /* Counter-rotate image */
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            border: 5px solid var(--button-yellow); /* Yellow border */
-            z-index: 1;
-        }
-
-        /* Decorative Elements (CSS only) */
-        .hero-section::before,
-        .hero-section::after,
-        .decoration-plus,
-        .decoration-gear,
-        .decoration-dots {
-            content: '';
-            position: absolute;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        /* Top left dots */
-        .hero-section::before {
-            width: 80px;
-            height: 80px;
-            background-image: radial-gradient(circle at 50% 50%, var(--secondary-blue) 5%, transparent 5%);
-            background-size: 20px 20px;
-            top: 20px;
-            left: 20px;
-        }
-
-        /* Bottom right dots */
-        .hero-section::after {
-            width: 100px;
-            height: 100px;
-            background-image: radial-gradient(circle at 50% 50%, var(--secondary-blue) 5%, transparent 5%);
-            background-size: 20px 20px;
-            bottom: 50px;
-            right: 50px;
-        }
-
-        .decoration-plus {
-            background-color: var(--secondary-blue);
-            width: 20px;
-            height: 20px;
-            position: absolute;
-        }
-        .decoration-plus::before {
-            content: '';
-            position: absolute;
-            background-color: var(--secondary-blue);
-            width: 20px;
-            height: 20px;
-            transform: rotate(90deg);
-        }
-
-        /* Specific plus positions */
-        .plus-top-left-1 { top: 120px; left: 100px; }
-        .plus-top-left-2 { top: 250px; left: 60px; }
-        .plus-mid-left-1 { top: 380px; left: 200px; }
-        .plus-bottom-left-1 { bottom: 80px; left: 150px; }
-
-        .plus-top-right-1 { top: 80px; right: 200px; }
-        .plus-mid-right-1 { top: 200px; right: 80px; }
-        .plus-mid-right-2 { top: 300px; right: 20px; }
-        .plus-bottom-right-1 { bottom: 100px; right: 10px; }
-
-
-        .decoration-gear {
-            background-color: transparent;
-            border: 2px solid var(--button-yellow);
-            border-radius: 50%;
-            position: absolute;
-            transform: rotate(45deg); /* To make it look like a gear */
-        }
-        .decoration-gear::before {
-            content: '';
-            position: absolute;
-            background-color: transparent;
-            border: 2px solid var(--button-yellow);
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            transform: rotate(90deg);
-        }
-
-        /* Specific gear positions */
-        .gear-top-right-1 { top: 40px; right: 80px; width: 30px; height: 30px; }
-        .gear-top-right-2 { top: 10px; right: 20px; width: 40px; height: 40px; }
-        .gear-bottom-left-1 { bottom: 20px; left: 30px; width: 35px; height: 35px; }
-
-        .decoration-dots {
-            width: 100px;
-            height: 100px;
-            background-image: radial-gradient(circle at 50% 50%, var(--secondary-blue) 8%, transparent 8%);
-            background-size: 20px 20px;
-            position: absolute;
-        }
-
-        /* Specific dots positions */
-        .dots-bottom-center { bottom: 40px; left: 50%; transform: translateX(-50%); }
-
-        /* Social Icons */
-        .social-icons {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
+        .skill-badge {
+            background-color: #333;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
             display: flex;
-            gap: 15px;
-            z-index: 10;
+            align-items: center;
+            gap: 5px;
         }
 
-        .social-icons a {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            transition: color 0.3s ease;
+        /* Project Cards */
+        .project-card {
+            background-color: #0f3460;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
 
-        .social-icons a:hover {
-            color: var(--secondary-blue);
+        .project-card:hover {
+            transform: translateY(-5px);
         }
 
-        .website-link {
-            position: absolute;
-            bottom: 35px;
-            right: 170px; /* Adjust based on social icon width */
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            z-index: 10;
+        .project-card h3 {
+            color: #f75c7e; /* Another accent */
+            margin-top: 0;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 50px;
-                padding-top: 50px;
-            }
-
-            .hero-text {
-                max-width: 100%;
-                padding-right: 0;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .hero-image {
-                max-width: 100%;
-            }
-
-            .hexagon-frame {
-                width: 400px;
-                height: 400px;
-            }
-
-            .nav-links {
-                display: none; /* Hide nav for mobile, could add a hamburger menu */
-            }
-
-            .navbar {
-                justify-content: center;
-            }
-
-            .social-icons, .website-link {
-                position: static;
-                margin-top: 30px;
-                justify-content: center;
-                width: 100%;
-            }
-
-            .hero-section::before, .hero-section::after,
-            .decoration-plus, .decoration-gear, .decoration-dots {
-                display: none; /* Hide some decorations on smaller screens */
-            }
+        .project-card a {
+            color: #4CAF50; /* Green for links */
+            text-decoration: none;
         }
 
-        @media (max-width: 576px) {
-            .hero-text h1 {
-                font-size: 2.5rem;
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Links */
+        .social-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-links img {
+            width: 60px; /* Adjust size as needed */
+            height: 60px;
+            border-radius: 50%; /* Make them circular */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
             }
-            .hero-text h3 {
-                font-size: 1.2rem;
+
+            .hero h1 {
+                font-size: 2.5em;
             }
-            .hero-text p {
-                font-size: 1rem;
-            }
-            .hexagon-frame {
-                width: 300px;
-                height: 300px;
-            }
-            .hero-form {
-                max-width: 100%;
+
+            .hero p {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container navbar">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i> CYBER SECURITY
-            </div>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">GALLERY</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="hero">
+        <!-- The image generated earlier can go here -->
+        <img src="YOUR_GENERATED_BANNER_IMAGE_URL_HERE" alt="1yn3r's Cyber Security Portfolio Banner" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        <h1>Hello! I'm 1yn3r</h1>
+        <p>Pentester | Security Researcher</p>
+        <p>Active Directory Exploitation | Web App Security | CTF Player</p>
+        <p>From VietNam 🇻🇳</p>
     </header>
 
-    <section class="hero-section">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h3>Cyber Security</h3>
-                <h1>DATA PROTECTION</h1>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                <form class="hero-form">
-                    <input type="text" placeholder="NAME">
-                    <input type="email" placeholder="EMAIL">
-                    <button type="submit">CONFIRM <i class="fas fa-plus"></i></button>
-                </form>
+    <div class="container">
+        <!-- About Section -->
+        <section class="section">
+            <h2>About Me</h2>
+            <ul>
+                <li>🔐 Focused on **Penetration Testing & Red Teaming**</li>
+                <li>🕵️ Skilled in **Web Exploitation, AD Attacks, Network Pentest**</li>
+                <li>📚 Writing **CTF Writeups & Pentest Reports**</li>
+                <li>🧰 Building **Automation Scripts for Recon & Exploitation**</li>
+            </ul>
+        </section>
+
+        <!-- TryHackMe Section -->
+        <section class="section">
+            <h2>TryHackMe</h2>
+            <div style="text-align: center;">
+                <a href="https://tryhackme.com/p/1yn3r" target="_blank">
+                    <img src="assets/tryhackme.png" alt="TryHackMe Badge" style="max-width: 200px; height: auto;">
+                </a>
             </div>
-            <div class="hero-image">
-                <div class="hexagon-frame">
-                    <div class="hexagon-image-wrapper"></div>
+        </section>
+
+        <!-- Pentest Skills Section -->
+        <section class="section">
+            <h2>🧑‍💻 Kỹ năng Pentest</h2>
+
+            <h3>🔟 OWASP Top 10 (Web Security)</h3>
+            <ul>
+                <li>**A01 – Broken Access Control** → IDOR, Privilege Escalation</li>
+                <li>**A02 – Cryptographic Failures** → Weak SSL/TLS, Insecure Hash, Hardcoded Secrets</li>
+                <li>**A03 – Injection** → SQLi, Command Injection, NoSQL Injection</li>
+                <li>**A04 – Insecure Design** → Logic Flaws, Business Logic Abuse</li>
+                <li>**A05 – Security Misconfiguration** → Default creds, Open admin panels, Misconfigured CORS</li>
+                <li>**A06 – Vulnerable & Outdated Components** → Old libs, Unpatched CVEs</li>
+                <li>**A07 – Identification & Authentication Failures** → Broken JWT, Weak session, MFA bypass</li>
+                <li>**A08 – Software & Data Integrity Failures** → Insecure deserialization, Supply chain attack</li>
+                <li>**A09 – Security Logging & Monitoring Failures** → Lack of alerts, Undetected brute-force</li>
+                <li>**A10 – Server-Side Request Forgery (SSRF)** → Pivoting, Cloud metadata leaks</li>
+            </ul>
+
+            <h3>⚔️ Kỹ thuật Pentest chuyên sâu</h3>
+            <ul>
+                <li>**Web Exploitation**: XSS (Stored/Reflected/DOM), SSTI, LFI/RFI, File Upload Bypass, CSRF, Open Redirect</li>
+                <li>**Active Directory Attacks**: Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync, Golden Ticket, ADCS abuse</li>
+                <li>**Network Attacks**: SMB/LDAP/FTP enum, MITM, ARP Spoofing, DNS Tunneling, Reverse Shells with Netcat</li>
+                <li>**Password Cracking**: John the Ripper, Hashcat (NTLM, bcrypt, Kerberos tickets)</li>
+                <li>**Privilege Escalation**: Linux privesc (SUID, Cron, PATH hijack), Windows privesc (UAC bypass, Token Impersonation, JuicyPotato)</li>
+                <li>**Post-Exploitation**: Persistence, Credential dumping (Mimikatz, LSASS dump), Lateral Movement</li>
+                <li>**Detection Evasion**: Living-off-the-Land (LOLBins), Obfuscated payloads, AV/EDR bypass basics</li>
+            </ul>
+        </section>
+
+        <!-- Pentest Toolset Section -->
+        <section class="section">
+            <h2>⚔️ Pentest Toolset</h2>
+            <p style="text-align: center;">(You would place your skill badges here, either as actual image badges or styled text)</p>
+            <div class="skills-grid">
+                <!-- Example of how to add a badge, you'd repeat this for all your tools -->
+                <span class="skill-badge">
+                    <img src="https://img.shields.io/badge/Nmap-005C84?logo=nmap&logoColor=white" alt="Nmap Badge">
+                    Nmap
+                </span>
+                <span class="skill-badge">
+                    <img src="https://img.shields.io/badge/Burp%20Suite-F47E2C?logo=burp&logoColor=white" alt="Burp Suite Badge">
+                    Burp Suite
+                </span>
+                <span class="skill-badge">
+                    <img src="https://img.shields.io/badge/Kali%20Linux-268BEE?logo=kalilinux&logoColor=white" alt="Kali Linux Badge">
+                    Kali Linux
+                </span>
+                <!-- ... add more badges like this ... -->
+            </div>
+            <p>You can replace the `span` tags with `img` tags directly using the shield URLs you provided in your original content. Make sure to adjust the `max-width` of the `img` tags inside the `skills-grid` if they are too big.</p>
+        </section>
+
+        <!-- Featured Pentest Projects Section -->
+        <section class="section">
+            <h2>🛡️ Featured Pentest Projects</h2>
+            <div class="project-card">
+                <h3>🔐 Active Directory Attack Simulation</h3>
+                <p>Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration</p>
+                <p><a href="https://github.com/1yn3r/ad-attack-sim" target="_blank">View Project on GitHub</a></p>
+            </div>
+            <div class="project-card">
+                <h3>🎯 CTF Writeups</h3>
+                <p>Documenting pwn/reverse/crypto/web/forensics challenges</p>
+                <p><a href="https://github.com/1yn3r/ctf-writeups" target="_blank">View Writeups on GitHub</a></p>
+            </div>
+        </section>
+
+        <!-- User Statistics Section -->
+        <section class="section">
+            <h2 align="center">📈 User Statistics 📈</h2>
+            <div align="center">
+                <!-- Replace these with your actual GitHub stat image URLs -->
+                <p>
+                    <a href="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r">
+                        <img src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true" alt="GitHub Streak Stats" style="max-width: 100%; height: auto;">
+                    </a>
+                </p>
+                <p>
+                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r">
+                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula" alt="GitHub Profile Details" style="max-width: 100%; height: auto;">
+                    </a>
+                </p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r">
+                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula" alt="Repos Per Language" style="max-width: 100%; height: auto;">
+                    </a>
+                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&">
+                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula" alt="Most Commit Language" style="max-width: 100%; height: auto;">
+                    </a>
+                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r">
+                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula" alt="GitHub Stats" style="max-width: 100%; height: auto;">
+                    </a>
+                    <a href="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r">
+                        <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula" alt="Productive Time" style="max-width: 100%; height: auto;">
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Decorative Elements -->
-        <div class="decoration-plus plus-top-left-1"></div>
-        <div class="decoration-plus plus-top-left-2"></div>
-        <div class="decoration-plus plus-mid-left-1"></div>
-        <div class="decoration-plus plus-bottom-left-1"></div>
+        <!-- Social Links Section -->
+        <section class="section">
+            <h2 align="center">👽 Where to find me 👽</h2>
+            <div class="social-links">
+                <a href="https://facebook.com/1yn3r" target="blank">
+                    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="1yn3r-facebook" />
+                </a>
+                <a href="https://www.linkedin.com/in/1yn3r" target="blank">
+                    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="1yn3r-linkedin" />
+                </a>
+                <a href="https://instagram.com/__1yn3r" target="blank">
+                    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="1yn3r-instagram" />
+                </a>
+                <a href="mailto:hc223390@gmail.com" target="top">
+                    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="1yn3r-email" />
+                </a>
+            </div>
+        </section>
 
-        <div class="decoration-plus plus-top-right-1"></div>
-        <div class="decoration-plus plus-mid-right-1"></div>
-        <div class="decoration-plus plus-mid-right-2"></div>
-        <div class="decoration-plus plus-bottom-right-1"></div>
-
-        <div class="decoration-gear gear-top-right-1"></div>
-        <div class="decoration-gear gear-top-right-2"></div>
-        <div class="decoration-gear gear-bottom-left-1"></div>
-
-        <div class="decoration-dots dots-bottom-center"></div>
-
-        <div class="website-link">www.cybersecurity.com</div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-    </section>
+    </div><!-- End container -->
 
 </body>
 </html>
