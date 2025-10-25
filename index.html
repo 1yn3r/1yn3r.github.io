@@ -127,10 +127,19 @@
         };
 
         const analyzeThreat = async (target) => {
-          return new Promise(resolve => {
-            setTimeout(() => {
-              if (target.toLowerCase().includes('sql') || target.toLowerCase().includes('database')) {
-                resolve(`### AI-Generated Threat Analysis Report
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const lowerCaseTarget = target.toLowerCase();
+
+                    if (lowerCaseTarget.includes('network error')) {
+                        return reject(new Error('503 Service Unavailable. Connection to analysis engine failed.'));
+                    }
+                    if (lowerCaseTarget.includes('bad request')) {
+                        return reject(new Error('400 Bad Request. The provided input was malformed or invalid.'));
+                    }
+
+                    if (lowerCaseTarget.includes('sql') || lowerCaseTarget.includes('database')) {
+                        return resolve(`### AI-Generated Threat Analysis Report
 
 **Target:** User-provided snippet
 **Analysis Engine:** Gemini (Simulated)
@@ -142,8 +151,9 @@
 #### 2. Insecure Error Handling (Medium)
 - **Description:** The application might be revealing verbose error messages to the user. These messages could leak sensitive information about the backend infrastructure, database schema, or framework versions.
 - **Recommendation:** Implement generic, non-descriptive error pages and log detailed errors on the server-side only.`);
-              } else {
-                 resolve(`### AI-Generated Threat Analysis Report
+                    }
+                    
+                    return resolve(`### AI-Generated Threat Analysis Report
 
 **Target:** User-provided snippet
 **Analysis Engine:** Gemini (Simulated)
@@ -153,9 +163,9 @@ Based on the provided information, no high-severity vulnerabilities are immediat
 - **Input Validation:** Ensure all user-supplied data is strictly validated on the server-side.
 - **Dependency Management:** Regularly scan for and update outdated or vulnerable third-party libraries.
 - **Secure Configuration:** Follow security hardening guides for all components of the application stack.`);
-              }
-            }, 1500); // Simulate network delay
-          });
+
+                }, 1500); // Simulate network delay
+            });
         };
 
         // --- HOOKS ---
@@ -339,13 +349,22 @@ Based on the provided information, no high-severity vulnerabilities are immediat
             const [result, setResult] = useState('');
             const [isLoading, setIsLoading] = useState(false);
             const handleAnalyze = async () => {
-                if (!target.trim()) { setResult('// ERROR: Target input cannot be empty.'); return; }
+                if (!target.trim()) {
+                    setResult('// ERROR: Target input cannot be empty.');
+                    return;
+                }
                 soundManager.play('submit');
                 setIsLoading(true);
                 setResult('// ANALYZING_TARGET... STANDBY...');
-                const analysisResult = await analyzeThreat(target);
-                setResult(analysisResult);
-                setIsLoading(false);
+                try {
+                    const analysisResult = await analyzeThreat(target);
+                    setResult(analysisResult);
+                } catch (error) {
+                    const errorMessage = `// [!] ANALYSIS FAILED\n\n---\nERROR: ${error.message}\n---\n\n### DEBUGGING_SUGGESTIONS:\n1. Check your network connection.\n2. Ensure the input data is not empty and is formatted correctly.\n3. The analysis service might be temporarily unavailable. Please try again later.\n4. Note: This is a simulated environment. For a real-world scenario, you would verify API key validity and service quotas.`;
+                    setResult(errorMessage);
+                } finally {
+                    setIsLoading(false);
+                }
             };
             return (
                 <section id="analyzer" className="container mx-auto px-6 py-20 bg-black/30 border-y border-green-500/20">
@@ -357,7 +376,7 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                         <div className="space-y-4">
                             <div>
                                 <label className="text-green-400 text-sm" htmlFor="target-input">TARGET_INPUT:</label>
-                                <textarea id="target-input" placeholder="e.g., Paste a code snippet or describe an application feature..." rows={8} value={target} onChange={(e) => setTarget(e.target.value)} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" disabled={isLoading}></textarea>
+                                <textarea id="target-input" placeholder="e.g., Paste a code snippet, describe a feature, or type 'network error' to test failure states..." rows={8} value={target} onChange={(e) => setTarget(e.target.value)} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" disabled={isLoading}></textarea>
                             </div>
                             <div className="text-center">
                                 <button onClick={handleAnalyze} disabled={isLoading} className="bg-transparent border border-green-500 text-green-400 font-semibold py-3 px-12 hover:bg-green-500 hover:text-black transition-all duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed">{isLoading ? '> ANALYZING...' : '> EXECUTE_SCAN'}</button>
