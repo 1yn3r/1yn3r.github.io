@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,12 +109,16 @@
             { title: "Web Exploitation", skills: [{ name: "Cross-Site Scripting (XSS)", details: "Stored/Reflected/DOM" }, { name: "Server-Side Template Injection (SSTI)", details: "" }, { name: "File Inclusion", details: "LFI/RFI, File Upload Bypass" }, { name: "Cross-Site Request Forgery (CSRF)", details: "" }, { name: "Open Redirect", details: "" }] },
             { title: "Active Directory Attacks", skills: [{ name: "Kerberos Attacks", details: "Kerberoasting, AS-REP Roasting" }, { name: "Credential Theft", details: "Pass-the-Hash, DCSync" }, { name: "Persistence & Privilege", details: "Golden Ticket, ADCS abuse" }] },
             { title: "Network Attacks", skills: [{ name: "Service Enumeration", details: "SMB/LDAP/FTP enum" }, { name: "Spoofing & Interception", details: "MITM, ARP Spoofing" }, { name: "Covert Channels", details: "DNS Tunneling, Reverse Shells with Netcat" }] },
-            { title: "Tools & Technologies", skills: [ { name: "Burp Suite", details: "Proxy, Repeater, Intruder" }, { name: "Nmap", details: "Host discovery, port scanning" }, { name: "Metasploit", details: "Exploit development, payload generation" }, { name: "Wireshark", details: "Packet analysis, protocol dissection" }, { name: "Hashcat", details: "Password cracking, hash analysis" }, { name: "John the Ripper", details: "Password recovery, hash cracking" }, { name: "SQLMap", details: "Automated SQL injection testing" }, { name: "Responder", details: "LLMNR/NBT-NS poisoning" }, { name: "Impacket", details: "Network protocol tools" }, { name: "Ghidra", details: "Reverse engineering, vulnerability research" } ] }
+            { title: "Defensive Security & SIEM", skills: [{ name: "SOC Operations", details: "Tier 1 analysis, Incident triage" }, { name: "Wazuh", details: "Endpoint monitoring, HIDS deployment" }, { name: "ELK Stack", details: "Log aggregation, Elasticsearch, Kibana" }, { name: "Suricata / Snort", details: "NIDS/NIPS rule development" }] },
+            { title: "Infrastructure & Lab Management", skills: [{ name: "Windows Server", details: "Domain Controller, GPO, DNS" }, { name: "Active Directory", details: "Forest/Domain setup, user management" }, { name: "CentOS / Linux", details: "System hardening, service configuration" }, { name: "Virtualization", details: "VMware, VirtualBox lab environments" }] },
+            { title: "Tools & Technologies", skills: [ { name: "Burp Suite", details: "Proxy, Repeater, Intruder" }, { name: "Nmap", details: "Host discovery, port scanning" }, { name: "Metasploit", details: "Exploit development, payload generation" }, { name: "Wireshark", details: "Packet analysis, protocol dissection" }, { name: "Hashcat", details: "Password cracking, hash analysis" }, { name: "SQLMap", details: "Automated SQL injection testing" }, { name: "Responder", details: "LLMNR/NBT-NS poisoning" }, { name: "Impacket", details: "Network protocol tools" }] }
         ];
         const PROJECTS_DATA = [
             { id: 1, type: "WEB_APP", title: "E-Commerce Platform Assessment", description: "Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.", findings: [{ severity: "CRITICAL", text: "SQL Injection in API." }, { severity: "HIGH", text: "Broken Access Control (ATO)." }, { severity: "MED", text: "Stored XSS in review section." }], objective: "Identify and validate critical vulnerabilities in a customer-facing e-commerce application before its major holiday sales launch, focusing on payment processing and user data integrity.", attackChain: ["1. Mapped API endpoints and identified a legacy endpoint vulnerable to SQL Injection.", "2. Exploited SQLi to dump user credential hashes and sensitive order information.", "3. Discovered an Insecure Direct Object Reference (IDOR) in the user profile endpoint, allowing unauthorized access to other users' accounts by iterating identifiers.", "4. Successfully performed an Account Takeover (ATO) of a test administrator account.", "5. Injected a stored XSS payload into the product review field, demonstrating the ability to capture session cookies from other users, including administrators."], businessImpact: "A successful breach could have led to a massive customer data leak, fraudulent transactions, and significant reputational damage, resulting in millions in potential losses and regulatory fines.", status: "All critical and high-risk vulnerabilities were patched by the client's development team prior to the sales event. [REMEDIATED]", toolsUsed: ["Burp Suite", "SQLMap", "Nmap"] },
             { id: 2, type: "INTERNAL_NETWORK", title: "Corporate AD Pentest", description: "Assumed-breach scenario testing internal defenses and lateral movement paths.", findings: [{ severity: "CRITICAL", text: "Domain Admin via Kerberoasting." }, { severity: "HIGH", text: "Unpatched legacy system foothold." }, { severity: "HIGH", text: "LLMNR Poisoning for cred capture." }], objective: "Simulate a low-privilege attacker within the corporate network and assess the pathways to achieve Domain Administrator privileges, identifying weaknesses in Active Directory configuration and segmentation.", attackChain: ["1. Established initial foothold on an unpatched Windows 7 machine in the marketing department VLAN.", "2. Used Responder to perform LLMNR/NBT-NS poisoning, capturing NTLMv2 hashes from network traffic.", "3. Performed a Kerberoasting attack to extract service account hashes for services with weak SPNs.", "4. Cracked a weak service account password offline using Hashcat.", "5. Leveraged the compromised service account's privileges to perform a DCSync attack, extracting all domain credential hashes, including the krbtgt account.", "6. Forged a Golden Ticket to gain persistent, full Domain Administrator access."], businessImpact: "A complete compromise of the Active Directory would grant an attacker full control over the entire corporate network, including all user accounts, servers, and sensitive data, leading to a catastrophic security incident.", status: "Remediation guidance focused on network segmentation, patching policies, disabling legacy protocols, and implementing strong password policies for service accounts. [REMEDIATED]", toolsUsed: ["Responder", "Hashcat", "Impacket", "Metasploit"] },
-            { id: 3, type: "MOBILE_APP", title: "FinTech Mobile App (iOS/Android)", description: "In-depth static/dynamic analysis of a mobile banking application and its API.", findings: [{ severity: "CRITICAL", text: "Hardcoded API keys in binary." }, { severity: "HIGH", text: "No certificate pinning (MitM)." }, { severity: "MED", text: "Insecure local data storage." }], objective: "Evaluate the security posture of a mobile banking application, focusing on insecure data storage, API vulnerabilities, and susceptibility to Man-in-the-Middle (MitM) attacks.", attackChain: ["1. Performed static analysis on the Android APK and discovered hardcoded third-party service API keys.", "2. Set up a MitM proxy (Burp Suite) to intercept all mobile application traffic.", "3. Confirmed lack of certificate pinning, allowing for decryption and manipulation of HTTPS traffic.", "4. Intercepted API requests to identify endpoints for balance transfers and modified requests to transfer funds between test accounts without proper server-side validation.", "5. Used Frida to bypass root detection and access the application's local data storage, finding unencrypted user credentials and transaction history."], businessImpact: "Vulnerabilities could allow an attacker to intercept user credentials, manipulate financial transactions, and extract sensitive data, leading to direct financial theft and loss of customer trust.", status: "Client implemented certificate pinning, removed all hardcoded secrets from the binary, and enforced secure local data encryption. [REMEDIATED]", toolsUsed: ["Burp Suite", "Frida", "JADX", "Objection"] }
+            { id: 6, type: "INTERNAL_NETWORK", title: "Internal Network & AD Lab Buildout", description: "Constructed a multi-vlan enterprise environment for pentesting practice.", findings: [{ severity: "INFO", text: "Created realistic user profiles and groups." }, { severity: "INFO", text: "Deployed intentionally vulnerable services." }, { severity: "INFO", text: "Configured AD with common misconfigurations." }], objective: "Build a fully functional and realistic Windows Server Active Directory lab environment from scratch to practice and demonstrate various TTPs for internal network penetration tests.", attackChain: ["1. Deployed Windows Server as a Domain Controller, configuring DNS, DHCP, and Certificate Services.", "2. Created multiple OUs, users, and groups to simulate a corporate structure.", "3. Joined Windows and Linux client machines to the domain across different VLANs.", "4. Intentionally introduced vulnerabilities such as weak passwords, disabled security features, and misconfigured service permissions to create a target-rich environment.", "5. Validated the lab by successfully executing attacks like Kerberoasting and Pass-the-Hash from a Kali Linux attacker machine."], businessImpact: "This project provides a critical, hands-on training platform for honing advanced Active Directory attack and defense skills in a safe and controlled environment, directly translating to effectiveness in real-world engagements.", status: "Lab is operational and actively used for skill development. [ACTIVE]", toolsUsed: ["Windows Server", "VMware", "CentOS", "Kali Linux"] },
+            { id: 7, type: "SIEM_DEPLOYMENT", title: "SOC Operations & SIEM Deployment", description: "Built and managed a security monitoring stack using open-source tools.", findings: [{ severity: "HIGH", text: "Developed rules to detect web attacks." }, { severity: "MED", text: "Configured endpoint monitoring for malware." }, { severity: "INFO", text: "Created dashboards for threat visualization." }], objective: "Deploy and configure a complete Security Information and Event Management (SIEM) solution to provide monitoring, threat detection, and alerting for a simulated corporate network.", attackChain: ["1. Deployed the ELK Stack (Elasticsearch, Logstash, Kibana) for centralized log aggregation and analysis.", "2. Installed and configured Wazuh agents on Windows and Linux endpoints to collect security events, file integrity data, and vulnerability information.", "3. Integrated Suricata NIDS to monitor network traffic for malicious signatures and anomalies.", "4. Wrote custom correlation rules in Wazuh and ElastAlert to detect specific attack patterns, such as brute-force attempts and suspicious PowerShell execution.", "5. Built custom Kibana dashboards to visualize security events, track incident response metrics, and provide high-level reporting for management."], businessImpact: "Demonstrates a comprehensive understanding of defensive security operations, from data collection and analysis to threat detection and visualization, providing the foundation for a robust Security Operations Center (SOC).", status: "System deployed and functional in a lab environment. [COMPLETE]", toolsUsed: ["Wazuh", "ELK Stack", "Suricata", "ElastAlert"] },
+            { id: 8, type: "IOT_HEALTH_AI", title: "AI-Powered IoT Health Monitor Security Assessment", description: "Architected and assessed an IoT system for remote health monitoring.", findings: [{ severity: "CRITICAL", text: "Insecure API for patient data." }, { severity: "HIGH", text: "Lack of encryption on data streams." }, { severity: "MED", text: "Weak device default credentials." }], objective: "Design and perform a security assessment of a proof-of-concept IoT system that uses AI to monitor vital signs and send alerts, focusing on data privacy and resistance to tampering.", attackChain: ["1. Mapped the system architecture, including IoT sensors, a central processing gateway, a cloud backend API, and a mobile application.", "2. Intercepted traffic between the IoT device and the gateway, revealing unencrypted transmission of sensitive health data.", "3. Performed fuzzing and parameter manipulation on the backend REST API, discovering authorization bypasses that allowed access to other users' health records.", "4. Analyzed the AI model's data pipeline for potential data poisoning vulnerabilities.", "5. Gained administrative access to the gateway device due to default credentials, demonstrating the ability to disrupt monitoring or manipulate data sent to the cloud."], businessImpact: "Vulnerabilities in a real-world health monitoring system could lead to severe privacy violations (HIPAA), incorrect medical diagnoses due to manipulated data, and a complete loss of trust in the service provider.", status: "Proof-of-concept developed and security recommendations documented. [POC_COMPLETE]", toolsUsed: ["Burp Suite", "Wireshark", "Nmap", "Python (Scapy)"] }
         ];
         
         // --- UTILS & SERVICES ---
@@ -178,7 +183,7 @@
         const Header = () => {
             const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
             const { text: brandText, scramble: scrambleBrand, reset: resetBrand } = useScrambleText("1YN3R");
-            const navLinks = [{ href: "#home", label: "home" }, { href: "#about", label: "intel" }, { href: "#skills", label: "skills" }, { href: "#projects", label: "cases" }, { href: "#analyzer", label: "analyzer" }, { href: "#contact", label: "contact" }];
+            const navLinks = [{ href: "#home", label: "home" }, { href: "#about", label: "intel" }, { href: "#skills", label: "skills" }, { href: "#projects", label: "cases" }, { href: "#ctf-writeups", label: "ctfs" }, { href: "#analyzer", label: "analyzer" }, { href: "#contact", label: "contact" }];
             return (
                 <header className="sticky top-0 z-40 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-green-500/20">
                     <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -228,14 +233,14 @@
         };
 
         const ProjectCard = ({ project, onSelectProject }) => {
-            const severityColors = { CRITICAL: "text-red-500", HIGH: "text-orange-500", MED: "text-yellow-500" };
+            const severityColors = { CRITICAL: "text-red-500", HIGH: "text-orange-500", MED: "text-yellow-500", INFO: "text-blue-400" };
             return (
                 <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-                    <div className="p-4 border-b border-green-500/20"><p className="text-xs text-green-400">TYPE: {project.type}</p><h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3></div>
+                    <div className="p-4 border-b border-green-500/20"><p className="text-xs text-green-400">TYPE: {project.type.replace(/_/g, ' ')}</p><h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3></div>
                     <div className="p-4 flex-grow text-sm">
                         <p className="text-gray-400 mb-4 font-sans">{project.description}</p>
-                        <h4 className="font-semibold text-gray-200 mb-2">KEY_FINDINGS:</h4>
-                        <ul className="space-y-1 text-gray-300">{project.findings.map((finding, index) => <li key={index}><span className={severityColors[finding.severity]}>[{finding.severity}]</span> {finding.text}</li>)}</ul>
+                        <h4 className="font-semibold text-gray-200 mb-2">KEY_FINDINGS/ACHIEVEMENTS:</h4>
+                        <ul className="space-y-1 text-gray-300">{project.findings.map((finding, index) => <li key={index}><span className={severityColors[finding.severity] || 'text-gray-400'}>[{finding.severity}]</span> {finding.text}</li>)}</ul>
                     </div>
                     <div className="p-4 mt-auto"><button onClick={() => onSelectProject(project)} className="w-full text-center bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 hover:bg-green-500/20 transition-all duration-300">[ VIEW DETAILS ]</button></div>
                 </div>
@@ -250,9 +255,9 @@
                         <header className="p-3 border-b border-green-500/30 flex justify-between items-center"><h2 className="text-green-400 terminal-glow">CASE_FILE: {project.title}</h2><button onClick={onClose} className="text-red-500 hover:text-white">[ close ]</button></header>
                         <div className="p-6 max-h-[80vh] overflow-y-auto">
                             <div className="mb-4"><h3 className="text-green-400 mb-2">// OBJECTIVE</h3><p className="text-gray-300 font-sans">{project.objective}</p></div>
-                            <div className="mb-4"><h3 className="text-green-400 mb-2">// ATTACK_CHAIN</h3><ul className="space-y-1 text-gray-300">{project.attackChain.map((step, index) => <li key={index} className="flex"><span className="text-green-600 mr-2">{`[STEP ${index + 1}]`}</span><p className="font-sans flex-1">{step.substring(step.indexOf(' ') + 1)}</p></li>)}</ul></div>
+                            <div className="mb-4"><h3 className="text-green-400 mb-2">// IMPLEMENTATION_/_ATTACK_CHAIN</h3><ul className="space-y-1 text-gray-300">{project.attackChain.map((step, index) => <li key={index} className="flex"><span className="text-green-600 mr-2">{`[STEP ${index + 1}]`}</span><p className="font-sans flex-1">{step.substring(step.indexOf(' ') + 1)}</p></li>)}</ul></div>
                             <div className="mb-4"><h3 className="text-green-400 mb-2">// TOOLS_USED</h3><div className="flex flex-wrap gap-2">{project.toolsUsed.map(tool => <span key={tool} className="text-xs bg-green-900/50 text-green-300 py-1 px-2">{tool}</span>)}</div></div>
-                            <div className="mb-4"><h3 className="text-green-400 mb-2">// BUSINESS_IMPACT</h3><p className="text-gray-300 font-sans">{project.businessImpact}</p></div>
+                            <div className="mb-4"><h3 className="text-green-400 mb-2">// BUSINESS_IMPACT_/_VALUE</h3><p className="text-gray-300 font-sans">{project.businessImpact}</p></div>
                             <div><h3 className="text-green-400 mb-2">// STATUS</h3><p className="text-yellow-400">{project.status}</p></div>
                         </div>
                     </div>
@@ -402,7 +407,15 @@
         );
         
         const App = () => {
-            const [loading, setLoading] = useState(true); const [activeFilter, setActiveFilter] = useState('All'); const [selectedProject, setSelectedProject] = useState(null); const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
+            const [loading, setLoading] = useState(true); 
+            const [activeSkillFilter, setActiveSkillFilter] = useState('All'); 
+            const [activeProjectFilter, setActiveProjectFilter] = useState('All');
+            const [selectedProject, setSelectedProject] = useState(null); 
+            
+            const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
+            const projectTypes = ['All', ...[...new Set(PROJECTS_DATA.map(p => p.type))].map(type => type.replace(/_/g, ' '))];
+
+
             useEffect(() => {
                 const unlockAudio = () => { soundManager.unlock(); window.removeEventListener('click', unlockAudio); window.removeEventListener('keydown', unlockAudio); };
                 window.addEventListener('click', unlockAudio); window.addEventListener('keydown', unlockAudio);
@@ -412,7 +425,9 @@
             }, []);
 
             if (loading) return <LoadingScreen onComplete={() => setLoading(false)} />;
-            const filteredSkills = ALL_SKILLS.filter(category => activeFilter === 'All' || category.title === activeFilter);
+
+            const filteredSkills = ALL_SKILLS.filter(category => activeSkillFilter === 'All' || category.title === activeSkillFilter);
+            const filteredProjects = PROJECTS_DATA.filter(project => activeProjectFilter === 'All' || project.type.replace(/_/g, ' ') === activeProjectFilter);
 
             return (
                 <div id="home" className="bg-transparent text-gray-300">
@@ -435,19 +450,24 @@
                                     </div>
                                      <div className="mt-12 bg-black/30 border border-green-500/20 p-6 text-left">
                                         <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_PROFESSIONAL_SUMMARY</h3>
-                                        <p className="text-gray-300">Results-driven Penetration Tester specializing in web application, network, and Active Directory security. Adept at emulating advanced threat actors to identify, exploit, and remediate critical vulnerabilities. Seeking to leverage a comprehensive skill set in offensive security to protect and fortify enterprise assets against emerging threats.</p>
+                                        <p className="text-gray-300">Results-driven Security Professional with a dual focus in offensive penetration testing and defensive SOC operations. Adept at building, securing, and breaking complex systems across web, network, and cloud domains. Seeking to apply a holistic understanding of the entire attack lifecycle to protect and fortify enterprise assets against emerging threats.</p>
                                     </div>
                                 </div>
                             </section>
                             
                             <section id="about" className="container mx-auto px-6 py-20">
                                 <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white text-center font-mono terminal-glow mb-12">[ INTEL_PACKAGE: 1YN3R ]</ScrambleHeader>
-                                 <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
-                                     <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_TECHNICAL_APPROACH</h3><p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation.</p></div>
-                                     <div className="md:col-span-2 bg-black/30 border border-green-500/20 p-6">
+                                 <div className="max-w-4xl mx-auto grid grid-cols-1 gap-10">
+                                     <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_TECHNICAL_APPROACH</h3><p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation. My defensive background in SIEM and endpoint monitoring provides a unique perspective, allowing me to anticipate detection mechanisms and craft more evasive attacks.</p></div>
+                                     <div className="bg-black/30 border border-green-500/20 p-6">
                                         <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_CERTIFICATIONS_&_TRAINING</h3>
-                                        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-mono">
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Cyber Security 101</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> CEH</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Jr Penetration</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Web Fundamentals</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Sec+</li>
+                                        <p className="text-sm text-gray-500 font-mono mb-4">[ TryHackMe Learning Paths Completed ]</p>
+                                        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm font-mono">
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Pre Security</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Cyber Security 101</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Web Fundamentals</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Jr Penetration Tester</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> CompTIA Pentest+</li>
                                         </ul>
                                     </div>
                                  </div>
@@ -456,14 +476,31 @@
                             <section id="skills" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</ScrambleHeader><p className="mt-4 max-w-3xl mx-auto text-gray-400">Technical domains, frameworks, and tools, from web application security to network and Active Directory exploitation.</p></header>
                                  <div className="flex justify-center flex-wrap gap-2 mb-8 font-mono text-sm">
-                                    {skillCategories.map(category => <button key={category} onClick={() => setActiveFilter(category)} className={`px-4 py-1 border transition-all duration-200 ${activeFilter === category ? 'bg-green-500 text-black border-green-500' : 'border-green-500/30 text-green-400 hover:bg-green-500/10'}`}>{category}</button>)}
+                                    {skillCategories.map(category => <button key={category} onClick={() => setActiveSkillFilter(category)} className={`capitalize px-4 py-1 border transition-all duration-200 ${activeSkillFilter === category ? 'bg-green-500 text-black border-green-500' : 'border-green-500/30 text-green-400 hover:bg-green-500/10'}`}>{category}</button>)}
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">{filteredSkills.map((category) => <SkillCard key={category.title} category={category} />)}</div>
                             </section>
                             
                             <section id="projects" className="container mx-auto px-6 py-20">
-                                <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CASE_FILES: ENGAGEMENT_LOGS ]</ScrambleHeader><p className="mt-4 max-w-2xl mx-auto text-gray-400">Anonymized summaries of recent penetration testing projects and outcomes.</p></header>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono">{PROJECTS_DATA.map(project => <ProjectCard key={project.id} project={project} onSelectProject={setSelectedProject} />)}</div>
+                                <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CASE_FILES: ENGAGEMENT_LOGS ]</ScrambleHeader><p className="mt-4 max-w-2xl mx-auto text-gray-400">Anonymized summaries of recent projects and outcomes, spanning offensive and defensive operations.</p></header>
+                                <div className="flex justify-center flex-wrap gap-2 mb-8 font-mono text-sm">
+                                    {projectTypes.map(type => <button key={type} onClick={() => setActiveProjectFilter(type)} className={`capitalize px-4 py-1 border transition-all duration-200 ${activeProjectFilter === type ? 'bg-green-500 text-black border-green-500' : 'border-green-500/30 text-green-400 hover:bg-green-500/10'}`}>{type}</button>)}
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono">{filteredProjects.map(project => <ProjectCard key={project.id} project={project} onSelectProject={setSelectedProject} />)}</div>
+                            </section>
+                            
+                            <section id="ctf-writeups" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CTF_CHALLENGES_&_WRITEUPS ]</ScrambleHeader>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">
+                                        Capture The Flag (CTF) competitions are a crucial part of my continuous learning process. They provide hands-on experience with emerging TTPs and complex problem-solving scenarios. Below is a link to my repository of detailed write-ups for various challenges I have solved.
+                                    </p>
+                                </header>
+                                <div className="text-center">
+                                    <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" rel="noopener noreferrer" className="inline-block font-mono text-lg bg-green-500/10 border border-green-500/30 text-green-400 px-8 py-3 hover:bg-green-500/20 transition-all duration-300">
+                                        [ Access CTF Write-ups on GitHub ]
+                                    </a>
+                                </div>
                             </section>
 
                             <ThreatAnalyzer />
