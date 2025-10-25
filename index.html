@@ -133,33 +133,30 @@
             { id: 6, type: "INTERNAL_NETWORK", title: "Internal Network & AD Lab Buildout", description: "Constructed a multi-vlan enterprise environment for pentesting practice.", findings: [{ severity: "INFO", text: "Created realistic user profiles and groups." }, { severity: "INFO", text: "Deployed intentionally vulnerable services." }, { severity: "INFO", text: "Configured AD with common misconfigurations." }], objective: "Build a fully functional and realistic Windows Server Active Directory lab environment from scratch to practice and demonstrate various TTPs for internal network penetration tests.", attackChain: ["1. Deployed Windows Server as a Domain Controller, configuring DNS, DHCP, and Certificate Services.", "2. Created multiple OUs, users, and groups to simulate a corporate structure.", "3. Joined Windows and Linux client machines to the domain across different VLANs.", "4. Intentionally introduced vulnerabilities such as weak passwords, disabled security features, and misconfigured service permissions to create a target-rich environment.", "5. Validated the lab by successfully executing attacks like Kerberoasting and Pass-the-Hash from a Kali Linux attacker machine."], businessImpact: "This project provides a critical, hands-on training platform for honing advanced Active Directory attack and defense skills in a safe and controlled environment, directly translating to effectiveness in real-world engagements.", status: "Lab is operational and actively used for skill development. [ACTIVE]", toolsUsed: ["Windows Server", "VMware", "CentOS", "Kali Linux"] },
             { id: 7, type: "SIEM_DEPLOYMENT", title: "SOC Operations & SIEM Deployment", description: "Built and managed a security monitoring stack using open-source tools.", findings: [{ severity: "HIGH", text: "Developed rules to detect web attacks." }, { severity: "MED", text: "Configured endpoint monitoring for malware." }, { severity: "INFO", text: "Created dashboards for threat visualization." }], objective: "Deploy and configure a complete Security Information and Event Management (SIEM) solution to provide monitoring, threat detection, and alerting for a simulated corporate network.", attackChain: ["1. Deployed the ELK Stack (Elasticsearch, Logstash, Kibana) for centralized log aggregation and analysis.", "2. Installed and configured Wazuh agents on Windows and Linux endpoints to collect security events, file integrity data, and vulnerability information.", "3. Integrated Suricata NIDS to monitor network traffic for malicious signatures and anomalies.", "4. Wrote custom correlation rules in Wazuh and ElastAlert to detect specific attack patterns, such as brute-force attempts and suspicious PowerShell execution.", "5. Built custom Kibana dashboards to visualize security events, track incident response metrics, and provide high-level reporting for management."], businessImpact: "Demonstrates a comprehensive understanding of defensive security operations, from data collection and analysis to threat detection and visualization, providing the foundation for a robust Security Operations Center (SOC).", status: "System deployed and functional in a lab environment. [COMPLETE]", toolsUsed: ["Wazuh", "ELK Stack", "Suricata", "ElastAlert"] },
             { id: 8, type: "IOT_HEALTH_AI", title: "AI-Powered IoT Health Monitoring System Build", description: "Engineered a full-stack IoT health monitoring PoC, leveraging an Arduino Mega 2560 for data acquisition, a Python Flask backend for data processing, and an integrated AI model for real-time anomaly detection.", findings: [{ severity: "INFO", text: "Arduino firmware for sensor data collection." }, { severity: "INFO", text: "Python Flask API for data processing." }, { severity: "INFO", text: "Integrated AI model for anomaly detection." }], objective: "To build an end-to-end IoT system capable of collecting real-time health metrics, processing them through a cloud-based AI, and alerting on potential health issues, demonstrating skills in hardware integration, backend development, and applied machine learning.", attackChain: ["1. Developed C++ firmware for the Arduino Mega 2560 to interface with health sensors (e.g., pulse, temperature).", "2. Built a RESTful API using Python Flask to serve as the central backend, handling data ingestion and user management.", "3. Trained and integrated a TensorFlow/Keras model into the Flask application to analyze sensor data for anomalies.", "4. Established a secure communication channel using MQTT for efficient data transmission from the Arduino to the server.", "5. Designed a simple web-based dashboard to visualize live health data and AI-generated alerts."], businessImpact: "This project demonstrates the ability to architect and build a secure, scalable, and intelligent IoT solution from scratch, showcasing skills in embedded systems, cloud development, and applied AI.", status: "Proof-of-concept system built and functional. [POC_COMPLETE]", toolsUsed: ["Arduino Mega 2560", "Python (Flask)", "TensorFlow/Keras", "MQTT", "C++"] },
-            { id: 9, type: "AD_SECURITY", title: "Active Directory Attack Simulator", description: "Developed a Python-based tool to simulate common Active Directory attacks for blue team training and control validation.", findings: [{ severity: "INFO", text: "Implemented Kerberoasting simulation." }, { severity: "INFO", text: "Added password spray module." }, { severity: "INFO", text: "Designed for easy integration into test pipelines." }], objective: "To create a lightweight, scriptable tool that allows security teams to test their detection and response capabilities against known AD attack techniques like Kerberoasting and password spraying.", attackChain: ["1. Researched common TTPs used in Active Directory compromise.", "2. Developed core modules in Python using libraries like `impacket` and `ldap3`.", "3. Implemented logic to simulate user enumeration, password spraying, and Kerberoasting attacks.", "4. Packaged the tool for command-line execution, allowing for configurable attack parameters."], businessImpact: "Provides a repeatable and safe method for organizations to validate their SIEM rules, EDR alerts, and SOC analyst procedures related to Active Directory security, improving overall defense posture.", status: "Development ongoing, core features stable. [ACTIVE]", toolsUsed: ["Python", "Impacket", "ldap3", "Active Directory"] },
-            { id: 10, type: "HARDWARE_IOT", title: "Arduino PC Performance Monitor", description: "Created a custom hardware display using an Arduino and LCD screen to show real-time PC performance metrics like CPU/GPU temperature and usage.", findings: [{ severity: "INFO", text: "Real-time CPU & GPU metric display." }, { severity: "INFO", text: "Custom C++ firmware for Arduino." }, { severity: "INFO", text: "Python script for data fetching." }], objective: "To design and build a standalone hardware peripheral that provides at-a-glance system monitoring, combining embedded programming with desktop software communication.", attackChain: ["1. Wrote a Python script to gather system metrics (CPU load, temps, RAM usage) from the host PC using libraries like `psutil`.", "2. Developed C++ firmware for an Arduino to receive data over a serial connection and display it on an attached LCD screen.", "3. Designed and assembled the physical hardware, including the Arduino, LCD, and custom enclosure.", "4. Established a stable serial communication protocol between the Python script and the Arduino for continuous data updates."], businessImpact: "Demonstrates proficiency in hardware-software integration, embedded systems programming (C++), and scripting (Python), showcasing the ability to create complete, functional hardware projects.", status: "Project complete and fully operational. [COMPLETE]", toolsUsed: ["Arduino", "C++", "Python", "psutil", "LCD Display"] },
-            { id: 11, type: "NETWORK_SECURITY", title: "RTSP Surveillance Camera Reconnaissance", description: "Leveraged tools like Cameradar to perform reconnaissance on network blocks, identifying and assessing the security of publicly exposed RTSP video streams.", findings: [{ severity: "HIGH", text: "Identified multiple open RTSP streams." }, { severity: "MED", text: "Gained access using default credentials." }, { severity: "INFO", text: "Mapped vulnerable device locations." }], objective: "To identify insecure camera streams on a given network, test for default credentials, and report on the potential for unauthorized surveillance, highlighting physical and digital security risks.", attackChain: ["1. Used Nmap and other scanning tools to discover open ports commonly associated with IP cameras (e.g., 554 for RTSP).", "2. Deployed Cameradar against identified hosts to automate the discovery of camera stream paths (e.g., `/live/stream`).", "3. Performed brute-force attacks against password-protected streams using common default credential lists.", "4. Successfully accessed live video feeds from multiple misconfigured devices.", "5. Documented findings, including IP addresses, stream paths, and credentials used, and provided remediation advice."], businessImpact: "This type of engagement demonstrates the real-world risks of insecure IoT device configuration. A successful compromise could lead to corporate espionage, privacy violations, or physical security breaches.", status: "Research project complete. [COMPLETE]", toolsUsed: ["Cameradar", "Nmap", "FFmpeg", "Python"] }
+            { id: 9, type: "AD_SECURITY", title: "Active Directory Attack Simulator", description: "Developed a Python-based tool to simulate common Active Directory attacks for blue team training and control validation.", findings: [{ severity: "INFO", text: "Implemented Kerberoasting simulation." }, { severity: "INFO", text: "Added password spray module." }, { severity: "INFO", text: "Designed for easy integration into test pipelines." }], objective: "To create a lightweight, scriptable tool that allows security teams to test their detection and response capabilities against known TTPs like Kerberoasting and password spraying.", attackChain: ["1. Designed the tool's architecture, focusing on modularity for different attack techniques.", "2. Implemented a Kerberoasting module using the Impacket library to request service tickets.", "3. Added a password spraying module that safely tests common passwords against a list of users.", "4. Integrated LDAP3 for efficient and safe querying of the Active Directory environment.", "5. Packaged the tool for easy deployment in isolated lab environments."], businessImpact: "Empowers blue teams to proactively validate SIEM rules, EDR alerts, and incident response playbooks in a controlled manner, leading to a hardened Active Directory environment.", status: "[COMPLETE]", toolsUsed: ["Python", "Impacket", "LDAP3"], githubLink: "https://github.com/1yn3r/ad-attack-sim" },
+            { id: 10, type: "HARDWARE_INTEGRATION", title: "PC Performance Monitor on Arduino", description: "Created a system to display real-time PC performance statistics (CPU/GPU temp, usage) on an external LCD screen connected to an Arduino.", findings: [{ severity: "INFO", text: "Firmware for real-time data display." }, { severity: "INFO", text: "Python script for data collection." }, { severity: "INFO", text: "Established reliable serial communication." }], objective: "To design and build a functional hardware solution for at-a-glance PC monitoring, combining hardware programming with a lightweight desktop software component.", attackChain: ["1. Wrote C++ code for an Arduino to initialize an I2C LCD and parse incoming serial data.", "2. Developed a Python script on the host PC to gather system metrics using libraries like `psutil` and `gputil`.", "3. Formatted the collected data into a concise string and transmitted it over the USB serial port.", "4. Implemented error handling to manage connection interruptions and ensure data integrity.", "5. Designed and 3D-printed a custom enclosure for the Arduino and LCD screen for a clean setup."], businessImpact: "Demonstrates practical skills in hardware integration, embedded C++ programming, serial communication, and desktop scripting, showcasing the ability to bridge software and physical hardware.", status: "[COMPLETE]", toolsUsed: ["Arduino", "C++", "Python", "Serial I/O"], githubLink: "https://github.com/1yn3r/Arduino-Display-PC" },
+            { id: 11, type: "TOOL_CONTRIBUTION", title: "Cameradar - RTSP Stream Scanner", description: "Contributed to 'Cameradar', an open-source tool written in Go, designed to scan for and access unprotected RTSP video streams on network devices.", findings: [{ severity: "INFO", text: "Improved scanning efficiency." }, { severity: "INFO", text: "Added new device signatures." }, { severity: "INFO", text: "Fixed bugs in network protocol handling." }], objective: "To enhance the tool's capabilities and deepen my understanding of network scanning techniques, IoT device security, and the Go programming language.", attackChain: ["1. Analyzed the existing codebase to identify performance bottlenecks in the network scanning module.", "2. Refactored parts of the RTSP handshake logic to handle edge cases and reduce timeouts.", "3. Researched and added signatures for several new models of IP cameras, expanding the tool's detection capabilities.", "4. Submitted pull requests with detailed explanations and test cases, collaborating with the project maintainer."], businessImpact: "Participation in widely-used open-source security tools showcases a commitment to the community, collaborative development skills, and a deeper understanding of real-world device vulnerabilities.", status: "[CONTRIBUTION]", toolsUsed: ["Go", "RTSP Protocol", "Git", "Nmap"], githubLink: "https://github.com/1yn3r/cameradar" }
         ];
 
         const TIMELINE_DATA = [
-            { year: "2021", title: "Journey Initiated", description: "Began a focused journey into cybersecurity, starting with foundational concepts of networking, Linux, and security principles." },
-            { year: "2022", title: "TryHackMe Pre Security & Web Fundamentals", description: "Completed foundational learning paths, building a solid understanding of network theory, web application workings, and basic security tools." },
-            { year: "2023", title: "Jr Penetration Tester Path", description: "Achieved the Jr Penetration Tester certification on TryHackMe, demonstrating practical skills in enumeration, exploitation, and privilege escalation." },
-            { year: "2023", title: "Homelab Deployed", description: "Designed and built a virtual lab environment with Active Directory, vulnerable web apps, and SIEM tooling to practice offensive and defensive techniques." },
-            { year: "2024", title: "Advanced Topics", description: "Focused on advanced Active Directory attacks, SIEM deployment (Wazuh/ELK), and began developing custom security tools in Python." },
-            { year: "Present", title: "Continuous Learning & Development", description: "Actively participating in CTFs, researching emerging threats, and contributing to personal security projects on GitHub." }
+            { year: "2021-2022", title: "Endpoint Security Engineer, HPT", description: "Deployed and managed enterprise endpoint security solutions, specializing in the Kaspersky Security Center suite. Responsible for policy configuration, incident response, and system hardening for large-scale client networks." },
+            { year: "2022", title: "Pivot to Offensive Security", description: "Began a dedicated self-study curriculum focused on penetration testing methodologies, leveraging platforms like TryHackMe and Hack The Box to build foundational offensive skills." },
+            { year: "2023", title: "Homelab & Project Development", description: "Designed and built a multi-VLAN virtual lab environment to practice Active Directory attacks, SIEM deployment, and network segmentation. Began developing custom security tools." },
+            { year: "2024", title: "Advanced Skill Acquisition", description: "Focused on advanced penetration testing techniques, including web application exploits (OWASP Top 10), advanced AD attacks, and completing comprehensive learning paths like the Jr Penetration Tester certification track." }
         ];
 
         const ARSENAL_TOOLS = [
-            { name: "Burp Suite", description: "The premier toolkit for web application penetration testing. Used for intercepting, modifying, and analyzing web traffic.", svg: `<path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25zm0 1.5c4.557 0 8.25 3.693 8.25 8.25s-3.693 8.25-8.25 8.25S3.75 16.557 3.75 12 7.443 3.75 12 3.75zm-1.5 3v.75h3v-.75h-3zm-3.04 1.5.53.53L6.25 10.5h1.5v1.5h-1.5L9.53 15.28l-.53.53-2.25-2.25v-1.5l2.25-2.25zm7.58 0L15.25 9v1.5L13 12.75l2.25 2.25V16.5l-1.72-1.72.53-.53 1.22 1.22v-1.5l-1.22-1.22-1.22-1.23v-1.5l1.22-1.22z" fill="currentColor"/>`},
-            { name: "Nmap", description: "Network Mapper. Essential for network discovery, port scanning, and security auditing.", svg: `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2v-2zm0 4h2v6h-2v-6z" fill="currentColor"/>` },
-            { name: "Metasploit", description: "A powerful framework for developing, testing, and executing exploits.", svg: `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" fill="currentColor"/>`},
-            { name: "Wireshark", description: "The world's foremost network protocol analyzer. Used for deep inspection of network traffic.", svg: `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm-2-8V9.5C11 8.12 12.12 7 13.5 7S16 8.12 16 9.5v1.22c.59.31 1 .92 1 1.63V15h-2v-2h-3v2H9v-2.65c0-.71.41-1.32 1-1.63z" fill="currentColor"/>`},
-            { name: "Hashcat", description: "The world's fastest and most advanced password recovery utility.", svg: `<path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/><path d="M3 6h2v12H3zm16 0h2v12h-2z" fill="currentColor"/>`},
-            { name: "Impacket", description: "A collection of Python classes for working with network protocols. Essential for AD attacks.", svg: `<path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-2 .9-2 2v4H2.5c-1.38 0-2.5 1.12-2.5 2.5S1.12 16 2.5 16H4v4c0 1.1.9 2 2 2h4v1.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V20h4c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z" fill="currentColor"/>`}
-        ];
-
-        const RECENT_CTFS = [
-            { name: "Network Security Challenge", platform: "TryHackMe", date: "2024-07-15", link: "#" },
-            { name: "Web Exploitation Room", platform: "TryHackMe", date: "2024-06-28", link: "#" },
-            { name: "AD Pentesting Lab", platform: "Internal", date: "2024-06-10", link: "#" }
+            { name: "Burp Suite", description: "The premier toolkit for web application penetration testing. Used daily for intercepting, manipulating, and analyzing web traffic.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="currentColor"><path d="M21.92,5.54A1,1,0,0,0,21,5H15.45a1,1,0,0,0-.86.49L12,9.62,9.41,5.49A1,1,0,0,0,8.55,5H3a1,1,0,0,0-.92.69,1,1,0,0,0,.2,1l7.29,11.12a1,1,0,0,0,1.62.06l7.5-11A1,1,0,0,0,21.92,5.54Z"/></svg> },
+            { name: "Nmap", description: "Network Mapper. The foundational tool for network discovery, port scanning, and service enumeration.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m14.31 8.69-6 6"/><path d="m8.69 8.69 6 6"/></svg> },
+            { name: "Metasploit", description: "The world's leading exploitation framework. Used for developing, testing, and executing exploit code against remote targets.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2M12,4L18,7.5V16.5L12,20L6,16.5V7.5L12,4M12,11.1L15,9.5V11L12,12.5L9,11V9.5L12,11.1M11,13H13V18H11V13Z"/></svg> },
+            { name: "Wireshark", description: "The industry-standard network protocol analyzer. Essential for deep packet inspection and network troubleshooting.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="currentColor"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8 s8,3.59,8,8S16.41,20,12,20z M11.5,15.5l-4-4l1.41-1.41L11.5,12.67l4.59-4.59L17.5,9.5l-6,6z"/></svg> },
+            { name: "Hashcat", description: "The world's fastest and most advanced password recovery utility. Used for offline cracking of captured hashes.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="currentColor"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8 s8,3.59,8,8S16.41,20,12,20z M12,6c-3.31,0-6,2.69-6,6s2.69,6,6,6s6-2.69,6-6S15.31,6,12,6z M12,16c-2.21,0-4-1.79-4-4 s1.79-4,4-4s4,1.79,4,4S14.21,16,12,16z"/></svg> },
+            { name: "Impacket", description: "A collection of Python classes for working with network protocols. Indispensable for Active Directory and Windows network attacks.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 17 5-5-5-5"/><path d="m17 17-5-5 5-5"/></svg> },
+            { name: "SQLMap", description: "Automates the process of detecting and exploiting SQL injection flaws and taking over database servers.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> },
+            { name: "Hydra", description: "A fast and flexible network logon cracker which supports numerous protocols to attack.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19.25 12.25a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/><path d="M8.75 12.25a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/><path d="M14 18.25s-1.5-2-4-2-4 2-4 2"/><path d="M12 2.75a4 4 0 0 0-4 4v1.5a2.5 2.5 0 0 0-2.5 2.5v0a2.5 2.5 0 0 0 2.5 2.5v1.5a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4v-1.5a2.5 2.5 0 0 0 2.5-2.5v0a2.5 2.5 0 0 0-2.5-2.5v-1.5a4 4 0 0 0-4-4h0Z"/></svg> },
+            { name: "John the Ripper", description: "A classic and powerful password cracker. Supports hundreds of hash and cipher types.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M16 8h-2a2 2 0 1 0 0-4h2"/><path d="M8 12H6a2 2 0 1 0 0 4h2"/><path d="M12 12h2a2 2 0 1 1 0 4h-2"/></svg> },
+            { name: "Aircrack-ng", description: "A complete suite of tools to assess Wi-Fi network security. Used for monitoring, attacking, testing, and cracking.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16a4 4 0 0 1 6.95 0"/><line x1="12" x2="12" y1="20" y2="22"/></svg> },
+            { name: "Dir Fuzzers", description: "Tools like Dirsearch & Gobuster are essential for discovering hidden directories and files on web servers.", icon: (props) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="9" x2="9" y1="14" y2="14"/><line x1="15" x2="15" y1="14" y2="14"/></svg> }
         ];
 
         // --- UTILS ---
@@ -275,7 +272,6 @@
             const { text: brandText, scramble: scrambleBrand, reset: resetBrand } = useScrambleText("1YN3R");
             const navLinks = [
                 { href: "#home", label: "home" },
-                { href: "#about", label: "intel" },
                 { href: "#timeline", label: "timeline" },
                 { href: "#skills", label: "skills" },
                 { href: "#arsenal", label: "arsenal" },
@@ -291,7 +287,7 @@
                         <a href="#home" className="text-2xl font-bold font-mono text-white tracking-wider" onMouseEnter={scrambleBrand} onMouseLeave={resetBrand}>
                             <span className="text-green-400 terminal-glow">$</span> {brandText}
                         </a>
-                        <ul className="hidden md:flex items-center space-x-6 font-mono text-sm">
+                        <ul className="hidden md:flex items-center space-x-8 font-mono text-sm">
                             {navLinks.map(link => <li key={link.href}><a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">[ {link.label} ]</a></li>)}
                         </ul>
                         <button onClick={() => setMobileMenuOpen(p => !p)} className="md:hidden text-white" aria-label="Open menu">
@@ -478,6 +474,13 @@
                                 <h3 className="text-green-400 mb-2">// BUSINESS_IMPACT_/_VALUE</h3>
                                 <p className="text-gray-300 font-sans">{project.businessImpact}</p>
                             </div>
+                             {project.githubLink && (
+                                <div className="mb-4">
+                                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="inline-block font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 hover:bg-green-500/20 transition-all duration-300">
+                                        [ Access Source on GitHub ]
+                                    </a>
+                                </div>
+                            )}
                             <div>
                                 <h3 className="text-green-400 mb-2">// STATUS</h3>
                                 <p className="text-yellow-400">{project.status}</p>
@@ -642,212 +645,57 @@
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
                         <a href="https://tryhackme.com/p/1yn3r" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe" className="text-gray-500 hover:text-green-400 transition-colors duration-300">
-                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="currentColor"><title>TryHackMe</title><path d="M21.609 0H2.387A2.392 2.392 0 0 0 0 2.39v19.22A2.392 2.392 0 0 0 2.387 24h19.222A2.392 2.392 0 0 0 24 21.61V2.39A2.392 2.392 0 0 0 21.609 0zM8.561 18.33H5.043V5.69h3.518v12.64zm4.84-6.079L11.02 5.69h3.5l2.09 6.561V5.69h3.5v12.64h-3.5l-2.1-6.736v6.736h-3.5V5.69h.122l2.36 6.561z"/></svg>
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.92,5.54A1,1,0,0,0,21,5H15.45a1,1,0,0,0-.86.49L12,9.62,9.41,5.49A1,1,0,0,0,8.55,5H3a1,1,0,0,0-.92.69,1,1,0,0,0,.2,1l7.29,11.12a1,1,0,0,0,1.62.06l7.5-11A1,1,0,0,0,21.92,5.54Z"/></svg>
                         </a>
                         <a href="https://app.hackthebox.com/profile/12345" target="_blank" rel="noopener noreferrer" aria-label="Hack The Box" className="text-gray-500 hover:text-green-400 transition-colors duration-300">
-                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.2 0H4.8A4.8 4.8 0 000 4.8v14.4A4.8 4.8 0 004.8 24h14.4a4.8 4.8 0 004.8-4.8V4.8A4.8 4.8 0 0019.2 0zM8 17.6H4.8V8h3.2v9.6zm-1.6-11.2a1.6 1.6 0 110-3.2 1.6 1.6 0 010 3.2zm12.8 11.2h-3.2v-4.576c0-1.088-.024-2.48-1.512-2.48-1.512 0-1.744 1.184-1.744 2.4v4.656h-3.2V8h3.072v1.4h.048c.424-.8 1.448-1.648 2.92-1.648 3.12 0 3.7 2.056 3.7 4.72V17.6z"/></svg>
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.2 0H4.8A4.8 4.8 0 000 4.8v14.4A4.8 4.8 0 004.8 24h14.4a4.8 4.8 0 004.8-4.8V4.8A4.8 4.8 0 0019.2 0zM8 17.6H4.8V8h3.2v9.6zm-1.6-11.2a1.6 1.6 0 110-3.2 1.6 1.6 0 010 3.2zm12.8 11.2h-3.2v-4.576c0-1.088-.024-2.48-1.512-2.48-1.512 0-1.744 1.184-1.744 2.4v4.656h-3.2V8h3.072v1.4h.048c.424-.8 1.448-1.648 2.92-1.648 3.12 0 3.7 2.056 3.7 4.72V17.6z"/></svg>
                         </a>
                     </div>
                 </div>
             </footer>
         );
         
-        const MissionTimeline = () => (
-            <section id="timeline" className="container mx-auto px-6 py-20">
-                <header className="text-center mb-12">
-                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ MISSION_TIMELINE ]</ScrambleHeader>
-                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">Key milestones, certifications, and projects marking the progression of my security career.</p>
-                </header>
-                <div className="max-w-3xl mx-auto relative border-l-2 border-green-500/20 pl-8">
-                    {TIMELINE_DATA.map((item, index) => (
-                        <div key={index} className="mb-10 relative timeline-item">
-                            <div className="absolute -left-10 bg-[#0d0d0d] px-2 text-green-400 font-mono text-sm">{item.year}</div>
-                            <h3 className="text-xl font-bold text-green-400 font-mono">{item.title}</h3>
-                            <p className="text-gray-400 mt-2">{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-        );
-
-        const Arsenal = () => {
-            const [activeTooltip, setActiveTooltip] = useState(null);
-
-            return (
-                <section id="arsenal" className="container mx-auto px-6 py-20">
-                     <header className="text-center mb-12">
-                        <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ ARSENAL: KEY_TOOLS ]</ScrambleHeader>
-                        <p className="mt-4 max-w-3xl mx-auto text-gray-400">A selection of core technologies and tools I leverage for offensive and defensive operations.</p>
-                    </header>
-                    <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                        {ARSENAL_TOOLS.map(tool => (
-                            <div 
-                                key={tool.name} 
-                                className="relative bg-black/30 border border-green-500/20 p-4 flex flex-col items-center justify-center aspect-square transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]"
-                                onMouseEnter={() => setActiveTooltip(tool.name)}
-                                onMouseLeave={() => setActiveTooltip(null)}
-                            >
-                                <svg className="w-12 h-12 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" dangerouslySetInnerHTML={{ __html: tool.svg }} />
-                                <p className="mt-2 text-sm font-mono text-center">{tool.name}</p>
-                                {activeTooltip === tool.name && (
-                                     <div className="absolute bottom-full mb-2 w-48 bg-gray-900 border border-green-500/30 text-xs text-center text-gray-300 rounded-none p-2 z-20">
-                                        {tool.description}
-                                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-green-500/30"></div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            );
-        };
-        
-        const IntelFeed = () => {
-            const [ctfs, setCtfs] = useState([]);
-            const [isLoading, setIsLoading] = useState(true);
-
-            useEffect(() => {
-                // Simulate an API call to fetch recent CTF data
-                setIsLoading(true);
-                const timer = setTimeout(() => {
-                    setCtfs(RECENT_CTFS);
-                    setIsLoading(false);
-                }, 1500);
-                return () => clearTimeout(timer);
-            }, []);
-
-            return (
-                <section id="ctfs" className="container mx-auto px-6 py-20">
-                    <header className="text-center mb-12">
-                        <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ INTEL_FEED: RECENT_CTFS ]</ScrambleHeader>
-                        <p className="mt-4 max-w-3xl mx-auto text-gray-400">
-                            Continuous skill development through Capture The Flag challenges. This feed highlights recent activity. Full write-ups are available on GitHub.
-                        </p>
-                    </header>
-                    <div className="max-w-2xl mx-auto bg-black/30 border border-green-500/20 p-4 font-mono">
-                        {isLoading ? (
-                            <p className="text-center text-green-400">
-                                &gt; Fetching latest intelligence from secure server...<span className="blinking-cursor">_</span>
-                            </p>
-                        ) : (
-                            <ul className="space-y-3">
-                                {ctfs.map((ctf, index) => (
-                                     <li key={index} className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                                         <div>
-                                             <a href={ctf.link} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-white transition-colors">[ {ctf.name} ]</a>
-                                             <p className="text-xs text-gray-500">PLATFORM: {ctf.platform}</p>
-                                         </div>
-                                         <p className="text-xs text-green-400 mt-1 sm:mt-0">COMPLETED: {ctf.date}</p>
-                                     </li>
-                                ))}
-                            </ul>
-                        )}
-                         <div className="text-center mt-8">
-                            <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" rel="noopener noreferrer" className="inline-block font-mono text-lg bg-green-500/10 border border-green-500/30 text-green-400 px-8 py-3 hover:bg-green-500/20 transition-all duration-300">
-                                [ Access Full Write-up Archive ]
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-        
-        const CommandBar = () => {
+        const CommandBar = ({ onCommand }) => {
             const [inputValue, setInputValue] = useState('');
-            const [history, setHistory] = useState([]);
             const inputRef = useRef(null);
 
-            const executeCommand = (cmd) => {
-                const [command, ...args] = cmd.toLowerCase().split(' ');
-                const output = [];
-
-                switch(command) {
-                    case 'help':
-                        output.push("Available commands:");
-                        output.push("  help      - Shows this help message.");
-                        output.push("  goto <id> - Scrolls to a specific section (e.g., 'goto skills').");
-                        output.push("  ls        - Lists all available sections.");
-                        output.push("  whoami    - Displays user information.");
-                        output.push("  date      - Shows the current date and time.");
-                        output.push("  clear     - Clears the command history.");
-                        break;
-                    case 'goto':
-                        const sectionId = args[0];
-                        if (!sectionId) {
-                            output.push("Usage: goto <section_id>");
-                        } else {
-                            const element = document.getElementById(sectionId);
-                            if (element) {
-                                element.scrollIntoView({ behavior: 'smooth' });
-                                output.push(`Navigating to section: ${sectionId}...`);
-                            } else {
-                                output.push(`Error: Section '${sectionId}' not found.`);
-                            }
-                        }
-                        break;
-                    case 'ls':
-                        output.push("Available sections:");
-                        output.push("  home, about, timeline, skills, arsenal, projects, ctfs, analyzer, contact");
-                        break;
-                    case 'whoami':
-                        output.push("user: 1yn3r");
-                        output.push("status: authenticated");
-                        output.push("objective: secure all the things");
-                        break;
-                    case 'date':
-                        output.push(new Date().toLocaleString());
-                        break;
-                    case 'clear':
-                        setHistory([]);
-                        return; // Exit early to prevent adding to history
-                    default:
-                        output.push(`'${command}' is not recognized as a command. Type 'help' for assistance.`);
-                }
-                setHistory(prev => [...prev, { cmd, output }]);
-            };
-            
-            const handleSubmit = (e) => {
+            const handleFormSubmit = (e) => {
                 e.preventDefault();
                 if (!inputValue.trim()) return;
                 soundManager.play('submit');
-                executeCommand(inputValue);
+                onCommand(inputValue);
                 setInputValue('');
             };
-
-            const handleClick = () => {
-                if (inputRef.current) {
-                    inputRef.current.focus();
+            
+            useEffect(() => {
+                const focusInput = (e) => {
+                     if(e.key === ' ' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                        e.preventDefault();
+                        if(inputRef.current) {
+                           inputRef.current.focus();
+                        }
+                    }
                 }
-            };
+                window.addEventListener('keydown', focusInput);
+                return () => window.removeEventListener('keydown', focusInput);
+            }, []);
 
             return (
-                <div 
-                    onClick={handleClick}
-                    className="fixed bottom-0 left-0 right-0 h-auto max-h-48 z-50 bg-black/80 backdrop-blur-sm border-t border-green-500/20 font-mono text-sm text-gray-300 p-2 overflow-y-auto"
-                >
-                    <div className="h-full">
-                        {history.map((entry, index) => (
-                             <div key={index}>
-                                <p className="text-green-400"><span className="text-gray-500">~ $</span> {entry.cmd}</p>
-                                {entry.output.map((line, i) => <p key={i} className="whitespace-pre-wrap">{line}</p>)}
-                            </div>
-                        ))}
-                         <form onSubmit={handleSubmit} className="flex">
-                             <span className="text-green-400 mr-2"><span className="text-gray-500">~ $</span></span>
-                             <input
-                                 ref={inputRef}
-                                 type="text"
-                                 value={inputValue}
-                                 onChange={(e) => setInputValue(e.target.value)}
-                                 className="bg-transparent border-none text-gray-300 w-full focus:outline-none"
-                                 autoFocus
-                             />
-                         </form>
-                    </div>
+                <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-t border-green-500/30">
+                    <form onSubmit={handleFormSubmit} className="container mx-auto px-6 py-2 flex items-center font-mono text-sm">
+                        <span className="text-green-400 mr-2">$</span>
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            className="bg-transparent border-none text-gray-300 w-full focus:outline-none"
+                            placeholder="Type a command (or press spacebar to focus)... `help` for options"
+                        />
+                    </form>
                 </div>
-            )
+            );
         };
-
 
         const App = () => {
             const [loading, setLoading] = useState(true);
@@ -857,6 +705,24 @@
 
             const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
             const projectTypes = ['All', ...[...new Set(PROJECTS_DATA.map(p => p.type))].map(type => type.replace(/_/g, ' '))];
+            
+            const handleCommand = (command) => {
+                const [cmd, ...args] = command.trim().toLowerCase().split(' ');
+                const target = args.join('');
+                
+                if (cmd === 'goto' || cmd === 'cd') {
+                    const element = document.getElementById(target);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        console.warn(`Section #${target} not found.`);
+                    }
+                } else if (cmd === 'ls' || cmd === 'dir') {
+                    console.log("Available sections: #home, #timeline, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
+                } else if (cmd === 'help') {
+                     console.log("Available commands:\n  goto <section> - Navigates to the specified section.\n  ls               - Lists all available sections.\n  help             - Shows this help message.");
+                }
+            };
 
             useEffect(() => {
                 const unlockAudio = () => {
@@ -893,20 +759,20 @@
                         <Header />
                         <main>
                             <section className="container mx-auto px-6 py-20 md:py-32 flex items-center justify-center min-h-screen">
-                                <div className="w-full max-w-4xl text-center">
+                                <div className="w-full max-w-5xl text-center">
                                     <div className="bg-black/50 border border-green-500/20 p-4">
-                                        <div className="bg-black/80 p-6 flex flex-col justify-center text-left">
-                                            <div className="flex items-center mb-4"><span className="h-3 w-3 rounded-full bg-red-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-yellow-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-green-500"></span></div>
-                                            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-                                                <img
-                                                    src="https://media.licdn.com/dms/image/v2/D5603AQGEDGsTjMR0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692039784157?e=1762992000&v=beta&t=SPR5-kSBzBnAaH5Qndl0upYJs5vMG4oc2FoHddcqLYo"
-                                                    alt="Portfolio Avatar"
-                                                    className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-2 border-green-500/50 shadow-[0_0_15px_rgba(57,255,20,0.4)] flex-shrink-0"
+                                        <div className="bg-black/80 p-6 md:p-8">
+                                            <div className="flex items-center mb-6"><span className="h-3 w-3 rounded-full bg-red-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-yellow-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-green-500"></span></div>
+                                            <div className="flex flex-col md:flex-row items-center md:items-start text-left gap-8">
+                                                <img 
+                                                    src="https://media.licdn.com/dms/image/v2/D5603AQGEDGsTjMR0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692039784157?e=1762992000&v=beta&t=SPR5-kSBzBnAaH5Qndl0upYJs5vMG4oc2FoHddcqLYo" 
+                                                    alt="1YN3R Avatar" 
+                                                    className="w-32 h-32 md:w-40 md:h-40 object-cover border-2 border-green-500/50 shadow-[0_0_15px_rgba(57,255,20,0.3)]"
                                                 />
-                                                <div className="flex flex-col">
+                                                <div className="flex-1">
                                                     <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
                                                     <TypingAnimation lines={["./execute --profile pentester", "STATUS: Analyzing vulnerabilities...", "OBJECTIVE: Fortify digital assets."]} />
-                                                    <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                                                    <div className="mt-8 flex flex-wrap gap-4">
                                                         <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
                                                         <a href="#projects" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Case Files ]</a>
                                                     </div>
@@ -914,32 +780,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="mt-12 bg-black/30 border border-green-500/20 p-6 text-left">
-                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_PROFESSIONAL_SUMMARY</h3>
-                                        <p className="text-gray-300">Results-driven Security Professional with a dual focus in offensive penetration testing and defensive SOC operations. Adept at building, securing, and breaking complex systems across web, network, and cloud domains. Seeking to apply a holistic understanding of the entire attack lifecycle to protect and fortify enterprise assets against emerging threats.</p>
+                                </div>
+                            </section>
+
+                            <section id="timeline" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ MISSION_TIMELINE ]</ScrambleHeader>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">Key milestones and strategic shifts in my cybersecurity career.</p>
+                                </header>
+                                <div className="max-w-3xl mx-auto">
+                                    <div className="relative border-l-2 border-green-500/20 pl-8 space-y-12">
+                                        {TIMELINE_DATA.map((item, index) => (
+                                            <div key={index} className="relative timeline-item">
+                                                <div className="bg-black/30 border border-green-500/20 p-6">
+                                                    <p className="font-mono text-green-400 text-sm mb-1">{item.year}</p>
+                                                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                                                    <p className="text-gray-400">{item.description}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </section>
-                            
-                            <section id="about" className="container mx-auto px-6 py-20">
-                                <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white text-center font-mono terminal-glow mb-12">[ INTEL_PACKAGE: 1YN3R ]</ScrambleHeader>
-                                <div className="max-w-4xl mx-auto grid grid-cols-1 gap-10">
-                                    <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_TECHNICAL_APPROACH</h3><p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation. My defensive background in SIEM and endpoint monitoring provides a unique perspective, allowing me to anticipate detection mechanisms and craft more evasive attacks.</p></div>
-                                    <div className="bg-black/30 border border-green-500/20 p-6">
-                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_CERTIFICATIONS_&_TRAINING</h3>
-                                        <p className="text-sm text-gray-500 font-mono mb-4">[ TryHackMe Learning Paths Completed ]</p>
-                                        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm font-mono">
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Pre Security</li>
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Cyber Security 101</li>
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Web Fundamentals</li>
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Jr Penetration Tester</li>
-                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> CompTIA Pentest+</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
-                            
-                            <MissionTimeline />
 
                             <section id="skills" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</ScrambleHeader><p className="mt-4 max-w-3xl mx-auto text-gray-400">Technical domains, frameworks, and tools, from web application security to network and Active Directory exploitation.</p></header>
@@ -948,8 +810,26 @@
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">{filteredSkills.map((category) => <SkillCard key={category.title} category={category} />)}</div>
                             </section>
-                            
-                            <Arsenal />
+
+                             <section id="arsenal" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ ARSENAL: KEY_TOOLS ]</ScrambleHeader>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">A selection of core tools I leverage in offensive and defensive operations.</p>
+                                </header>
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                                    {ARSENAL_TOOLS.map(tool => (
+                                        <div key={tool.name} className="group relative bg-black/30 border border-green-500/20 p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                            <div className="w-16 h-16 text-green-400 mb-4 transition-transform duration-300 group-hover:scale-110">
+                                                {tool.icon ? <tool.icon className="w-full h-full" /> : null}
+                                            </div>
+                                            <h3 className="font-mono text-white font-semibold">{tool.name}</h3>
+                                            <div className="absolute inset-0 bg-black/90 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                <p className="text-xs text-gray-300">{tool.description}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
                             
                             <section id="projects" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CASE_FILES: ENGAGEMENT_LOGS ]</ScrambleHeader><p className="mt-4 max-w-2xl mx-auto text-gray-400">Anonymized summaries of recent projects and outcomes, spanning offensive and defensive operations.</p></header>
@@ -959,7 +839,28 @@
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono">{filteredProjects.map(project => <ProjectCard key={project.id} project={project} onSelectProject={setSelectedProject} />)}</div>
                             </section>
                             
-                            <IntelFeed />
+                            <section id="ctfs" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ INTEL_FEED: RECENT_CTFS ]</ScrambleHeader>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">
+                                        Simulated feed of recent Capture The Flag accomplishments, demonstrating continuous hands-on learning and problem-solving.
+                                    </p>
+                                </header>
+                                <div className="max-w-3xl mx-auto bg-black/30 border border-green-500/20 p-6 font-mono">
+                                    <p className="text-green-400 mb-4">&gt; fetching latest solved challenges...</p>
+                                    <ul className="space-y-3 text-sm">
+                                        <li><span className="text-green-500 mr-2">[+]</span> <span className="text-yellow-400">[Easy]</span> Network Privelege Escalation - Rooted 'Blue' on HTB.</li>
+                                        <li><span className="text-green-500 mr-2">[+]</span> <span className="text-orange-500">[Medium]</span> Web App SQLi to RCE - Solved 'Lame' on HTB.</li>
+                                        <li><span className="text-green-500 mr-2">[+]</span> <span className="text-yellow-400">[Easy]</span> Reverse Engineering Challenge - Cracked 'CrackMe' on THM.</li>
+                                        <li><span className="text-gray-500 mr-2">[...]</span> (Older write-ups available on GitHub)</li>
+                                    </ul>
+                                    <div className="text-center mt-8">
+                                        <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" rel="noopener noreferrer" className="inline-block font-mono text-lg bg-green-500/10 border border-green-500/30 text-green-400 px-8 py-3 hover:bg-green-500/20 transition-all duration-300">
+                                            [ Access Full Write-up Archive ]
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
 
                             <ThreatAnalyzer />
 
@@ -970,7 +871,7 @@
                         </main>
                         <Footer />
                     </div>
-                    <CommandBar />
+                    <CommandBar onCommand={handleCommand} />
                 </div>
             );
         };
@@ -983,4 +884,3 @@
     </script>
 </body>
 </html>
-```
