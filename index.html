@@ -1,1008 +1,320 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Beaudry - Cyber Security Expert</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penetration Tester Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #5555ff; /* Màu xanh tím */
-            --secondary-color: #2e2e42; /* Màu tối hơn */
-            --background-color: #1a1a2e; /* Màu nền rất tối */
-            --text-color: #c0c0d0;
-            --heading-color: #ffffff;
-            --light-blue: #8888ff;
-            --gradient-start: #2a2a40;
-            --gradient-end: #1f1f3a;
-            --border-color: #3f3f5a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--heading-color);
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--heading-color);
-            padding: 12px 25px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            text-transform: uppercase;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--light-blue);
-            text-decoration: none;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--background-color);
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--heading-color);
-        }
-
-        .logo img {
-            height: 30px;
-            margin-right: 10px;
-            filter: brightness(0) invert(1); /* Đảo ngược màu logo nếu nó tối */
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Hero Section */
-        #hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            max-width: 1200px;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero-text .greeting {
-            color: var(--light-blue);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: var(--text-color);
-        }
-
-        .hero-image {
-            flex: 0 0 450px;
-            height: 450px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.8) contrast(1.1); /* Điều chỉnh hình ảnh cho phù hợp */
-        }
-
-        .hero-stats {
-            margin-top: 40px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 30px 0;
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-item {
-            text-align: center;
-            flex: 1;
-            min-width: 150px;
-            margin: 15px;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .stat-item p {
-            font-size: 1rem;
-            color: var(--text-color);
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        /* Sections General */
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--heading-color);
-            position: relative;
-            font-weight: 700;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        #about {
-            background-color: var(--background-color);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: flex-start; /* Thay đổi từ center để căn chỉnh tốt hơn */
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .about-image {
-            flex: 0 0 400px; /* Cố định chiều rộng hình ảnh */
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-text h2 {
-            font-size: 2rem;
-            color: var(--heading-color);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--text-color);
-            font-size: 1.05rem;
-        }
-
-        .about-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .about-features li {
-            margin-bottom: 10px;
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .about-features li i {
-            color: var(--primary-color);
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* Services Section */
-        #services {
-            background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            background-color: #38384f; /* Slightly lighter on hover */
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-
-        .service-card p {
-            color: var(--text-color);
-        }
-
-        /* Why Choose Me Section */
-        #why-choose-me {
-            background-color: var(--background-color);
-        }
-
-        .choose-me-content {
-            display: flex;
-            gap: 60px;
-            align-items: center;
-            flex-wrap: wrap-reverse; /* Đổi thứ tự cho responsive */
-        }
-
-        .choose-me-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .choose-me-text h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-
-        .choose-me-list {
-            list-style: none;
-        }
-
-        .choose-me-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .choose-me-list li i {
-            color: var(--primary-color);
-            margin-right: 15px;
-            font-size: 1.3rem;
-            margin-top: 3px;
-        }
-
-        .choose-me-image {
-            flex: 0 0 450px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .choose-me-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Recent Issues/News Section */
-        #recent-issues {
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-        }
-
-        .issues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .issue-card {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .issue-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .issue-card-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .issue-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .issue-card:hover .issue-card-image img {
-            transform: scale(1.05);
-        }
-
-        .issue-card-content {
-            padding: 25px;
-        }
-
-        .issue-card-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .issue-card-content p {
-            font-size: 0.95rem;
-            color: var(--text-color);
-            margin-bottom: 15px;
-        }
-
-        .issue-card-content .read-more {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--light-blue);
-            text-decoration: none;
-            display: inline-block;
-        }
-        .issue-card-content .read-more:hover {
-            text-decoration: underline;
-        }
-
-        /* Companies I Work With */
-        #clients {
-            background-color: var(--background-color);
-            text-align: center;
-        }
-
-        .client-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .client-logo img {
-            height: 50px; /* Adjust as needed */
-            filter: grayscale(100%) brightness(0.7);
-            transition: filter 0.3s ease;
-        }
-
-        .client-logo img:hover {
-            filter: grayscale(0%) brightness(1);
-        }
-
-
-        /* Testimonials Section */
-        #testimonials {
-            background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
-        }
-
-        .testimonial-card {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-        }
-
-        .testimonial-card .quote {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary-color);
-        }
-
-        .author-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-
-        .author-info p {
-            font-size: 0.9rem;
-            color: var(--light-blue);
-        }
-
-        /* Contact Section */
-        #contact {
-            background-color: var(--background-color);
-        }
-
-        .contact-content {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .contact-form {
-            flex: 1;
-            max-width: 600px;
-            background-color: var(--secondary-color);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-        }
-
-        .contact-form h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--heading-color);
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-color);
-            font-weight: 500;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            background-color: #2a2a40;
-            color: var(--text-color);
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(85, 85, 255, 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .footer-links a {
-            color: var(--text-color);
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .social-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin-top: 15px;
-            justify-content: center;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .copyright {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-
-            .hero-image {
-                margin-bottom: 40px;
-                flex: none;
-                width: 100%;
-                max-width: 450px; /* Giữ kích thước hợp lý trên tablet */
-                height: 350px;
-            }
-
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-
-            .about-content,
-            .choose-me-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-image,
-            .choose-me-image {
-                flex: none;
-                width: 100%;
-                max-width: 450px;
-                margin: 0 auto 30px auto;
-            }
-
-            .about-features,
-            .choose-me-list {
-                text-align: left; /* Giữ căn trái cho danh sách */
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 500px;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                margin-top: 20px;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
-
-            .nav-links li {
-                margin: 0 0 10px 0;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-
-            .footer-links, .social-links {
-                margin-top: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stat-item h3 {
-                font-size: 2rem;
-            }
-
-            .stat-item p {
-                font-size: 0.9rem;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-text p {
-                font-size: 1rem;
-            }
-
-            .hero-image {
-                height: 250px;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-
-            .service-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .issue-card-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .testimonial-card .quote {
-                font-size: 1rem;
-            }
-
-            .testimonial-author img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .author-info h4 {
-                font-size: 1.1rem;
-            }
-        }
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
     </style>
 </head>
-<body>
+<body class="bg-[#101123] text-gray-300">
 
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="https://i.imgur.com/uG9p12b.png" alt="Cyber Shield Logo"> <!-- Thay bằng logo của bạn -->
-                Cyber Shield
-            </div>
-            <ul class="nav-links">
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Project</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <p class="greeting">Hello, I'm</p>
-                <h1>Jason Beaudry <br><span>Saskatoon</span></h1>
-                <p>A cybersecurity expert dedicated to protecting your websites, servers, and digital assets. With a strong background in ethical hacking, I provide robust solutions to keep your online presence secure.</p>
-                <a href="#contact" class="btn">Hire Me Today!</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://i.imgur.com/h5e7s1R.jpeg" alt="Jason Beaudry">
-            </div>
-        </div>
-        <div class="container hero-stats">
-            <div class="stat-item">
-                <h3>350+</h3>
-                <p>Happy Customer</p>
-            </div>
-            <div class="stat-item">
-                <h3>410+</h3>
-                <p>Project Done</p>
-            </div>
-            <div class="stat-item">
-                <h3>88%</h3>
-                <p>Defense Success</p>
-            </div>
-            <div class="stat-item">
-                <h3>168+</h3>
-                <p>Server Secure</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container about-content">
-            <div class="about-image">
-                <img src="https://i.imgur.com/3p0j5Vl.jpeg" alt="About Jason Beaudry">
-            </div>
-            <div class="about-text">
-                <h2>Quick Know About Myself</h2>
-                <p>I'm a seasoned cybersecurity professional with a passion for digital protection. My expertise spans ethical hacking, penetration testing, network security, and data privacy, ensuring robust defenses against evolving threats.</p>
-                <p>I thrive on staying ahead of the curve, continuously learning new techniques and technologies to safeguard your valuable assets in the ever-complex digital landscape.</p>
-                <ul class="about-features">
-                    <li><i class="fas fa-check-circle"></i> Keep safe by surfing the internet</li>
-                    <li><i class="fas fa-check-circle"></i> Secure your business and website</li>
-                    <li><i class="fas fa-check-circle"></i> Provide secure environment for all users</li>
+    <div class="min-h-screen">
+        <header class="sticky top-0 z-50 bg-[#101123]/80 backdrop-blur-md">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold text-white tracking-wider">
+                    J<span class="text-[#8A63D2]">B</span>SEC
+                </div>
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="#" class="text-white bg-[#8A63D2] px-4 py-2 rounded-md text-sm font-medium">Home</a></li>
+                    <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#services" class="text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                    <li><a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
                 </ul>
-                <a href="#services" class="btn">Explore Services</a>
-            </div>
-        </div>
-    </section>
+                <button class="md:hidden text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </nav>
+        </header>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">Cyber Shield Services</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: var(--text-color);">Here are a handful of design for Cyber Securities in Types</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-bug"></i>
-                    <h3>Identifying Threats</h3>
-                    <p>Proactive scanning and analysis to detect and mitigate potential vulnerabilities.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-network-wired"></i>
-                    <h3>Network Security</h3>
-                    <p>Securing your network infrastructure from unauthorized access and cyber threats.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Web Security</h3>
-                    <p>Ensuring your website is protected against all forms of online attacks and data breaches.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Security</h3>
-                    <p>Protecting sensitive information stored in databases from unauthorized access.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-wifi"></i>
-                    <h3>Secure Wi-Fi Implementation</h3>
-                    <p>Setting up and securing wireless networks for safe and private browsing.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-users-cog"></i>
-                    <h3>Security Consultancy</h3>
-                    <p>Expert advice and strategic planning to enhance your overall security posture.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Me Section -->
-    <section id="why-choose-me">
-        <div class="container choose-me-content">
-            <div class="choose-me-text">
-                <h2>Why Choose Me</h2>
-                <p>When it comes to cybersecurity, trust is paramount. I bring not only technical prowess but also a deep understanding of the evolving threat landscape. My commitment is to provide transparent, reliable, and effective security solutions tailored to your unique needs.</p>
-                <p>Choosing me means partnering with a dedicated expert who prioritizes your digital safety.</p>
-                <ul class="choose-me-list">
-                    <li>
-                        <i class="fas fa-shield-alt"></i>
-                        <div>
-                            <h4>Provide Advanced Security for Advanced Threat</h4>
-                            <p>Implement cutting-edge security measures to protect against sophisticated cyber attacks.</p>
+        <main>
+            <!-- Hero Section -->
+            <section class="container mx-auto px-6 py-20 md:py-32">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <p class="text-lg text-gray-400">Hello I'm</p>
+                        <h1 class="text-5xl md:text-7xl font-bold text-white mt-2">Hoang Cuong</h1>
+                        <h2 class="text-2xl text-[#8A63D2] font-semibold mt-4">Penetration Tester & Ethical Hacker</h2>
+                        <p class="mt-6 text-gray-400 max-w-lg mx-auto md:mx-0">I uncover critical vulnerabilities before attackers do. Specializing in network, web, and mobile application penetration testing to fortify your digital assets against sophisticated threats.</p>
+                        <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                            <button class="bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">Request an Assessment</button>
+                            <button class="bg-transparent border-2 border-[#8A63D2] text-[#8A63D2] hover:bg-[#8A63D2] hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">My Methodology</button>
                         </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>Certified and Professional Expert</h4>
-                            <p>Benefit from certified expertise and professional approach against cyber threats.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-lock"></i>
-                        <div>
-                            <h4>Security 24/7 Global Scale</h4>
-                            <p>Around-the-clock protection and immediate response across all time zones.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-headset"></i>
-                        <div>
-                            <h4>24/7 Premium Support</h4>
-                            <p>Access continuous expert support whenever you need it, ensuring your systems are always secure.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="choose-me-image">
-                <img src="https://i.imgur.com/eB3Zt2Y.jpeg" alt="Why Choose Jason Beaudry">
-            </div>
-        </div>
-    </section>
-
-    <!-- Recent Issues / News Section -->
-    <section id="recent-issues">
-        <div class="container">
-            <h2 class="section-title">Issues With Recent Fixes</h2>
-            <div class="issues-grid">
-                <div class="issue-card">
-                    <div class="issue-card-image">
-                        <img src="https://i.imgur.com/V6x7lS1.png" alt="NFT Web Security System">
                     </div>
-                    <div class="issue-card-content">
-                        <h3>NFT Web Security System</h3>
-                        <p>Implementing an advanced security system for an NFT marketplace, safeguarding digital assets and user data from evolving threats and breaches.</p>
+                    <div class="relative flex justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#8A63D2] to-[#4c3a7a] rounded-full blur-3xl opacity-30"></div>
+                        <img src="https://i.imgur.com/g0P3Y2p.png" alt="Jason Beaudry" class="relative rounded-full w-80 h-80 md:w-96 md:h-96 object-cover border-4 border-[#2A2B3A] shadow-2xl" />
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stats Section -->
+            <div class="container mx-auto px-6 py-12">
+                <div class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg shadow-lg grid grid-cols-2 md:grid-cols-4 divide-x divide-[#2A2B3A]">
+                    <div class="text-center p-6">
+                        <h3 class="text-4xl font-bold text-white">350+</h3>
+                        <p class="text-gray-400 mt-2">Happy Clients</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <h3 class="text-4xl font-bold text-white">410+</h3>
+                        <p class="text-gray-400 mt-2">Engagements Completed</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <h3 class="text-4xl font-bold text-white">95%</h3>
+                        <p class="text-gray-400 mt-2">Systems Secured</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <h3 class="text-4xl font-bold text-white">1200+</h3>
+                        <p class="text-gray-400 mt-2">Critical Findings</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Me Section -->
+            <section id="about" class="container mx-auto px-6 py-20">
+                 <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="flex justify-center">
+                        <div class="relative w-[350px] h-[400px] md:w-[450px] md:h-[500px]">
+                             <div class="absolute inset-0 bg-gradient-to-bl from-[#8A63D2]/30 to-transparent rounded-3xl blur-2xl opacity-50"></div>
+                             <img src="https://i.imgur.com/fA2ImqR.png" alt="About Jason" class="relative w-full h-full object-cover rounded-3xl" style="clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%)"/>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-bold text-white">Think Like an Attacker</h2>
+                        <p class="mt-6 text-gray-400">With a deep understanding of offensive security tactics, I emulate real-world adversaries to test your defenses. My expertise spans across modern cloud environments, complex corporate networks, and critical web applications, ensuring no stone is left unturned.</p>
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span>Proactive vulnerability discovery & exploitation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span>Realistic, objective-based attack simulations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span>Comprehensive and actionable remediation guidance</span>
+                            </li>
+                        </ul>
+                        <button class="mt-8 bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">Contact Me</button>
+                    </div>
+                 </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-4xl font-bold text-white">Offensive Security Services</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">A suite of penetration testing services designed to rigorously evaluate and enhance your security posture from an attacker's perspective.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 00-9-9m-9 9a9 9 0 019-9" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Network Penetration Testing</h3>
+                        <p class="text-gray-400">Assess internal and external networks for misconfigurations, weak passwords, and vulnerable services.</p>
+                    </div>
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Web App Penetration Testing</h3>
+                        <p class="text-gray-400">Identify vulnerabilities like SQLi, XSS, and broken access control, following the OWASP Top 10 framework.</p>
+                    </div>
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Mobile App Security Testing</h3>
+                        <p class="text-gray-400">Analyze iOS and Android applications for insecure data storage, weak cryptography, and other mobile-specific flaws.</p>
+                    </div>
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Cloud Security Assessment</h3>
+                        <p class="text-gray-400">Review AWS, Azure, and GCP environments for security misconfigurations and IAM vulnerabilities.</p>
+                    </div>
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636a9 9 0 010 12.728m-2.828-2.828a5 5 0 010-7.072m-2.829 2.829a1 1 0 111.415-1.415" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Wireless Network Assessment</h3>
+                        <p class="text-gray-400">Test for weak encryption, rogue access points, and vulnerabilities in your corporate wireless infrastructure.</p>
+                    </div>
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] p-8 rounded-lg hover:border-[#8A63D2] hover:-translate-y-2 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-[#8A63D2] mb-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        <h3 class="text-xl font-semibold text-white mb-2">Red Teaming & Simulation</h3>
+                        <p class="text-gray-400">Conduct goal-oriented adversary simulations to test your blue team's detection and response capabilities.</p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Why Choose Me Section -->
+            <section class="container mx-auto px-6 py-20">
+                 <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold text-white">The Pentester's Advantage</h2>
+                        <p class="mt-6 text-gray-400">My approach is not just about running scanners; it's about a manual, intelligence-driven process to find flaws that automated tools miss. I provide the context behind vulnerabilities, demonstrating their real-world impact on your business.</p>
+                        <h3 class="text-2xl font-semibold text-white mt-8">From Discovery to Remediation</h3>
+                        <p class="mt-4 text-gray-400">Every engagement concludes with a detailed report outlining not just the 'what', but the 'how' and 'why', with clear, prioritized steps for remediation.</p>
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <div>
+                                    <h4 class="font-semibold text-white">Hacker Mindset</h4>
+                                    <p class="text-gray-400 text-sm">Creative and persistent testing to uncover complex, multi-step attack chains.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <div>
+                                    <h4 class="font-semibold text-white">Business-Focused Reporting</h4>
+                                    <p class="text-gray-400 text-sm">Clear communication of risk, business impact, and actionable steps for your technical teams.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <div>
+                                    <h4 class="font-semibold text-white">Confidential & Professional</h4>
+                                    <p class="text-gray-400 text-sm">All engagements are handled with the utmost discretion and professionalism.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-center">
+                         <div class="relative w-[350px] h-[400px] md:w-[450px] md:h-[500px]">
+                             <div class="absolute inset-0 bg-gradient-to-tr from-[#8A63D2]/30 to-transparent rounded-3xl blur-2xl opacity-50"></div>
+                             <img src="https://i.imgur.com/x072y09.png" alt="Cyber security operations room" class="relative w-full h-full object-cover rounded-3xl" style="clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25%)" />
+                         </div>
+                    </div>
+                 </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-4xl font-bold text-white">Featured Engagements</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">A look into some recent, anonymized penetration testing projects and their outcomes.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <!-- Project Card 1 -->
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold text-white mb-2">E-Commerce Platform Security Assessment</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Comprehensive web application pentest for a leading online retailer, focusing on OWASP Top 10 and business logic flaws.</p>
+                            <h4 class="font-semibold text-gray-200 mb-2">Key Findings:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Critical SQL Injection in API endpoint.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Broken Access Control allowing account takeover.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Stored XSS in customer review section.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-[#101123] p-4 mt-auto">
+                           <span class="text-xs font-medium text-[#8A63D2]">WEB APPLICATION</span>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold text-white mb-2">Corporate Internal Network Pentest</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Assumed-breach scenario to test internal network defenses, Active Directory security, and lateral movement paths for a financial services firm.</p>
+                             <h4 class="font-semibold text-gray-200 mb-2">Key Findings:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Domain Admin compromise via Kerberoasting.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Unpatched legacy systems leading to foothold.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>LLMNR/NBT-NS poisoning for credential capture.</span></li>
+                            </ul>
+                        </div>
+                         <div class="bg-[#101123] p-4 mt-auto">
+                           <span class="text-xs font-medium text-[#8A63D2]">NETWORK & ACTIVE DIRECTORY</span>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col">
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold text-white mb-2">FinTech Mobile App Assessment (iOS/Android)</h3>
+                            <p class="text-gray-400 mb-4 text-sm">In-depth security analysis of a mobile banking application, including static/dynamic analysis and API security testing.</p>
+                             <h4 class="font-semibold text-gray-200 mb-2">Key Findings:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Hardcoded API keys in the application binary.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Lack of certificate pinning allowing MitM attacks.</span></li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Insecure local data storage (unencrypted).</span></li>
+                            </ul>
+                        </div>
+                         <div class="bg-[#101123] p-4 mt-auto">
+                           <span class="text-xs font-medium text-[#8A63D2]">MOBILE APPLICATION</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+             <!-- CTA Section -->
+            <section class="container mx-auto px-6 py-20">
+                <div class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg text-center p-12">
+                    <h2 class="text-3xl font-bold text-white">Ready to Uncover Your Vulnerabilities?</h2>
+                    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Proactive security is an investment, not an expense. Let's work together to secure your organization's critical assets before a real attacker puts them at risk. Schedule a confidential consultation today.</p>
+                    <a href="#contact" class="mt-8 inline-block bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">Get a Quote</a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="container mx-auto px-6 py-20">
+                <h2 class="text-4xl font-bold text-white text-center">Initiate a Secure Engagement</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-center">Interested in an assessment? Fill out the form below to start a confidential conversation. Please avoid sending sensitive information through this form.</p>
+                <form class="mt-12 max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="First Name" class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
+                    <input type="text" placeholder="Last Name" class="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
+                    <input type="email" placeholder="Your Business Email" class="md:col-span-2 bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
+                    <textarea placeholder="Briefly describe your testing requirements (e.g., web app, internal network, number of assets)..." rows="5" class="md:col-span-2 bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required></textarea>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-12 rounded-lg transition-all duration-300">Send Secure Message</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#1A1B2E] border-t border-[#2A2B3A]">
+             <div class="container mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                         <h3 class="text-2xl font-bold text-white">J<span class="text-[#8A63D2]">B</span>SEC</h3>
+                         <p class="text-gray-400 mt-4">Offensive security consulting to identify and mitigate your digital risks.</p>
+                    </div>
+                    <div>
+                         <h4 class="text-lg font-semibold text-white">Useful Links</h4>
+                         <ul class="mt-4 space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-white">About Me</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+                            <li><a href="#projects" class="text-gray-400 hover:text-white">Projects</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white">Contact Me</a></li>
+                         </ul>
+                    </div>
+                    <div>
+                         <h4 class="text-lg font-semibold text-white">Get In Touch</h4>
+                          <form class="mt-4 flex">
+                              <input type="email" placeholder="Email" class="bg-[#101123] border border-[#2A2B3A] rounded-l-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" />
+                              <button class="bg-[#8A63D2] hover:bg-[#7a58c1] text-white p-2 px-4 rounded-r-lg">Join</button>
+                          </form>
+                    </div>
+                </div>
+                 <div class="mt-12 border-t border-[#2A2B3A] pt-8 flex flex-col md:flex-row justify-between items-center text-center text-gray-500">
+                     <p>&copy; 2024 JBSEC. All Rights Reserved.</p>
+                     <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-white" aria-label="LinkedIn">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="hover:text-white" aria-label="Twitter">
+                           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.214 3.793 4.649-.65.177-1.354.23-2.06.088.625 1.933 2.433 3.339 4.582 3.377-1.623 1.276-3.666 2.033-5.88 2.033-.379 0-.753-.022-1.122-.067 2.094 1.342 4.583 2.123 7.264 2.123 8.711 0 13.475-7.225 13.475-13.475 0-.205-.005-.41-.012-.613.925-.668 1.724-1.503 2.357-2.441z"/></svg>
+                        </a>
+                        <a href="#" class="hover:text-white" aria-label="GitHub">
+                          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                     </div>
+                 </div>
+             </div>
+        </footer>
+    </div>
+</body>
+</html>
