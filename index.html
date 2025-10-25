@@ -275,6 +275,7 @@
             const { text: brandText, scramble: scrambleBrand, reset: resetBrand } = useScrambleText("1YN3R");
             const navLinks = [
                 { href: "#home", label: "home" },
+                { href: "#about", label: "about" },
                 { href: "#timeline", label: "timeline" },
                 { href: "#skills", label: "skills" },
                 { href: "#arsenal", label: "arsenal" },
@@ -721,7 +722,7 @@
                         console.warn(`Section #${target} not found.`);
                     }
                 } else if (cmd === 'ls' || cmd === 'dir') {
-                    console.log("Available sections: #home, #timeline, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
+                    console.log("Available sections: #home, #about, #timeline, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
                 } else if (cmd === 'help') {
                      console.log("Available commands:\n  goto <section> - Navigates to the specified section.\n  ls               - Lists all available sections.\n  help             - Shows this help message.");
                 }
@@ -775,6 +776,9 @@
                                                 <div className="flex-1">
                                                     <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
                                                     <TypingAnimation lines={["./execute --profile pentester", "STATUS: Analyzing vulnerabilities...", "OBJECTIVE: Fortify digital assets."]} />
+                                                    <p className="font-sans text-base text-gray-400 mt-4 max-w-xl">
+                                                        A cybersecurity enthusiast and student at the Posts and Telecommunications Institute of Technology (PTIT). I am passionate about understanding how systems work, which drives me to explore both the art of building and the science of breaking them.
+                                                    </p>
                                                     <div className="mt-8 flex flex-wrap gap-4">
                                                         <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
                                                         <a href="#projects" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Case Files ]</a>
@@ -785,6 +789,19 @@
                                     </div>
                                 </div>
                             </section>
+                            
+                            <section id="about" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ DECRYPTING_IDENTITY: 1YN3R ]</ScrambleHeader>
+                                </header>
+                                <div className="max-w-3xl mx-auto bg-black/30 border border-green-500/20 p-6">
+                                    <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_MOTIVATION_&_PHILOSOPHY</h3>
+                                    <p className="text-gray-300 font-sans">
+                                        My journey into cybersecurity is fueled by a fundamental curiosity about the intricacies of technology. I operate with a dual mindset: I am as passionate about constructing secure, resilient systems as I am about deconstructing them to find their weaknesses. This "builder and breaker" perspective allows me to approach security challenges holistically. I believe the most effective way to defend a system is to understand the myriad ways it can be attacked. My goal is to leverage this comprehensive understanding to not just identify vulnerabilities, but to help build a more secure digital future.
+                                    </p>
+                                </div>
+                            </section>
+
 
                             <section id="timeline" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
