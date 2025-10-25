@@ -1,609 +1,1008 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1yn3r - Pentester & Security Researcher</title>
-    <!-- Link to Google Fonts for 'Poppins' and 'Jost' as seen in the template -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Jason Beaudry - Cyber Security Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* CSS will go here */
         :root {
-            /* Define your primary colors for easy reuse */
-            --primary-dark: #0A192F; /* Dark blue/black for background */
-            --secondary-dark: #1F2A3F; /* Slightly lighter dark for sections */
-            --accent-blue: #007bff; /* Bright blue for accents */
-            --accent-pink: #F75C7E; /* From your typing SVG */
-            --text-light: #E0E0E0; /* Light text color */
-            --text-muted: #8892B0; /* Muted text for descriptions */
-            --card-bg: #112240; /* Card background color */
+            --primary-color: #5555ff; /* Màu xanh tím */
+            --secondary-color: #2e2e42; /* Màu tối hơn */
+            --background-color: #1a1a2e; /* Màu nền rất tối */
+            --text-color: #c0c0d0;
+            --heading-color: #ffffff;
+            --light-blue: #8888ff;
+            --gradient-start: #2a2a40;
+            --gradient-end: #1f1f3a;
+            --border-color: #3f3f5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Poppins', sans-serif; /* A modern, clean font */
-            margin: 0;
-            padding: 0;
-            background-color: var(--primary-dark);
-            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
             scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading-color);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--heading-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--light-blue);
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--background-color);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- Header / Navbar --- */
-        .navbar {
-            background-color: transparent; /* Or a slight dark background */
-            padding: 20px 0;
+        .logo {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            position: absolute; /* To overlay on the hero section */
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .navbar .logo {
-            font-family: 'Jost', sans-serif; /* A distinct font for the logo */
-            font-size: 1.8em;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-pink); /* Using your pink accent */
-            text-decoration: none;
-            margin-left: 20px;
+            color: var(--heading-color);
         }
 
-        .navbar .nav-links {
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+            filter: brightness(0) invert(1); /* Đảo ngược màu logo nếu nó tối */
+        }
+
+        .nav-links {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
-            margin-right: 20px;
         }
 
-        .navbar .nav-links li {
+        .nav-links li {
             margin-left: 30px;
         }
 
-        .navbar .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
+        .nav-links a {
+            color: var(--text-color);
             font-weight: 500;
             transition: color 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        .navbar .contact-btn {
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-right: 20px;
         }
 
-        .navbar .contact-btn:hover {
-            background-color: darken(var(--accent-blue), 10%); /* You'd use a specific color value here */
-        }
-
-
-        /* --- Hero Section (Top Banner) --- */
-        .hero-section {
-            background-image: url('YOUR_GENERATED_BANNER_IMAGE_URL_HERE'); /* Use the image I generated */
-            background-size: cover;
-            background-position: center;
-            padding: 150px 0 100px; /* Adjust padding as needed */
-            text-align: left; /* Align text to left as in template */
-            color: white;
-            position: relative;
-            z-index: 1; /* Ensure content is above background */
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
-            z-index: -1;
-        }
-
-        .hero-section .hero-content {
-            max-width: 600px; /* Constrain width as in template */
-            margin-left: 10%; /* Adjust as needed */
-        }
-
-        .hero-section p.sub-heading {
-            color: var(--accent-pink);
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5em;
-            margin: 10px 0 20px;
-            line-height: 1.2;
-            color: white; /* Ensure text is visible over dark overlay */
-        }
-
-        .hero-section p.description {
-            font-size: 1.1em;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .hero-section .btn {
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
         }
 
-        .hero-section .btn:hover {
-            background-color: darken(var(--accent-blue), 10%);
-        }
-
-        /* --- General Section Styling --- */
-        .section-heading {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-top: 50px; /* Space from previous section */
-        }
-
-        .section-heading h2 {
-            font-size: 2.5em;
-            color: var(--accent-pink);
-            margin-bottom: 10px;
-        }
-
-        .section-heading p {
-            font-size: 1.1em;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* --- Card Layout (for 3-card sections) --- */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            padding-bottom: 50px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .card .icon {
-            font-size: 3em; /* Use an icon font or image */
-            color: var(--accent-blue);
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95em;
-        }
-
-        .card .read-more {
-            color: var(--accent-pink);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            display: inline-block;
-        }
-
-        .card .read-more:hover {
-            text-decoration: underline;
-        }
-
-        /* --- Image + List Section (e.g., for OWASP Top 10) --- */
-        .image-list-section {
-            background-color: var(--secondary-dark);
+        /* Hero Section */
+        #hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 80px 0;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .image-list-content {
+        .hero-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
         }
 
-        .image-list-content .image-col {
+        .hero-text {
             flex: 1;
-            text-align: center;
+            max-width: 600px;
         }
 
-        .image-list-content .image-col img {
-            max-width: 100%;
-            height: auto;
+        .hero-text .greeting {
+            color: var(--light-blue);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        .hero-image {
+            flex: 0 0 450px;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1); /* Điều chỉnh hình ảnh cho phù hợp */
+        }
+
+        .hero-stats {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 30px 0;
+            background-color: var(--secondary-color);
             border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
         }
 
-        .image-list-content .list-col {
+        .stat-item {
+            text-align: center;
             flex: 1;
+            min-width: 150px;
+            margin: 15px;
         }
 
-        .image-list-content .list-col h3 {
-            font-size: 2em;
-            color: var(--accent-pink);
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--heading-color);
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--background-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start; /* Thay đổi từ center để căn chỉnh tốt hơn */
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 0 0 400px; /* Cố định chiều rộng hình ảnh */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .about-features li {
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .about-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        #services {
+            background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background-color: #38384f; /* Slightly lighter on hover */
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
 
-        .image-list-content .list-col ul {
-            list-style: none;
-            padding: 0;
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--heading-color);
+            font-weight: 600;
         }
 
-        .image-list-content .list-col li {
-            background-color: var(--card-bg);
-            padding: 15px 20px;
+        .service-card p {
+            color: var(--text-color);
+        }
+
+        /* Why Choose Me Section */
+        #why-choose-me {
+            background-color: var(--background-color);
+        }
+
+        .choose-me-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap-reverse; /* Đổi thứ tự cho responsive */
+        }
+
+        .choose-me-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .choose-me-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+
+        .choose-me-list {
+            list-style: none;
+        }
+
+        .choose-me-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .choose-me-list li i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.3rem;
+            margin-top: 3px;
+        }
+
+        .choose-me-image {
+            flex: 0 0 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .choose-me-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Recent Issues/News Section */
+        #recent-issues {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .issue-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .issue-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .issue-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .issue-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .issue-card:hover .issue-card-image img {
+            transform: scale(1.05);
+        }
+
+        .issue-card-content {
+            padding: 25px;
+        }
+
+        .issue-card-content h3 {
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            border-left: 4px solid var(--accent-blue);
-            border-radius: 5px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .issue-card-content p {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .issue-card-content .read-more {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--light-blue);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .issue-card-content .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Companies I Work With */
+        #clients {
+            background-color: var(--background-color);
+            text-align: center;
+        }
+
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .client-logo img {
+            height: 50px; /* Adjust as needed */
+            filter: grayscale(100%) brightness(0.7);
+            transition: filter 0.3s ease;
+        }
+
+        .client-logo img:hover {
+            filter: grayscale(0%) brightness(1);
+        }
+
+
+        /* Testimonials Section */
+        #testimonials {
+            background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
+        }
+
+        .testimonial-card {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .testimonial-author {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .image-list-content .list-col li span.icon {
-            color: var(--accent-pink);
-            font-size: 1.2em;
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
         }
 
-        .image-list-content .list-col li p {
-            margin: 0;
-            color: var(--text-light);
-        }
-
-
-        /* --- Stats Section --- */
-        .stats-section {
-            background-color: var(--primary-dark);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .stat-item {
-            margin: 20px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3em;
-            color: var(--accent-blue);
+        .author-info h4 {
+            font-size: 1.2rem;
             margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            font-size: 1.1em;
-            color: var(--text-muted);
-        }
-
-        .stats-section img {
-            max-width: 100%; /* Ensure GitHub stats images are responsive */
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 8px; /* Slight roundness */
-        }
-
-
-        /* --- Projects Section (adapted from "Pricing Plans") --- */
-        .projects-section {
-            background-color: var(--secondary-dark);
-            padding: 80px 0;
-        }
-
-        .project-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger cards */
-            gap: 30px;
-            margin-top: 50px;
-            padding-bottom: 50px;
-        }
-
-        .project-card-item {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left; /* Align text to left */
-        }
-
-        .project-card-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-card-item h3 {
-            color: var(--accent-pink);
-            margin-bottom: 10px;
-            font-size: 1.8em;
-        }
-
-        .project-card-item p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .project-card-item a.view-project-btn {
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
+            color: var(--heading-color);
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            display: inline-block; /* Allow padding */
         }
 
-        .project-card-item a.view-project-btn:hover {
-            background-color: darken(var(--accent-blue), 10%);
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--light-blue);
         }
 
-        /* --- Social Links / Contact Section (adapted from "Send us a Message") --- */
-        .contact-section {
-            background-color: var(--primary-dark);
-            padding: 80px 0;
-            text-align: center;
+        /* Contact Section */
+        #contact {
+            background-color: var(--background-color);
         }
 
-        .contact-section h2 {
-            font-size: 2.5em;
-            color: var(--accent-pink);
-            margin-bottom: 20px;
-        }
-
-        .social-icons-grid {
+        .contact-content {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 60px;
+            flex-wrap: wrap;
         }
 
-        .social-icon-item a {
-            display: block;
-            transition: transform 0.3s ease;
+        .contact-form {
+            flex: 1;
+            max-width: 600px;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
         }
 
-        .social-icon-item a:hover {
-            transform: translateY(-10px) scale(1.05);
-        }
-
-        .social-icon-item img {
-            width: 70px; /* Adjust size */
-            height: 70px;
-            border-radius: 50%; /* Circular */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-
-
-        /* --- Footer --- */
-        .footer {
-            background-color: #0A192F;
-            color: var(--text-muted);
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--heading-color);
             text-align: center;
-            padding: 30px 0;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
         }
 
-        /* --- Responsive Design (Basic) --- */
-        @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none; /* Hide nav links on smaller screens for simplicity, or implement a hamburger menu */
-            }
-            .navbar {
-                justify-content: center; /* Center logo if nav links are hidden */
-            }
-            .hero-section {
-                padding: 100px 0 50px;
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background-color: #2a2a40;
+            color: var(--text-color);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(85, 85, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .social-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
                 text-align: center;
             }
-            .hero-section .hero-content {
-                max-width: 90%;
-                margin: 0 auto;
+
+            .hero-image {
+                margin-bottom: 40px;
+                flex: none;
+                width: 100%;
+                max-width: 450px; /* Giữ kích thước hợp lý trên tablet */
+                height: 350px;
             }
-            .hero-section h1 {
-                font-size: 2.5em;
+
+            .hero-text h1 {
+                font-size: 2.8rem;
             }
-            .image-list-content {
-                flex-direction: column; /* Stack image and list vertically */
-            }
-            .cards-grid, .project-cards-grid {
-                grid-template-columns: 1fr; /* Single column for cards */
-            }
-            .stats-grid {
+
+            .about-content,
+            .choose-me-content {
                 flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image,
+            .choose-me-image {
+                flex: none;
+                width: 100%;
+                max-width: 450px;
+                margin: 0 auto 30px auto;
+            }
+
+            .about-features,
+            .choose-me-list {
+                text-align: left; /* Giữ căn trái cho danh sách */
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 500px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .nav-links li {
+                margin: 0 0 10px 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links, .social-links {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+
+            .stat-item p {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .issue-card-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .testimonial-card .quote {
+                font-size: 1rem;
+            }
+
+            .testimonial-author img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .author-info h4 {
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar container">
-        <a href="#" class="logo">1yn3r</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#stats">Stats</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="contact-btn">Contact Me</a>
-    </nav>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://i.imgur.com/uG9p12b.png" alt="Cyber Shield Logo"> <!-- Thay bằng logo của bạn -->
+                Cyber Shield
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section class="hero-section">
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="container hero-content">
-            <p class="sub-heading">Hello! I'm 1yn3r</p>
-            <h1>Penetration Tester & Security Researcher</h1>
-            <p class="description">Focused on Red Teaming, Web Exploitation, Active Directory Attacks, and building automation scripts.</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1>Jason Beaudry <br><span>Saskatoon</span></h1>
+                <p>A cybersecurity expert dedicated to protecting your websites, servers, and digital assets. With a strong background in ethical hacking, I provide robust solutions to keep your online presence secure.</p>
+                <a href="#contact" class="btn">Hire Me Today!</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.imgur.com/h5e7s1R.jpeg" alt="Jason Beaudry">
+            </div>
         </div>
-    </section>
-
-    <!-- Adapt "Cyber Security Solutions" (3 cards) for key skills -->
-    <section id="skills" class="section-heading">
-        <h2>My Expertise</h2>
-        <p>A deep dive into the areas I specialize in for robust security assessments.</p>
-        <div class="container cards-grid">
-            <div class="card">
-                <!-- You could use an icon library like Font Awesome here, e.g., <i class="fas fa-globe"></i> -->
-                <span class="icon">🌐</span>
-                <h3>Web Exploitation</h3>
-                <p>Mastering XSS, SQLi, LFI/RFI, File Upload Bypass, and CSRF to secure web applications.</p>
-                <a href="#" class="read-more">Learn More</a>
+        <div class="container hero-stats">
+            <div class="stat-item">
+                <h3>350+</h3>
+                <p>Happy Customer</p>
             </div>
-            <div class="card">
-                <span class="icon">👑</span>
-                <h3>Active Directory Attacks</h3>
-                <p>Expert in Kerberoasting, Golden Ticket, DCSync, and ADCS abuse for network penetration.</p>
-                <a href="#" class="read-more">Learn More</a>
+            <div class="stat-item">
+                <h3>410+</h3>
+                <p>Project Done</p>
             </div>
-            <div class="card">
-                <span class="icon">📡</span>
-                <h3>Network Pentest</h3>
-                <p>Proficient in SMB/LDAP enum, MITM, ARP Spoofing, and advanced reverse shell techniques.</p>
-                <a href="#" class="read-more">Learn More</a>
+            <div class="stat-item">
+                <h3>88%</h3>
+                <p>Defense Success</p>
+            </div>
+            <div class="stat-item">
+                <h3>168+</h3>
+                <p>Server Secure</p>
             </div>
         </div>
     </section>
 
-    <!-- Adapt "24/7 Cyber Security Operation Center" for OWASP Top 10 -->
-    <section class="image-list-section">
-        <div class="container image-list-content">
-            <div class="image-col">
-                <!-- You could place another image here, perhaps a lock icon or a shield -->
-                  <img src="https://static.vncdn.vn/vnetwork.vn/pub/websites/uploads/3/owasp-va-cach-ngan-chan-top-10-lo-hong-bao-mat-owasp-moi-nhat.jpg" alt="OWASP Top 10 Security Risks Visualization">
+    <!-- About Section -->
+    <section id="about">
+        <div class="container about-content">
+            <div class="about-image">
+                <img src="https://i.imgur.com/3p0j5Vl.jpeg" alt="About Jason Beaudry">
             </div>
-            <div class="list-col">
-                <h3>OWASP Top 10 Expertise</h3>
-                
-                <ul>
-                    <li><span class="icon">✅</span> <p>A01 – Broken Access Control: IDOR, Privilege Escalation</p></li>
-                    <li><span class="icon">✅</span> <p>A03 – Injection: SQLi, Command Injection, NoSQL Injection</p></li>
-                    <li><span class="icon">✅</span> <p>A05 – Security Misconfiguration: Default creds, Open admin panels, Misconfigured CORS</p></li>
-                    <li><span class="icon">✅</span> <p>A06 – Vulnerable & Outdated Components: Old libs, Unpatched CVEs</p></li>
-                    <li><span class="icon">✅</span> <p>A10 – Server-Side Request Forgery (SSRF): Pivoting, Cloud metadata leaks</p></li>
-                    <!-- Add more from your OWASP list here -->
+            <div class="about-text">
+                <h2>Quick Know About Myself</h2>
+                <p>I'm a seasoned cybersecurity professional with a passion for digital protection. My expertise spans ethical hacking, penetration testing, network security, and data privacy, ensuring robust defenses against evolving threats.</p>
+                <p>I thrive on staying ahead of the curve, continuously learning new techniques and technologies to safeguard your valuable assets in the ever-complex digital landscape.</p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i> Keep safe by surfing the internet</li>
+                    <li><i class="fas fa-check-circle"></i> Secure your business and website</li>
+                    <li><i class="fas fa-check-circle"></i> Provide secure environment for all users</li>
+                </ul>
+                <a href="#services" class="btn">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Cyber Shield Services</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--text-color);">Here are a handful of design for Cyber Securities in Types</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Identifying Threats</h3>
+                    <p>Proactive scanning and analysis to detect and mitigate potential vulnerabilities.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Network Security</h3>
+                    <p>Securing your network infrastructure from unauthorized access and cyber threats.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Security</h3>
+                    <p>Ensuring your website is protected against all forms of online attacks and data breaches.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Security</h3>
+                    <p>Protecting sensitive information stored in databases from unauthorized access.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Secure Wi-Fi Implementation</h3>
+                    <p>Setting up and securing wireless networks for safe and private browsing.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users-cog"></i>
+                    <h3>Security Consultancy</h3>
+                    <p>Expert advice and strategic planning to enhance your overall security posture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Me Section -->
+    <section id="why-choose-me">
+        <div class="container choose-me-content">
+            <div class="choose-me-text">
+                <h2>Why Choose Me</h2>
+                <p>When it comes to cybersecurity, trust is paramount. I bring not only technical prowess but also a deep understanding of the evolving threat landscape. My commitment is to provide transparent, reliable, and effective security solutions tailored to your unique needs.</p>
+                <p>Choosing me means partnering with a dedicated expert who prioritizes your digital safety.</p>
+                <ul class="choose-me-list">
+                    <li>
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Provide Advanced Security for Advanced Threat</h4>
+                            <p>Implement cutting-edge security measures to protect against sophisticated cyber attacks.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Certified and Professional Expert</h4>
+                            <p>Benefit from certified expertise and professional approach against cyber threats.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-lock"></i>
+                        <div>
+                            <h4>Security 24/7 Global Scale</h4>
+                            <p>Around-the-clock protection and immediate response across all time zones.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4>24/7 Premium Support</h4>
+                            <p>Access continuous expert support whenever you need it, ensuring your systems are always secure.</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
+            <div class="choose-me-image">
+                <img src="https://i.imgur.com/eB3Zt2Y.jpeg" alt="Why Choose Jason Beaudry">
+            </div>
         </div>
     </section>
 
-    <!-- Adapt "We're Working With" - Could be tools or omitted -->
-    <!-- For simplicity, I'm omitting "We're Working With" in this initial HTML structure.
-         If you want to add your toolset here with badges, let me know! -->
-
-    <!-- Adapt "We Spend 30,000 Hours Protecting Thousands of Clients" for GitHub Stats -->
-    <section id="stats" class="stats-section">
-        <h2 align="center">📈 User Statistics 📈</h2>
+    <!-- Recent Issues / News Section -->
+    <section id="recent-issues">
         <div class="container">
-            <p>Dive into my activity and contributions on GitHub.</p>
-            <div class="stats-grid">
-                <!-- Replace these with your actual GitHub stat image URLs -->
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=1yn3r&bg_color=30,e96443,904e95&title_color=fff&text_color=fff&theme=radical&hide_border=true" alt="GitHub Streak Stats">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=1yn3r&theme=dracula" alt="GitHub Profile Details">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=1yn3r&theme=dracula" alt="Repos Per Language">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=1yn3r&theme=dracula" alt="Most Commit Language">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=1yn3r&theme=dracula" alt="GitHub Stats">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=1yn3r&theme=dracula" alt="Productive Time">
-            </div>
-        </div>
-    </section>
-
-    <!-- Adapt "Our Flexible Pricing Plans" for Featured Projects -->
-    <section id="projects" class="projects-section">
-        <h2 align="center">🛡️ Featured Pentest Projects</h2>
-        <div class="container project-cards-grid">
-            <div class="project-card-item">
-                <h3>🔐 Active Directory Attack Simulation</h3>
-                <p>Automated Kerberoasting, AS-REP Roasting, Pass-the-Hash, BloodHound enumeration scripts.</p>
-                <a href="https://github.com/1yn3r/ad-attack-sim" target="_blank" class="view-project-btn">View Project</a>
-            </div>
-            <div class="project-card-item">
-                <h3>🎯 CTF Writeups</h3>
-                <p>Comprehensive documentation of pwn/reverse/crypto/web/forensics challenges and solutions.</p>
-                <a href="https://github.com/1yn3r/ctf-writeups" target="_blank" class="view-project-btn">View Writeups</a>
-            </div>
-            <!-- Add more projects here if you have them, maintaining the card structure -->
-        </div>
-    </section>
-
-    <!-- Adapt "Send us a Message" for Social Links -->
-    <section id="contact" class="contact-section">
-        <h2 align="center">👽 Where to find me 👽</h2>
-        <p>Connect with me across various platforms.</p>
-        <div class="container social-icons-grid">
-            <div class="social-icon-item">
-                <a href="https://facebook.com/1yn3r" target="blank">
-                    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="1yn3r-facebook" />
-                </a>
-            </div>
-            <div class="social-icon-item">
-                <a href="https://www.linkedin.com/in/1yn3r" target="blank">
-                    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="1yn3r-linkedin" />
-                </a>
-            </div>
-            <div class="social-icon-item">
-                <a href="https://instagram.com/__1yn3r" target="blank">
-                    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="1yn3r-instagram" />
-                </a>
-            </div>
-            <div class="social-icon-item">
-                <a href="mailto:hc223390@gmail.com" target="top">
-                    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="1yn3r-email" />
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 1yn3r. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+            <h2 class="section-title">Issues With Recent Fixes</h2>
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <div class="issue-card-image">
+                        <img src="https://i.imgur.com/V6x7lS1.png" alt="NFT Web Security System">
+                    </div>
+                    <div class="issue-card-content">
+                        <h3>NFT Web Security System</h3>
+                        <p>Implementing an advanced security system for an NFT marketplace, safeguarding digital assets and user data from evolving threats and breaches.</p>
