@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penetration Tester Portfolio</title>
+    <title>Penetration Tester Portfolio // 1YN3R</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,45 @@
       }
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #101123;
+        background-color: #0d0d0d;
+        color: #e0e0e0;
+        background-image: 
+          linear-gradient(rgba(13, 13, 13, 0.95), rgba(13, 13, 13, 0.95)),
+          repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(57, 255, 20, 0.05) 1px, rgba(57, 255, 20, 0.05) 2px),
+          repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(57, 255, 20, 0.05) 1px, rgba(57, 255, 20, 0.05) 2px);
+        background-size: 100%, 50px 50px, 50px 50px;
       }
       .font-mono {
         font-family: 'Roboto Mono', monospace;
+      }
+      .terminal-glow {
+        text-shadow: 0 0 5px rgba(57, 255, 20, 0.7);
+      }
+      .blinking-cursor {
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #39FF14;
+        }
+      }
+      .scanline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(to bottom, rgba(13,13,13,0), rgba(13,13,13,0.75) 50%, rgba(13,13,13,0));
+        animation: scan 7.5s linear infinite;
+        opacity: 0.1;
+      }
+      @keyframes scan {
+          0% { transform: translateY(-10%); }
+          100% { transform: translateY(10%); }
       }
     </style>
     <!-- React and ReactDOM UMD builds -->
@@ -27,66 +62,37 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+    <div class="scanline"></div>
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+        const { useState, useEffect, useRef } = React;
 
-        // --- From constants.tsx ---
+        // --- ICONS (Minimalist, technical style) ---
 
         const OwaspIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
         );
-
         const WebExploitIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+          </svg>
         );
-
         const AdIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-2.308M15 19.128v-3.86a2.25 2.25 0 0 1 3-1.732a2.25 2.25 0 0 1 2.25 2.25v3.86M15 19.128a2.25 2.25 0 0 1-2.25-2.25v-3.86a2.25 2.25 0 0 1 2.25-2.25h1.5a2.25 2.25 0 0 1 2.25 2.25v3.86M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 12.75h.008v.008H12v-.008Z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.897 1.897M18 18.72a9.094 9.094 0 00-7.5 0m7.5 0a9.094 9.094 0 01-7.5 0m-7.5 0a9.094 9.094 0 017.5 0m-7.5 0a6.75 6.75 0 000 13.5m0-13.5a6.75 6.75 0 010 13.5m0-13.5a6.75 6.75 0 00-3.75 1.043m3.75-1.043a6.75 6.75 0 013.75 1.043m-3.75-1.043V3m-3.75 1.043A6.75 6.75 0 013 4.043m3.75 0V3m0 1.043a6.75 6.75 0 00-3.75-1.043m0 0V3m3.75 0a6.75 6.75 0 01-3.75-1.043" />
+          </svg>
+        );
+         const NetworkIcon = () => (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25zM12 8.25v.01M12 12v.01M12 15.75v.01" />
+          </svg>
         );
 
-        const NetworkIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V8.25a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 8.25v7.5A2.25 2.25 0 0 0 6.75 18Z" />
-            </svg>
-        );
-
-        const PasswordIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 12Z" />
-            </svg>
-        );
-
-        const PrivEscIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 11.25l1.5 1.5.75-.75V8.758l2.276-.61a3 3 0 1 0-2.276 2.276H15Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="m.75 15 1.5-1.5.75.75V18.25l-2.276.61a3 3 0 1 0 2.276-2.276H.75Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="m15 .75 1.5 1.5.75-.75V4.25l2.276-.61a3 3 0 1 0-2.276 2.276H15Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M.75 9 1.5 7.5l.75.75V11.25l-2.276.61a3 3 0 1 0 2.276-2.276H.75Z" />
-            </svg>
-        );
-
-        const PostExploitIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
-            </svg>
-        );
-
-        const EvasionIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 12c0 2.42-.944 4.63-2.5 6.253m-13.436-1.076a7.5 7.5 0 0 1-2.5-6.253c0-2.42.944-4.63 2.5-6.253m13.436 12.506A4.5 4.5 0 0 1 12 16.5c-1.482 0-2.822-.722-3.632-1.856m-2.736-6.512A4.5 4.5 0 0 1 12 7.5c1.482 0 2.822.722 3.632 1.856m-2.736 6.512-4.286-4.286" />
-            </svg>
-        );
-
-        const OWASP_CATEGORIES = [
+        // --- SKILL DATA ---
+        const ALL_SKILLS = [
             {
                 title: "OWASP Top 10",
                 icon: <OwaspIcon />,
@@ -102,10 +108,7 @@
                     { name: "A09 – Security Logging & Monitoring Failures", details: "Lack of alerts, Undetected brute-force" },
                     { name: "A10 – Server-Side Request Forgery (SSRF)", details: "Pivoting, Cloud metadata leaks" },
                 ]
-            }
-        ];
-
-        const PENTEST_CATEGORIES = [
+            },
             {
                 title: "Web Exploitation",
                 icon: <WebExploitIcon />,
@@ -134,393 +137,250 @@
                     { name: "Spoofing & Interception", details: "MITM, ARP Spoofing" },
                     { name: "Covert Channels", details: "DNS Tunneling, Reverse Shells with Netcat" },
                 ]
-            },
-            {
-                title: "Password Cracking",
-                icon: <PasswordIcon />,
-                skills: [
-                    { name: "Tools", details: "John the Ripper, Hashcat" },
-                    { name: "Targets", details: "NTLM, bcrypt, Kerberos tickets" },
-                ]
-            },
-            {
-                title: "Privilege Escalation",
-                icon: <PrivEscIcon />,
-                skills: [
-                    { name: "Linux", details: "SUID, Cron, PATH hijack" },
-                    { name: "Windows", details: "UAC bypass, Token Impersonation, JuicyPotato" },
-                ]
-            },
-            {
-                title: "Post-Exploitation",
-                icon: <PostExploitIcon />,
-                skills: [
-                    { name: "Persistence", details: "Maintaining access after reboot" },
-                    { name: "Credential Dumping", details: "Mimikatz, LSASS dump" },
-                    { name: "Lateral Movement", details: "Pivoting to other machines" },
-                ]
-            },
-            {
-                title: "Detection Evasion",
-                icon: <EvasionIcon />,
-                skills: [
-                    { name: "Built-in Tools", details: "Living-off-the-Land (LOLBins)" },
-                    { name: "Stealth Techniques", details: "Obfuscated payloads, AV/EDR bypass basics" },
-                ]
-            },
+            }
         ];
 
-        // --- From components/SkillCategoryCard.tsx ---
+        // --- COMPONENTS ---
 
-        const SkillCategoryCard = ({ category }) => {
-            return (
-                <div className="bg-[#1A1B2E]/70 border border-[#2A2B3A] rounded-xl shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-[#8A63D2] hover:shadow-2xl hover:shadow-[#8A63D2]/10">
-                    <div className="p-4 border-b border-[#2A2B3A] flex items-center gap-4">
-                        <div className="w-8 h-8 flex-shrink-0 text-[#8A63D2]">
-                            {category.icon}
-                        </div>
-                        <h3 className="text-lg font-bold text-white">{category.title}</h3>
-                    </div>
-                    <div className="p-5">
-                        <ul className="space-y-3">
-                            {category.skills.map((skill, index) => (
-                                <li key={index} className="flex items-start">
-                                     <span className="text-[#8A63D2] font-bold text-lg mr-3 mt-0.5">&#8227;</span>
-                                    <div>
-                                        <h4 className="font-semibold text-gray-200">{skill.name}</h4>
-                                        <p className="text-sm text-gray-400 font-mono">{skill.details}</p>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+        const SkillCategoryCard = ({ category }) => (
+            <div className="bg-black/30 border border-green-500/20 rounded-none transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                <div className="p-3 border-b border-green-500/20 flex items-center gap-3">
+                    <h3 className="text-md font-bold text-green-400 font-mono">{category.title}</h3>
                 </div>
+                <div className="p-4">
+                    <ul className="space-y-2">
+                        {category.skills.map((skill, index) => (
+                            <li key={index} className="flex">
+                                <span className="text-green-400 font-mono mr-2">&gt;</span>
+                                <div>
+                                    <h4 className="font-semibold text-gray-200">{skill.name}</h4>
+                                    {skill.details && <p className="text-xs text-gray-400 font-mono opacity-80">{skill.details}</p>}
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        );
+
+        const TypingAnimation = ({ lines, speed = 50 }) => {
+            const [currentLineIndex, setCurrentLineIndex] = useState(0);
+            const [displayText, setDisplayText] = useState('');
+            const [isComplete, setIsComplete] = useState(false);
+
+            useEffect(() => {
+                if (currentLineIndex < lines.length) {
+                    const line = lines[currentLineIndex];
+                    if (displayText.length < line.length) {
+                        const timeout = setTimeout(() => {
+                            setDisplayText(line.substring(0, displayText.length + 1));
+                        }, speed);
+                        return () => clearTimeout(timeout);
+                    } else {
+                        const timeout = setTimeout(() => {
+                            setCurrentLineIndex(currentLineIndex + 1);
+                            setDisplayText('');
+                        }, 1000); // Pause before next line
+                        return () => clearTimeout(timeout);
+                    }
+                } else {
+                    setIsComplete(true);
+                }
+            }, [displayText, currentLineIndex, lines, speed]);
+
+            return (
+                 <p className="font-mono text-lg md:text-xl text-green-400 terminal-glow">
+                    {isComplete ? lines[lines.length - 1] : displayText}
+                    <span className="blinking-cursor">_</span>
+                </p>
             );
         };
-
-        // --- From App.tsx ---
-
+        
         const App = () => {
             const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-            const toggleMobileMenu = () => {
-                setMobileMenuOpen(prevState => !prevState);
-            };
-
-            const handleLinkClick = () => {
-                setMobileMenuOpen(false);
-            };
-
             const handleFormSubmit = (e) => {
                 e.preventDefault();
-                alert("Thank you for your message. This is a demonstration form.");
+                alert("Message sent. This is a demonstration form.");
             };
 
             return (
-                <div id="home" className="bg-[#101123] text-gray-300">
+                <div id="home" className="bg-transparent text-gray-300">
                     <div className="min-h-screen">
-                        <header className="sticky top-0 z-50 bg-[#101123]/80 backdrop-blur-md">
-                            <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                                <div className="text-2xl font-bold text-white tracking-wider">
-                                    1<span className="text-[#8A63D2]">Y</span>N3R
+                        <header className="sticky top-0 z-50 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-green-500/20">
+                            <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
+                                <div className="text-2xl font-bold font-mono text-white tracking-wider">
+                                    <span className="text-green-400 terminal-glow">$</span> 1YN3R<span className="blinking-cursor">_</span>
                                 </div>
-                                <ul className="hidden md:flex items-center space-x-8">
-                                    <li><a href="#home" className="text-white bg-[#8A63D2] px-4 py-2 rounded-md text-sm font-medium">Home</a></li>
-                                    <li><a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
-                                    <li><a href="#services" className="text-gray-300 hover:text-white transition-colors duration-300">Skills</a></li>
-                                    <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
-                                    <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                                <ul className="hidden md:flex items-center space-x-8 font-mono text-sm">
+                                    <li><a href="#home" className="text-green-400 hover:text-white transition-colors duration-300">[ home ]</a></li>
+                                    <li><a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300">[ intel ]</a></li>
+                                    <li><a href="#skills" className="text-gray-300 hover:text-white transition-colors duration-300">[ skills ]</a></li>
+                                    <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors duration-300">[ cases ]</a></li>
+                                    <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300">[ contact ]</a></li>
                                 </ul>
-                                <button id="mobile-menu-button" onClick={toggleMobileMenu} className="md:hidden text-white">
+                                <button onClick={() => setMobileMenuOpen(p => !p)} className="md:hidden text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                                     </svg>
                                 </button>
                             </nav>
-                            {/* Mobile Menu */}
-                            <div id="mobile-menu" className={`${isMobileMenuOpen ? '' : 'hidden'} md:hidden bg-[#1A1B2E]/95`}>
+                            <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-black/90 font-mono`}>
                                 <ul className="flex flex-col items-center space-y-4 py-4">
-                                    <li><a href="#home" onClick={handleLinkClick} className="text-white">Home</a></li>
-                                    <li><a href="#about" onClick={handleLinkClick} className="text-gray-300 hover:text-white">About</a></li>
-                                    <li><a href="#services" onClick={handleLinkClick} className="text-gray-300 hover:text-white">Skills</a></li>
-                                    <li><a href="#projects" onClick={handleLinkClick} className="text-gray-300 hover:text-white">Projects</a></li>
-                                    <li><a href="#contact" onClick={handleLinkClick} className="text-gray-300 hover:text-white">Contact</a></li>
+                                     <li><a href="#home" onClick={() => setMobileMenuOpen(false)} className="text-green-400 hover:text-white">[ home ]</a></li>
+                                    <li><a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ intel ]</a></li>
+                                    <li><a href="#skills" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ skills ]</a></li>
+                                    <li><a href="#projects" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ cases ]</a></li>
+                                    <li><a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ contact ]</a></li>
                                 </ul>
                             </div>
                         </header>
 
                         <main>
                             {/* Hero Section */}
-                            <section className="container mx-auto px-6 py-20 md:py-32">
-                                <div className="grid md:grid-cols-2 gap-12 items-center">
-                                    <div className="text-center md:text-left">
-                                        <p className="text-lg text-gray-400">Hello I'm</p>
-                                        <h1 className="text-5xl md:text-7xl font-bold text-white mt-2">Hoang Cuong</h1>
-                                        <h2 className="text-2xl text-[#8A63D2] font-semibold mt-4">Penetration Tester & Ethical Hacker</h2>
-                                        <p className="mt-6 text-gray-400 max-w-lg mx-auto md:mx-0">I uncover critical vulnerabilities before attackers do. Specializing in network, web, and mobile application penetration testing to fortify your digital assets against sophisticated threats.</p>
-                                        <div className="mt-8 flex justify-center md:justify-start space-x-4">
-                                            <a href="#contact" className="bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">Request an Assessment</a>
-                                            <a href="#services" className="bg-transparent border-2 border-[#8A63D2] text-[#8A63D2] hover:bg-[#8A63D2] hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">My Methodology</a>
+                            <section className="container mx-auto px-6 py-20 md:py-32 flex items-center justify-center">
+                                <div className="w-full max-w-4xl bg-black/50 border border-green-500/20 p-4">
+                                    <div className="bg-black/80 p-6 h-64 flex flex-col justify-center">
+                                        <div className="flex items-center mb-4">
+                                            <span className="h-3 w-3 rounded-full bg-red-500 mr-2"></span>
+                                            <span className="h-3 w-3 rounded-full bg-yellow-500 mr-2"></span>
+                                            <span className="h-3 w-3 rounded-full bg-green-500"></span>
                                         </div>
-                                    </div>
-                                    <div className="relative flex justify-center">
-                                        <div className="absolute inset-0 bg-gradient-to-r from-[#8A63D2] to-[#4c3a7a] rounded-full blur-3xl opacity-30"></div>
-                                        <img src="https://www.vaadata.com/blog/wp-content/uploads/2018/05/Pentest-EN.jpg" alt="Hoang Cuong" className="relative rounded-full w-80 h-80 md:w-96 md:h-96 object-cover border-4 border-[#2A2B3A] shadow-2xl" />
+                                        <h1 className="font-mono text-2xl md:text-4xl text-white mb-2">
+                                            <span className="text-green-400">$</span> Hoang Cuong
+                                        </h1>
+                                        <TypingAnimation lines={["./execute --profile pentester", "STATUS: Analyzing vulnerabilities...", "OBJECTIVE: Fortify digital assets."]} />
+                                        <div className="mt-8 flex space-x-4">
+                                            <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
+                                            <a href="#skills" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Skillset ]</a>
+                                        </div>
                                     </div>
                                 </div>
                             </section>
                             
-                            {/* Stats Section */}
-                            <div className="container mx-auto px-6 py-12">
-                                <div className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg shadow-lg grid grid-cols-2 md:grid-cols-4 divide-x divide-[#2A2B3A]">
-                                    <div className="text-center p-6">
-                                        <h3 className="text-4xl font-bold text-white">350+</h3>
-                                        <p className="text-gray-400 mt-2">Happy Clients</p>
-                                    </div>
-                                    <div className="text-center p-6">
-                                        <h3 className="text-4xl font-bold text-white">410+</h3>
-                                        <p className="text-gray-400 mt-2">Engagements Completed</p>
-                                    </div>
-                                    <div className="text-center p-6">
-                                        <h3 className="text-4xl font-bold text-white">95%</h3>
-                                        <p className="text-gray-400 mt-2">Systems Secured</p>
-                                    </div>
-                                    <div className="text-center p-6">
-                                        <h3 className="text-4xl font-bold text-white">1200+</h3>
-                                        <p className="text-gray-400 mt-2">Critical Findings</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* About Me Section */}
+                            {/* Intel Section (About) */}
                             <section id="about" className="container mx-auto px-6 py-20">
-                                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                                    <div className="flex justify-center">
-                                        <div className="relative w-[350px] h-[400px] md:w-[450px] md:h-[500px]">
-                                             <div className="absolute inset-0 bg-gradient-to-bl from-[#8A63D2]/30 to-transparent rounded-3xl blur-2xl opacity-50"></div>
-                                             <img src="https://www.coresecurity.com/sites/default/files/2024-03/6-stages-of-penetration-testing.png" alt="About Lyner" className="relative w-full h-full object-cover rounded-3xl" style={{clipPath: 'polygon(0 0, 100% 15%, 100% 100%, 0 85%)'}}/>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h2 className="text-4xl font-bold text-white">Think Like an Attacker</h2>
-                                        <p className="mt-6 text-gray-400">With a deep understanding of offensive security tactics, I emulate real-world adversaries to test your defenses. My expertise spans across modern cloud environments, complex corporate networks, and critical web applications, ensuring no stone is left unturned.</p>
-                                        <ul className="mt-8 space-y-4">
-                                            <li className="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <span>Proactive vulnerability discovery & exploitation</span>
-                                            </li>
-                                            <li className="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <span>Realistic, objective-based attack simulations</span>
-                                            </li>
-                                            <li className="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <span>Comprehensive and actionable remediation guidance</span>
-                                            </li>
+                                <h2 className="text-3xl md:text-4xl font-bold text-white text-center font-mono terminal-glow mb-12">[ INTEL_PACKAGE: 1YN3R ]</h2>
+                                 <div className="grid md:grid-cols-5 gap-8 items-center">
+                                    <div className="md:col-span-3">
+                                        <h3 className="text-2xl font-bold text-green-400 font-mono mb-4">&gt; Threat Emulation Specialist</h3>
+                                        <p className="mb-4 text-gray-400">My methodology is rooted in offensive security tactics. I emulate real-world adversaries to pressure-test defenses, identify attack vectors, and uncover critical vulnerabilities before they are exploited. My expertise spans across modern cloud environments, complex corporate networks, and critical web applications.</p>
+                                        <ul className="space-y-3 font-mono text-sm">
+                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Proactive vulnerability discovery & exploit validation.</li>
+                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Objective-based, realistic attack simulations.</li>
+                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Actionable remediation reports with clear risk metrics.</li>
                                         </ul>
-                                        <a href="#contact" className="mt-8 inline-block bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">Contact Me</a>
+                                    </div>
+                                     <div className="md:col-span-2 flex justify-center items-center">
+                                        <div className="w-64 h-64 border-2 border-green-500/30 p-2 bg-black/30">
+                                            <div className="w-full h-full border border-green-500/30 flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-32 h-32 text-green-400 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                                            </div>
+                                        </div>
                                     </div>
                                  </div>
                             </section>
 
-                            {/* Core Competencies / Skills Section */}
-                            <section id="services" className="container mx-auto px-6 py-20">
+                            {/* Skills Section */}
+                            <section id="skills" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
-                                    <h2 className="text-4xl font-bold text-white">Core Competencies & Skills</h2>
-                                    <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-400">
-                                        A detailed breakdown of the technical domains and frameworks I specialize in, from the OWASP Top 10 to advanced adversary simulation techniques.
+                                    <h2 className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</h2>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">
+                                        Technical domains and frameworks, from web application security to network and Active Directory exploitation.
                                     </p>
                                 </header>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
-                                    <section>
-                                        <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#8A63D2]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                            </svg>
-                                            OWASP Top 10 (Web Security)
-                                        </h3>
-                                        <div className="space-y-6">
-                                            {OWASP_CATEGORIES.map((category) => (
-                                                <SkillCategoryCard key={category.title} category={category} />
-                                            ))}
-                                        </div>
-                                    </section>
-
-                                    <section>
-                                        <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                                           <span className="text-4xl">⚔️</span>
-                                            Advanced Pentesting Techniques
-                                        </h3>
-                                        <div className="space-y-6">
-                                            {PENTEST_CATEGORIES.map((category) => (
-                                                <SkillCategoryCard key={category.title} category={category} />
-                                            ))}
-                                        </div>
-                                    </section>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                    {ALL_SKILLS.map((category) => (
+                                        <SkillCategoryCard key={category.title} category={category} />
+                                    ))}
                                 </div>
                             </section>
                             
-                             {/* Why Choose Me Section */}
-                            <section className="container mx-auto px-6 py-20">
-                                 <div className="grid md:grid-cols-2 gap-16 items-center">
-                                    <div>
-                                        <h2 className="text-4xl font-bold text-white">The Pentester's Advantage</h2>
-                                        <p className="mt-6 text-gray-400">My approach is not just about running scanners; it's about a manual, intelligence-driven process to find flaws that automated tools miss. I provide the context behind vulnerabilities, demonstrating their real-world impact on your business.</p>
-                                        <h3 className="text-2xl font-semibold text-white mt-8">From Discovery to Remediation</h3>
-                                        <p className="mt-4 text-gray-400">Every engagement concludes with a detailed report outlining not just the 'what', but the 'how' and 'why', with clear, prioritized steps for remediation.</p>
-                                        <ul className="mt-8 space-y-4">
-                                            <li className="flex items-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <div>
-                                                    <h4 className="font-semibold text-white">Hacker Mindset</h4>
-                                                    <p className="text-gray-400 text-sm">Creative and persistent testing to uncover complex, multi-step attack chains.</p>
-                                                </div>
-                                            </li>
-                                            <li className="flex items-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <div>
-                                                    <h4 className="font-semibold text-white">Business-Focused Reporting</h4>
-                                                    <p className="text-gray-400 text-sm">Clear communication of risk, business impact, and actionable steps for your technical teams.</p>
-                                                </div>
-                                            </li>
-                                            <li className="flex items-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                <div>
-                                                    <h4 className="font-semibold text-white">Confidential & Professional</h4>
-                                                    <p className="text-gray-400 text-sm">All engagements are handled with the utmost discretion and professionalism.</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="flex justify-center">
-                                         <div className="relative w-[350px] h-[400px] md:w-[450px] md:h-[500px]">
-                                             <div className="absolute inset-0 bg-gradient-to-tr from-[#8A63D2]/30 to-transparent rounded-3xl blur-2xl opacity-50"></div>
-                                             <img src="https://cdn.shopaccino.com/igmguru/products/penetration-testing-course-2388150681385828_l.jpg?v=532" alt="Cyber security operations room" className="relative w-full h-full object-cover rounded-3xl" style={{clipPath: 'polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25%)'}} />
-                                         </div>
-                                    </div>
-                                 </div>
-                            </section>
-
-                            {/* Projects Section */}
-                            <section id="projects" className="container mx-auto px-6 py-20 text-center">
-                                <h2 className="text-4xl font-bold text-white">Featured Engagements</h2>
-                                <p className="mt-4 text-gray-400 max-w-2xl mx-auto">A look into some recent, anonymized penetration testing projects and their outcomes.</p>
-                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                            {/* Case Files Section (Projects) */}
+                            <section id="projects" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <h2 className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CASE_FILES: ENGAGEMENT_LOGS ]</h2>
+                                    <p className="mt-4 max-w-2xl mx-auto text-gray-400">Anonymized summaries of recent penetration testing projects and outcomes.</p>
+                                </header>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono">
                                     {/* Project Card 1 */}
-                                    <div className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-[#8A63D2] hover:shadow-2xl hover:shadow-[#8A63D2]/20">
-                                        <div className="p-6 flex-grow">
-                                            <h3 className="text-xl font-semibold text-white mb-2">E-Commerce Platform Security Assessment</h3>
-                                            <p className="text-gray-400 mb-4 text-sm">Comprehensive web application pentest for a leading online retailer, focusing on OWASP Top 10 and business logic flaws.</p>
-                                            <h4 className="font-semibold text-gray-200 mb-2">Key Findings:</h4>
-                                            <ul className="space-y-2 text-sm">
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Critical SQL Injection in API endpoint.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Broken Access Control allowing account takeover.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Stored XSS in customer review section.</span></li>
-                                            </ul>
+                                    <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                        <div className="p-4 border-b border-green-500/20">
+                                          <p className="text-xs text-green-400">TYPE: WEB_APP</p>
+                                          <h3 className="text-lg font-semibold text-white">E-Commerce Platform Assessment</h3>
                                         </div>
-                                        <div className="bg-[#101123] p-4 mt-auto">
-                                           <span className="text-xs font-medium text-[#8A63D2]">WEB APPLICATION</span>
+                                        <div className="p-4 flex-grow text-sm">
+                                            <p className="text-gray-400 mb-4 font-sans">Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.</p>
+                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
+                                            <ul className="space-y-1 text-gray-300">
+                                                <li><span className="text-red-500">[CRITICAL]</span> SQL Injection in API.</li>
+                                                <li><span className="text-orange-500">[HIGH]</span> Broken Access Control (ATO).</li>
+                                                <li><span className="text-yellow-500">[MED]</span> Stored XSS in review section.</li>
+                                            </ul>
                                         </div>
                                     </div>
                                     {/* Project Card 2 */}
-                                    <div className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-[#8A63D2] hover:shadow-2xl hover:shadow-[#8A63D2]/20">
-                                        <div className="p-6 flex-grow">
-                                            <h3 className="text-xl font-semibold text-white mb-2">Corporate Internal Network Pentest</h3>
-                                            <p className="text-gray-400 mb-4 text-sm">Assumed-breach scenario to test internal network defenses, Active Directory security, and lateral movement paths for a financial services firm.</p>
-                                             <h4 className="font-semibold text-gray-200 mb-2">Key Findings:</h4>
-                                            <ul className="space-y-2 text-sm">
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Domain Admin compromise via Kerberoasting.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Unpatched legacy systems leading to foothold.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>LLMNR/NBT-NS poisoning for credential capture.</span></li>
-                                            </ul>
+                                     <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                        <div className="p-4 border-b border-green-500/20">
+                                          <p className="text-xs text-green-400">TYPE: INTERNAL_NETWORK</p>
+                                          <h3 className="text-lg font-semibold text-white">Corporate AD Pentest</h3>
                                         </div>
-                                         <div className="bg-[#101123] p-4 mt-auto">
-                                           <span className="text-xs font-medium text-[#8A63D2]">NETWORK & ACTIVE DIRECTORY</span>
+                                        <div className="p-4 flex-grow text-sm">
+                                            <p className="text-gray-400 mb-4 font-sans">Assumed-breach scenario testing internal defenses and lateral movement paths.</p>
+                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
+                                            <ul className="space-y-1 text-gray-300">
+                                                <li><span className="text-red-500">[CRITICAL]</span> Domain Admin via Kerberoasting.</li>
+                                                <li><span className="text-orange-500">[HIGH]</span> Unpatched legacy system foothold.</li>
+                                                <li><span className="text-orange-500">[HIGH]</span> LLMNR Poisoning for cred capture.</li>
+                                            </ul>
                                         </div>
                                     </div>
                                     {/* Project Card 3 */}
-                                    <div className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-[#8A63D2] hover:shadow-2xl hover:shadow-[#8A63D2]/20">
-                                        <div className="p-6 flex-grow">
-                                            <h3 className="text-xl font-semibold text-white mb-2">FinTech Mobile App Assessment (iOS/Android)</h3>
-                                            <p className="text-gray-400 mb-4 text-sm">In-depth security analysis of a mobile banking application, including static/dynamic analysis and API security testing.</p>
-                                             <h4 className="font-semibold text-gray-200 mb-2">Key Findings:</h4>
-                                            <ul className="space-y-2 text-sm">
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Hardcoded API keys in the application binary.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Lack of certificate pinning allowing MitM attacks.</span></li>
-                                                <li className="flex items-center"><span className="w-2 h-2 bg-[#8A63D2] rounded-full mr-2"></span><span>Insecure local data storage (unencrypted).</span></li>
+                                    <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                        <div className="p-4 border-b border-green-500/20">
+                                          <p className="text-xs text-green-400">TYPE: MOBILE_APP</p>
+                                          <h3 className="text-lg font-semibold text-white">FinTech Mobile App (iOS/Android)</h3>
+                                        </div>
+                                        <div className="p-4 flex-grow text-sm">
+                                            <p className="text-gray-400 mb-4 font-sans">In-depth static/dynamic analysis of a mobile banking application and its API.</p>
+                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
+                                            <ul className="space-y-1 text-gray-300">
+                                                <li><span className="text-red-500">[CRITICAL]</span> Hardcoded API keys in binary.</li>
+                                                <li><span className="text-orange-500">[HIGH]</span> No certificate pinning (MitM).</li>
+                                                <li><span className="text-yellow-500">[MED]</span> Insecure local data storage.</li>
                                             </ul>
                                         </div>
-                                         <div className="bg-[#101123] p-4 mt-auto">
-                                           <span className="text-xs font-medium text-[#8A63D2]">MOBILE APPLICATION</span>
-                                        </div>
                                     </div>
-                                </div>
-                            </section>
-                            
-                             {/* CTA Section */}
-                            <section className="container mx-auto px-6 py-20">
-                                <div className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg text-center p-12">
-                                    <h2 className="text-3xl font-bold text-white">Ready to Uncover Your Vulnerabilities?</h2>
-                                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">Proactive security is an investment, not an expense. Let's work together to secure your organization's critical assets before a real attacker puts them at risk. Schedule a confidential consultation today.</p>
-                                    <a href="#contact" className="mt-8 inline-block bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">Get a Quote</a>
                                 </div>
                             </section>
 
                             {/* Contact Section */}
                             <section id="contact" className="container mx-auto px-6 py-20">
-                                <h2 className="text-4xl font-bold text-white text-center">Initiate a Secure Engagement</h2>
-                                <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-center">Interested in an assessment? Fill out the form below to start a confidential conversation. Please avoid sending sensitive information through this form.</p>
-                                <form onSubmit={handleFormSubmit} className="mt-12 max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <input type="text" placeholder="First Name" className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
-                                    <input type="text" placeholder="Last Name" className="bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
-                                    <input type="email" placeholder="Your Business Email" className="md:col-span-2 bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required />
-                                    <textarea placeholder="Briefly describe your testing requirements (e.g., web app, internal network, number of assets)..." rows={5} className="md:col-span-2 bg-[#1A1B2E] border border-[#2A2B3A] rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" required></textarea>
-                                    <div className="md:col-span-2 text-center">
-                                        <button type="submit" className="bg-[#8A63D2] hover:bg-[#7a58c1] text-white font-semibold py-3 px-12 rounded-lg transition-all duration-300">Send Secure Message</button>
+                                <header className="text-center mb-12">
+                                    <h2 className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ OPEN_SECURE_CHANNEL ]</h2>
+                                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">Initiate a confidential consultation. Avoid sending sensitive data through this channel.</p>
+                                </header>
+                                <form onSubmit={handleFormSubmit} className="mt-12 max-w-2xl mx-auto space-y-4 font-mono">
+                                    <div>
+                                        <label className="text-green-400 text-sm" htmlFor="email">EMAIL:</label>
+                                        <input id="email" type="email" placeholder="user@domain.com" className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required />
+                                    </div>
+                                    <div>
+                                        <label className="text-green-400 text-sm" htmlFor="message">MESSAGE_BRIEF:</label>
+                                        <textarea id="message" placeholder="Describe testing requirements..." rows={5} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required></textarea>
+                                    </div>
+                                    <div className="text-center">
+                                        <button type="submit" className="bg-transparent border border-green-500 text-green-400 font-semibold py-3 px-12 hover:bg-green-500 hover:text-black transition-all duration-300 w-full md:w-auto">&gt; SEND_MESSAGE</button>
                                     </div>
                                 </form>
                             </section>
                         </main>
 
                         {/* Footer */}
-                        <footer className="bg-[#1A1B2E] border-t border-[#2A2B3A]">
-                             <div className="container mx-auto px-6 py-12">
-                                <div className="grid md:grid-cols-3 gap-8">
-                                    <div>
-                                         <h3 className="text-2xl font-bold text-white">1<span className="text-[#8A63D2]">Y</span>N3R</h3>
-                                         <p className="text-gray-400 mt-4">Offensive security consulting to identify and mitigate your digital risks.</p>
-                                    </div>
-                                    <div>
-                                         <h4 className="text-lg font-semibold text-white">Useful Links</h4>
-                                         <ul className="mt-4 space-y-2">
-                                            <li><a href="#about" className="text-gray-400 hover:text-white">About Me</a></li>
-                                            <li><a href="#services" className="text-gray-400 hover:text-white">Skills</a></li>
-                                            <li><a href="#projects" className="text-gray-400 hover:text-white">Projects</a></li>
-                                            <li><a href="#contact" className="text-gray-400 hover:text-white">Contact Me</a></li>
-                                         </ul>
-                                    </div>
-                                    <div>
-                                         <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
-                                          <form className="mt-4 flex">
-                                              <input type="email" placeholder="Email" className="bg-[#101123] border border-[#2A2B3A] rounded-l-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#8A63D2]" />
-                                              <button className="bg-[#8A63D2] hover:bg-[#7a58c1] text-white p-2 px-4 rounded-r-lg">Join</button>
-                                          </form>
-                                    </div>
-                                </div>
-                                 <div className="mt-12 border-t border-[#2A2B3A] pt-8 flex flex-col md:flex-row justify-between items-center text-center text-gray-500">
-                                     <p>&copy; {new Date().getFullYear()} 1YN3R. All Rights Reserved.</p>
-                                     <div className="flex space-x-4 mt-4 md:mt-0">
-                                        <a href="https://linkedin.com/in/1yn3r" target="_blank" rel="noopener noreferrer" className="hover:text-white" aria-label="LinkedIn">
-                                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                        </a>
-                                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white" aria-label="Twitter">
-                                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.214 3.793 4.649-.65.177-1.354.23-2.06.088.625 1.933 2.433 3.339 4.582 3.377-1.623 1.276-3.666 2.033-5.88 2.033-.379 0-.753-.022-1.122-.067 2.094 1.342 4.583 2.123 7.264 2.123 8.711 0 13.475-7.225 13.475-13.475 0-.205-.005-.41-.012-.613.925-.668 1.724-1.503 2.357-2.441z"/></svg>
-                                        </a>
-                                        <a href="https://github.com/1yn3r" target="_blank" rel="noopener noreferrer" className="hover:text-white" aria-label="GitHub">
-                                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                        </a>
-                                     </div>
-                                 </div>
+                        <footer className="bg-black/50 border-t border-green-500/20">
+                             <div className="container mx-auto px-6 py-8 text-center text-gray-500 font-mono text-xs">
+                                <p>STATUS: CONNECTION_TERMINATED</p>
+                                <p>&copy; {new Date().getFullYear()} 1YN3R // ALL RIGHTS RESERVED</p>
                              </div>
                         </footer>
                     </div>
@@ -528,17 +388,8 @@
             );
         };
 
-        const rootElement = document.getElementById('root');
-        if (!rootElement) {
-          throw new Error("Could not find root element to mount to");
-        }
-
-        const root = ReactDOM.createRoot(rootElement);
-        root.render(
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
-        );
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
