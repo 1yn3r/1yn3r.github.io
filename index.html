@@ -79,6 +79,10 @@
         from { opacity: 0; }
         to { opacity: 1; }
       }
+      .terminal-output p:last-child:after {
+        content: '_';
+        animation: blink 1s step-end infinite;
+      }
     </style>
     <!-- React and ReactDOM UMD builds -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -103,21 +107,19 @@
             { title: "OWASP Top 10", skills: [{ name: "A01 – Broken Access Control", details: "IDOR, Privilege Escalation" }, { name: "A02 – Cryptographic Failures", details: "Weak SSL/TLS, Insecure Hash, Hardcoded Secrets" }, { name: "A03 – Injection", details: "SQLi, Command Injection, NoSQL Injection" }, { name: "A04 – Insecure Design", details: "Logic Flaws, Business Logic Abuse" }, { name: "A05 – Security Misconfiguration", details: "Default creds, Open admin panels, Misconfigured CORS" }, { name: "A06 – Vulnerable & Outdated Components", details: "Old libs, Unpatched CVEs" }, { name: "A07 – Identification & Authentication Failures", details: "Broken JWT, Weak session, MFA bypass" }, { name: "A08 – Software & Data Integrity Failures", details: "Insecure deserialization, Supply chain attack" }, { name: "A09 – Security Logging & Monitoring Failures", details: "Lack of alerts, Undetected brute-force" }, { name: "A10 – Server-Side Request Forgery (SSRF)", details: "Pivoting, Cloud metadata leaks" }] },
             { title: "Web Exploitation", skills: [{ name: "Cross-Site Scripting (XSS)", details: "Stored/Reflected/DOM" }, { name: "Server-Side Template Injection (SSTI)", details: "" }, { name: "File Inclusion", details: "LFI/RFI, File Upload Bypass" }, { name: "Cross-Site Request Forgery (CSRF)", details: "" }, { name: "Open Redirect", details: "" }] },
             { title: "Active Directory Attacks", skills: [{ name: "Kerberos Attacks", details: "Kerberoasting, AS-REP Roasting" }, { name: "Credential Theft", details: "Pass-the-Hash, DCSync" }, { name: "Persistence & Privilege", details: "Golden Ticket, ADCS abuse" }] },
-            { title: "Network Attacks", skills: [{ name: "Service Enumeration", details: "SMB/LDAP/FTP enum" }, { name: "Spoofing & Interception", details: "MITM, ARP Spoofing" }, { name: "Covert Channels", details: "DNS Tunneling, Reverse Shells with Netcat" }] }
+            { title: "Network Attacks", skills: [{ name: "Service Enumeration", details: "SMB/LDAP/FTP enum" }, { name: "Spoofing & Interception", details: "MITM, ARP Spoofing" }, { name: "Covert Channels", details: "DNS Tunneling, Reverse Shells with Netcat" }] },
+            { title: "Tools & Technologies", skills: [ { name: "Burp Suite", details: "Proxy, Repeater, Intruder" }, { name: "Nmap", details: "Host discovery, port scanning" }, { name: "Metasploit", details: "Exploit development, payload generation" }, { name: "Wireshark", details: "Packet analysis, protocol dissection" }, { name: "Hashcat", details: "Password cracking, hash analysis" }, { name: "John the Ripper", details: "Password recovery, hash cracking" }, { name: "SQLMap", details: "Automated SQL injection testing" }, { name: "Responder", details: "LLMNR/NBT-NS poisoning" }, { name: "Impacket", details: "Network protocol tools" }, { name: "Ghidra", details: "Reverse engineering, vulnerability research" } ] }
         ];
         const PROJECTS_DATA = [
-            { id: 1, type: "WEB_APP", title: "E-Commerce Platform Assessment", description: "Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.", findings: [{ severity: "CRITICAL", text: "SQL Injection in API." }, { severity: "HIGH", text: "Broken Access Control (ATO)." }, { severity: "MED", text: "Stored XSS in review section." }], objective: "Identify and validate critical vulnerabilities in a customer-facing e-commerce application before its major holiday sales launch, focusing on payment processing and user data integrity.", attackChain: ["1. Mapped API endpoints and identified a legacy endpoint vulnerable to SQL Injection.", "2. Exploited SQLi to dump user credential hashes and sensitive order information.", "3. Discovered an Insecure Direct Object Reference (IDOR) in the user profile endpoint, allowing unauthorized access to other users' accounts by iterating identifiers.", "4. Successfully performed an Account Takeover (ATO) of a test administrator account.", "5. Injected a stored XSS payload into the product review field, demonstrating the ability to capture session cookies from other users, including administrators."], businessImpact: "A successful breach could have led to a massive customer data leak, fraudulent transactions, and significant reputational damage, resulting in millions in potential losses and regulatory fines.", status: "All critical and high-risk vulnerabilities were patched by the client's development team prior to the sales event. [REMEDIATED]" },
-            { id: 2, type: "INTERNAL_NETWORK", title: "Corporate AD Pentest", description: "Assumed-breach scenario testing internal defenses and lateral movement paths.", findings: [{ severity: "CRITICAL", text: "Domain Admin via Kerberoasting." }, { severity: "HIGH", text: "Unpatched legacy system foothold." }, { severity: "HIGH", text: "LLMNR Poisoning for cred capture." }], objective: "Simulate a low-privilege attacker within the corporate network and assess the pathways to achieve Domain Administrator privileges, identifying weaknesses in Active Directory configuration and segmentation.", attackChain: ["1. Established initial foothold on an unpatched Windows 7 machine in the marketing department VLAN.", "2. Used Responder to perform LLMNR/NBT-NS poisoning, capturing NTLMv2 hashes from network traffic.", "3. Performed a Kerberoasting attack to extract service account hashes for services with weak SPNs.", "4. Cracked a weak service account password offline using Hashcat.", "5. Leveraged the compromised service account's privileges to perform a DCSync attack, extracting all domain credential hashes, including the krbtgt account.", "6. Forged a Golden Ticket to gain persistent, full Domain Administrator access."], businessImpact: "A complete compromise of the Active Directory would grant an attacker full control over the entire corporate network, including all user accounts, servers, and sensitive data, leading to a catastrophic security incident.", status: "Remediation guidance focused on network segmentation, patching policies, disabling legacy protocols, and implementing strong password policies for service accounts. [REMEDIATED]" },
-            { id: 3, type: "MOBILE_APP", title: "FinTech Mobile App (iOS/Android)", description: "In-depth static/dynamic analysis of a mobile banking application and its API.", findings: [{ severity: "CRITICAL", text: "Hardcoded API keys in binary." }, { severity: "HIGH", text: "No certificate pinning (MitM)." }, { severity: "MED", text: "Insecure local data storage." }], objective: "Evaluate the security posture of a mobile banking application, focusing on insecure data storage, API vulnerabilities, and susceptibility to Man-in-the-Middle (MitM) attacks.", attackChain: ["1. Performed static analysis on the Android APK and discovered hardcoded third-party service API keys.", "2. Set up a MitM proxy (Burp Suite) to intercept all mobile application traffic.", "3. Confirmed lack of certificate pinning, allowing for decryption and manipulation of HTTPS traffic.", "4. Intercepted API requests to identify endpoints for balance transfers and modified requests to transfer funds between test accounts without proper server-side validation.", "5. Used Frida to bypass root detection and access the application's local data storage, finding unencrypted user credentials and transaction history."], businessImpact: "Vulnerabilities could allow an attacker to intercept user credentials, manipulate financial transactions, and extract sensitive data, leading to direct financial theft and loss of customer trust.", status: "Client implemented certificate pinning, removed all hardcoded secrets from the binary, and enforced secure local data encryption. [REMEDIATED]" }
+            { id: 1, type: "WEB_APP", title: "E-Commerce Platform Assessment", description: "Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.", findings: [{ severity: "CRITICAL", text: "SQL Injection in API." }, { severity: "HIGH", text: "Broken Access Control (ATO)." }, { severity: "MED", text: "Stored XSS in review section." }], objective: "Identify and validate critical vulnerabilities in a customer-facing e-commerce application before its major holiday sales launch, focusing on payment processing and user data integrity.", attackChain: ["1. Mapped API endpoints and identified a legacy endpoint vulnerable to SQL Injection.", "2. Exploited SQLi to dump user credential hashes and sensitive order information.", "3. Discovered an Insecure Direct Object Reference (IDOR) in the user profile endpoint, allowing unauthorized access to other users' accounts by iterating identifiers.", "4. Successfully performed an Account Takeover (ATO) of a test administrator account.", "5. Injected a stored XSS payload into the product review field, demonstrating the ability to capture session cookies from other users, including administrators."], businessImpact: "A successful breach could have led to a massive customer data leak, fraudulent transactions, and significant reputational damage, resulting in millions in potential losses and regulatory fines.", status: "All critical and high-risk vulnerabilities were patched by the client's development team prior to the sales event. [REMEDIATED]", toolsUsed: ["Burp Suite", "SQLMap", "Nmap"] },
+            { id: 2, type: "INTERNAL_NETWORK", title: "Corporate AD Pentest", description: "Assumed-breach scenario testing internal defenses and lateral movement paths.", findings: [{ severity: "CRITICAL", text: "Domain Admin via Kerberoasting." }, { severity: "HIGH", text: "Unpatched legacy system foothold." }, { severity: "HIGH", text: "LLMNR Poisoning for cred capture." }], objective: "Simulate a low-privilege attacker within the corporate network and assess the pathways to achieve Domain Administrator privileges, identifying weaknesses in Active Directory configuration and segmentation.", attackChain: ["1. Established initial foothold on an unpatched Windows 7 machine in the marketing department VLAN.", "2. Used Responder to perform LLMNR/NBT-NS poisoning, capturing NTLMv2 hashes from network traffic.", "3. Performed a Kerberoasting attack to extract service account hashes for services with weak SPNs.", "4. Cracked a weak service account password offline using Hashcat.", "5. Leveraged the compromised service account's privileges to perform a DCSync attack, extracting all domain credential hashes, including the krbtgt account.", "6. Forged a Golden Ticket to gain persistent, full Domain Administrator access."], businessImpact: "A complete compromise of the Active Directory would grant an attacker full control over the entire corporate network, including all user accounts, servers, and sensitive data, leading to a catastrophic security incident.", status: "Remediation guidance focused on network segmentation, patching policies, disabling legacy protocols, and implementing strong password policies for service accounts. [REMEDIATED]", toolsUsed: ["Responder", "Hashcat", "Impacket", "Metasploit"] },
+            { id: 3, type: "MOBILE_APP", title: "FinTech Mobile App (iOS/Android)", description: "In-depth static/dynamic analysis of a mobile banking application and its API.", findings: [{ severity: "CRITICAL", text: "Hardcoded API keys in binary." }, { severity: "HIGH", text: "No certificate pinning (MitM)." }, { severity: "MED", text: "Insecure local data storage." }], objective: "Evaluate the security posture of a mobile banking application, focusing on insecure data storage, API vulnerabilities, and susceptibility to Man-in-the-Middle (MitM) attacks.", attackChain: ["1. Performed static analysis on the Android APK and discovered hardcoded third-party service API keys.", "2. Set up a MitM proxy (Burp Suite) to intercept all mobile application traffic.", "3. Confirmed lack of certificate pinning, allowing for decryption and manipulation of HTTPS traffic.", "4. Intercepted API requests to identify endpoints for balance transfers and modified requests to transfer funds between test accounts without proper server-side validation.", "5. Used Frida to bypass root detection and access the application's local data storage, finding unencrypted user credentials and transaction history."], businessImpact: "Vulnerabilities could allow an attacker to intercept user credentials, manipulate financial transactions, and extract sensitive data, leading to direct financial theft and loss of customer trust.", status: "Client implemented certificate pinning, removed all hardcoded secrets from the binary, and enforced secure local data encryption. [REMEDIATED]", toolsUsed: ["Burp Suite", "Frida", "JADX", "Objection"] }
         ];
         
         // --- UTILS & SERVICES ---
         const soundManager = {
           isUnlocked: false,
-          unlock() {
-            if (this.isUnlocked) return;
-            this.isUnlocked = true;
-          },
+          unlock() { if (this.isUnlocked) return; this.isUnlocked = true; },
           play(soundKey) {
             if (!this.isUnlocked || !soundAssets[soundKey]) return;
             const audio = new Audio(soundAssets[soundKey]);
@@ -130,40 +132,10 @@
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     const lowerCaseTarget = target.toLowerCase();
-
-                    if (lowerCaseTarget.includes('network error')) {
-                        return reject(new Error('503 Service Unavailable. Connection to analysis engine failed.'));
-                    }
-                    if (lowerCaseTarget.includes('bad request')) {
-                        return reject(new Error('400 Bad Request. The provided input was malformed or invalid.'));
-                    }
-
-                    if (lowerCaseTarget.includes('sql') || lowerCaseTarget.includes('database')) {
-                        return resolve(`### AI-Generated Threat Analysis Report
-
-**Target:** User-provided snippet
-**Analysis Engine:** Gemini (Simulated)
----
-#### 1. Potential SQL Injection (Critical)
-- **Description:** The input processing appears to construct a database query using string concatenation. If user-supplied data is not properly sanitized or parameterized, an attacker could inject malicious SQL commands to bypass authentication, exfiltrate data, or corrupt the database.
-- **Recommendation:** Use parameterized queries or prepared statements to prevent SQL injection attacks.
-
-#### 2. Insecure Error Handling (Medium)
-- **Description:** The application might be revealing verbose error messages to the user. These messages could leak sensitive information about the backend infrastructure, database schema, or framework versions.
-- **Recommendation:** Implement generic, non-descriptive error pages and log detailed errors on the server-side only.`);
-                    }
-                    
-                    return resolve(`### AI-Generated Threat Analysis Report
-
-**Target:** User-provided snippet
-**Analysis Engine:** Gemini (Simulated)
----
-Based on the provided information, no high-severity vulnerabilities are immediately apparent. However, a comprehensive security review would require access to the full source code and a dynamic testing environment. Consider the following general security best practices:
-
-- **Input Validation:** Ensure all user-supplied data is strictly validated on the server-side.
-- **Dependency Management:** Regularly scan for and update outdated or vulnerable third-party libraries.
-- **Secure Configuration:** Follow security hardening guides for all components of the application stack.`);
-
+                    if (lowerCaseTarget.includes('network error')) return reject(new Error('503 Service Unavailable. Connection to analysis engine failed.'));
+                    if (lowerCaseTarget.includes('bad request')) return reject(new Error('400 Bad Request. The provided input was malformed or invalid.'));
+                    if (lowerCaseTarget.includes('sql') || lowerCaseTarget.includes('database')) return resolve(`### AI-Generated Threat Analysis Report\n\n**Target:** User-provided snippet\n**Analysis Engine:** Gemini (Simulated)\n---\n#### 1. Potential SQL Injection (Critical)\n- **Description:** The input processing appears to construct a database query using string concatenation. If user-supplied data is not properly sanitized or parameterized, an attacker could inject malicious SQL commands to bypass authentication, exfiltrate data, or corrupt the database.\n- **Recommendation:** Use parameterized queries or prepared statements to prevent SQL injection attacks.\n\n#### 2. Insecure Error Handling (Medium)\n- **Description:** The application might be revealing verbose error messages to the user. These messages could leak sensitive information about the backend infrastructure, database schema, or framework versions.\n- **Recommendation:** Implement generic, non-descriptive error pages and log detailed errors on the server-side only.`);
+                    return resolve(`### AI-Generated Threat Analysis Report\n\n**Target:** User-provided snippet\n**Analysis Engine:** Gemini (Simulated)\n---\nBased on the provided information, no high-severity vulnerabilities are immediately apparent. However, a comprehensive security review would require access to the full source code and a dynamic testing environment. Consider the following general security best practices:\n\n- **Input Validation:** Ensure all user-supplied data is strictly validated on the server-side.\n- **Dependency Management:** Regularly scan for and update outdated or vulnerable third-party libraries.\n- **Secure Configuration:** Follow security hardening guides for all components of the application stack.`);
                 }, 1500); // Simulate network delay
             });
         };
@@ -173,7 +145,6 @@ Based on the provided information, no high-severity vulnerabilities are immediat
             const [text, setText] = useState(originalText);
             const intervalRef = useRef(null);
             const chars = '!<>-_\\/[]{}—=+*^?#________';
-
             const scramble = useCallback(() => {
                 let iteration = 0;
                 if(intervalRef.current) clearInterval(intervalRef.current);
@@ -186,12 +157,7 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                     iteration += 1 / 3;
                 }, 30);
             }, [originalText]);
-
-            const reset = useCallback(() => {
-                if (intervalRef.current) clearInterval(intervalRef.current);
-                setText(originalText);
-            }, [originalText]);
-
+            const reset = useCallback(() => { if (intervalRef.current) clearInterval(intervalRef.current); setText(originalText); }, [originalText]);
             return { text, scramble, reset };
         };
 
@@ -202,25 +168,11 @@ Based on the provided information, no high-severity vulnerabilities are immediat
             useEffect(() => {
                 let index = 0;
                 const interval = setInterval(() => {
-                    if (index < bootSequence.length) {
-                        setLines(prev => [...prev, bootSequence[index]]);
-                        soundManager.play('type');
-                        index++;
-                    } else {
-                        clearInterval(interval);
-                        setTimeout(onComplete, 500);
-                    }
+                    if (index < bootSequence.length) { setLines(prev => [...prev, bootSequence[index]]); soundManager.play('type'); index++; } else { clearInterval(interval); setTimeout(onComplete, 500); }
                 }, 400);
                 return () => clearInterval(interval);
             }, [onComplete]);
-            return (
-                <div className="fixed inset-0 bg-[#0d0d0d] z-50 flex items-center justify-center">
-                    <div className="w-full max-w-2xl font-mono text-green-400 p-4">
-                        {lines.map((line, i) => <p key={i} className="terminal-glow"><span className="text-green-600">&gt; </span>{line}</p>)}
-                        <span className="blinking-cursor">_</span>
-                    </div>
-                </div>
-            );
+            return (<div className="fixed inset-0 bg-[#0d0d0d] z-50 flex items-center justify-center"><div className="w-full max-w-2xl font-mono text-green-400 p-4">{lines.map((line, i) => <p key={i} className="terminal-glow"><span className="text-green-600">&gt; </span>{line}</p>)}<span className="blinking-cursor">_</span></div></div>);
         };
 
         const Header = () => {
@@ -234,18 +186,13 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                         <ul className="hidden md:flex items-center space-x-8 font-mono text-sm">{navLinks.map(link => <li key={link.href}><a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">[ {link.label} ]</a></li>)}</ul>
                         <button onClick={() => setMobileMenuOpen(p => !p)} className="md:hidden text-white" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
                     </nav>
-                    <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-black/90 font-mono`}>
-                        <ul className="flex flex-col items-center space-y-4 py-4">{navLinks.map(link => <li key={link.href}><a href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ {link.label} ]</a></li>)}</ul>
-                    </div>
+                    <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-black/90 font-mono`}><ul className="flex flex-col items-center space-y-4 py-4">{navLinks.map(link => <li key={link.href}><a href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ {link.label} ]</a></li>)}</ul></div>
                 </header>
             );
         };
 
         const TypingAnimation = ({ lines, speed = 50 }) => {
-            const [currentLineIndex, setCurrentLineIndex] = useState(0);
-            const [displayText, setDisplayText] = useState('');
-            const [isComplete, setIsComplete] = useState(false);
-            const soundPlayedRef = useRef(false);
+            const [currentLineIndex, setCurrentLineIndex] = useState(0); const [displayText, setDisplayText] = useState(''); const [isComplete, setIsComplete] = useState(false); const soundPlayedRef = useRef(false);
             useEffect(() => {
                 if (currentLineIndex < lines.length) {
                     const line = lines[currentLineIndex];
@@ -253,37 +200,19 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                         soundPlayedRef.current = false;
                         const timeout = setTimeout(() => { setDisplayText(line.substring(0, displayText.length + 1)); soundManager.play('type'); }, speed);
                         return () => clearTimeout(timeout);
-                    } else {
-                        if (!soundPlayedRef.current) {
-                           soundPlayedRef.current = true;
-                           const timeout = setTimeout(() => { setCurrentLineIndex(currentLineIndex + 1); setDisplayText(''); }, 1000);
-                           return () => clearTimeout(timeout);
-                        }
-                    }
+                    } else { if (!soundPlayedRef.current) { soundPlayedRef.current = true; const timeout = setTimeout(() => { setCurrentLineIndex(currentLineIndex + 1); setDisplayText(''); }, 1000); return () => clearTimeout(timeout); } }
                 } else setIsComplete(true);
             }, [displayText, currentLineIndex, lines, speed]);
             return <p className="font-mono text-lg md:text-xl text-green-400 terminal-glow">{isComplete ? lines[lines.length - 1] : displayText}<span className="blinking-cursor">_</span></p>;
         };
 
-        const ScrambleHeader = ({ as: Component = 'h2', children, ...props }) => {
-            const { text, scramble, reset } = useScrambleText(children);
-            return <Component onMouseEnter={scramble} onMouseLeave={reset} {...props}>{text}</Component>;
-        };
+        const ScrambleHeader = ({ as: Component = 'h2', children, ...props }) => { const { text, scramble, reset } = useScrambleText(children); return <Component onMouseEnter={scramble} onMouseLeave={reset} {...props}>{text}</Component>; };
 
         const SkillCard = ({ category }) => {
             const [activeSkill, setActiveSkill] = useState(null);
             const SkillDetail = ({ text, speed = 20 }) => {
                 const [displayText, setDisplayText] = useState('');
-                useEffect(() => {
-                    setDisplayText('');
-                    if (text) {
-                        let i = 0;
-                        const interval = setInterval(() => {
-                            if (i < text.length) { setDisplayText(prev => prev + text[i]); i++; } else { clearInterval(interval); }
-                        }, speed);
-                        return () => clearInterval(interval);
-                    }
-                }, [text, speed]);
+                useEffect(() => { setDisplayText(''); if (text) { let i = 0; const interval = setInterval(() => { if (i < text.length) { setDisplayText(prev => prev + text[i]); i++; } else { clearInterval(interval); } }, speed); return () => clearInterval(interval); } }, [text, speed]);
                 return <p className="text-xs text-gray-400 font-mono opacity-80 h-4">{displayText}</p>;
             };
             return (
@@ -291,12 +220,7 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                     <div className="p-3 border-b border-green-500/20 flex items-center gap-3"><h3 className="text-md font-bold text-green-400 font-mono">{category.title}</h3></div>
                     <div className="p-4">
                         <ul className="space-y-2">
-                            {category.skills.map((skill, index) => (
-                                <li key={index} className="flex cursor-default" onMouseEnter={() => setActiveSkill(skill.name)} onMouseLeave={() => setActiveSkill(null)}>
-                                    <span className="text-green-400 font-mono mr-2">&gt;</span>
-                                    <div><h4 className="font-semibold text-gray-200">{skill.name}</h4><SkillDetail text={activeSkill === skill.name ? skill.details : ''} /></div>
-                                </li>
-                            ))}
+                            {category.skills.map((skill, index) => (<li key={index} className="flex cursor-default" onMouseEnter={() => setActiveSkill(skill.name)} onMouseLeave={() => setActiveSkill(null)}><span className="text-green-400 font-mono mr-2">&gt;</span><div><h4 className="font-semibold text-gray-200">{skill.name}</h4><SkillDetail text={activeSkill === skill.name ? skill.details : ''} /></div></li>))}
                         </ul>
                     </div>
                 </div>
@@ -319,23 +243,15 @@ Based on the provided information, no high-severity vulnerabilities are immediat
         };
 
         const ProjectModal = ({ project, onClose }) => {
-            useEffect(() => {
-                const handleEsc = (event) => { if (event.key === 'Escape') onClose(); };
-                window.addEventListener('keydown', handleEsc);
-                return () => window.removeEventListener('keydown', handleEsc);
-            }, [onClose]);
+            useEffect(() => { const handleEsc = (event) => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', handleEsc); return () => window.removeEventListener('keydown', handleEsc); }, [onClose]);
             return (
                 <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 modal-overlay" onClick={onClose}>
                     <div className="w-full max-w-3xl bg-[#0d0d0d] border border-green-500/30 font-mono text-sm" onClick={e => e.stopPropagation()}>
-                        <header className="p-3 border-b border-green-500/30 flex justify-between items-center">
-                            <h2 className="text-green-400 terminal-glow">CASE_FILE: {project.title}</h2><button onClick={onClose} className="text-red-500 hover:text-white">[ close ]</button>
-                        </header>
+                        <header className="p-3 border-b border-green-500/30 flex justify-between items-center"><h2 className="text-green-400 terminal-glow">CASE_FILE: {project.title}</h2><button onClick={onClose} className="text-red-500 hover:text-white">[ close ]</button></header>
                         <div className="p-6 max-h-[80vh] overflow-y-auto">
                             <div className="mb-4"><h3 className="text-green-400 mb-2">// OBJECTIVE</h3><p className="text-gray-300 font-sans">{project.objective}</p></div>
-                            <div className="mb-4">
-                                <h3 className="text-green-400 mb-2">// ATTACK_CHAIN</h3>
-                                <ul className="space-y-1 text-gray-300">{project.attackChain.map((step, index) => <li key={index} className="flex"><span className="text-green-600 mr-2">{`[STEP ${index + 1}]`}</span><p className="font-sans flex-1">{step.substring(step.indexOf(' ') + 1)}</p></li>)}</ul>
-                            </div>
+                            <div className="mb-4"><h3 className="text-green-400 mb-2">// ATTACK_CHAIN</h3><ul className="space-y-1 text-gray-300">{project.attackChain.map((step, index) => <li key={index} className="flex"><span className="text-green-600 mr-2">{`[STEP ${index + 1}]`}</span><p className="font-sans flex-1">{step.substring(step.indexOf(' ') + 1)}</p></li>)}</ul></div>
+                            <div className="mb-4"><h3 className="text-green-400 mb-2">// TOOLS_USED</h3><div className="flex flex-wrap gap-2">{project.toolsUsed.map(tool => <span key={tool} className="text-xs bg-green-900/50 text-green-300 py-1 px-2">{tool}</span>)}</div></div>
                             <div className="mb-4"><h3 className="text-green-400 mb-2">// BUSINESS_IMPACT</h3><p className="text-gray-300 font-sans">{project.businessImpact}</p></div>
                             <div><h3 className="text-green-400 mb-2">// STATUS</h3><p className="text-yellow-400">{project.status}</p></div>
                         </div>
@@ -345,69 +261,129 @@ Based on the provided information, no high-severity vulnerabilities are immediat
         };
         
         const ThreatAnalyzer = () => {
-            const [target, setTarget] = useState('');
-            const [result, setResult] = useState('');
-            const [isLoading, setIsLoading] = useState(false);
-            const handleAnalyze = async () => {
-                if (!target.trim()) {
-                    setResult('// ERROR: Target input cannot be empty.');
-                    return;
+            const [history, setHistory] = useState([
+                "AI Threat Analyzer [Version 1.1.0]",
+                "Copyright (c) 2024 1YN3R. All rights reserved.",
+                "Enter 'help' to see available commands."
+            ]);
+            const [inputValue, setInputValue] = useState('');
+            const [isProcessing, setIsProcessing] = useState(false);
+            const terminalRef = useRef(null);
+
+            useEffect(() => {
+                if (terminalRef.current) {
+                    terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
                 }
-                soundManager.play('submit');
-                setIsLoading(true);
-                setResult('// ANALYZING_TARGET... STANDBY...');
-                try {
-                    const analysisResult = await analyzeThreat(target);
-                    setResult(analysisResult);
-                } catch (error) {
-                    const errorMessage = `// [!] ANALYSIS FAILED\n\n---\nERROR: ${error.message}\n---\n\n### DEBUGGING_SUGGESTIONS:\n1. Check your network connection.\n2. Ensure the input data is not empty and is formatted correctly.\n3. The analysis service might be temporarily unavailable. Please try again later.\n4. Note: This is a simulated environment. For a real-world scenario, you would verify API key validity and service quotas.`;
-                    setResult(errorMessage);
-                } finally {
-                    setIsLoading(false);
+            }, [history]);
+
+            const streamResponse = (response) => {
+                let currentIndex = 0;
+                setHistory(prev => [...prev, '']); 
+                const interval = setInterval(() => {
+                    if (currentIndex < response.length) {
+                        setHistory(prev => {
+                            const newHistory = [...prev];
+                            newHistory[newHistory.length - 1] += response[currentIndex];
+                            return newHistory;
+                        });
+                        currentIndex++;
+                    } else {
+                        clearInterval(interval);
+                        setIsProcessing(false);
+                    }
+                }, 10);
+            };
+
+            const handleCommand = async (command) => {
+                const newHistory = [...history, `> ${command}`];
+                setHistory(newHistory);
+                const [cmd, ...args] = command.trim().split(' ');
+                const target = args.join(' ');
+                
+                switch (cmd.toLowerCase()) {
+                    case 'analyze':
+                        if (!target) {
+                            setHistory(prev => [...prev, 'Error: Missing target for analysis. Usage: analyze <target_description>']);
+                            setIsProcessing(false);
+                            return;
+                        }
+                        setHistory(prev => [...prev, '[+] Initializing scan engine...', '[*] Probing target...', '[!] Potential vector identified...']);
+                        try {
+                            const analysisResult = await analyzeThreat(target);
+                            streamResponse(analysisResult);
+                        } catch (error) {
+                            const errorMessage = `[!] ANALYSIS FAILED\n\n---\nERROR: ${error.message}\n---\n\n### DEBUGGING_SUGGESTIONS:\n1. Check network connection simulation ('network error').\n2. Verify input is not malformed ('bad request').\n3. The analysis service might be temporarily unavailable.`;
+                            streamResponse(errorMessage);
+                        }
+                        break;
+                    case 'help':
+                        setHistory(prev => [...prev, "Available commands:\n  analyze <target> - Analyzes a target description for vulnerabilities.\n  clear            - Clears the terminal screen.\n  help             - Shows this help message."]);
+                        setIsProcessing(false);
+                        break;
+                    case 'clear':
+                        setHistory([]);
+                        setIsProcessing(false);
+                        break;
+                    default:
+                        setHistory(prev => [...prev, `'${cmd}' is not recognized as an internal or external command.`]);
+                        setIsProcessing(false);
                 }
             };
+            
+            const handleFormSubmit = (e) => {
+                e.preventDefault();
+                if (!inputValue.trim() || isProcessing) return;
+                soundManager.play('submit');
+                setIsProcessing(true);
+                handleCommand(inputValue);
+                setInputValue('');
+            };
+
             return (
                 <section id="analyzer" className="container mx-auto px-6 py-20 bg-black/30 border-y border-green-500/20">
                     <header className="text-center mb-12">
-                        <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ AI_THREAT_ANALYZER ]</ScrambleHeader>
-                        <p className="mt-4 text-gray-400 max-w-2xl mx-auto">Powered by Gemini. Enter a code snippet or application description to scan for potential vulnerabilities. This is a demonstration tool. Do not enter sensitive or production data.</p>
+                        <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ INTERACTIVE_ANALYSIS_TERMINAL ]</ScrambleHeader>
+                        <p className="mt-4 text-gray-400 max-w-3xl mx-auto">Powered by a simulated Gemini engine. Use the `analyze` command to scan a code snippet or application description for potential vulnerabilities. Do not enter sensitive data.</p>
                     </header>
-                    <div className="max-w-4xl mx-auto font-mono">
-                        <div className="space-y-4">
-                            <div>
-                                <label className="text-green-400 text-sm" htmlFor="target-input">TARGET_INPUT:</label>
-                                <textarea id="target-input" placeholder="e.g., Paste a code snippet, describe a feature, or type 'network error' to test failure states..." rows={8} value={target} onChange={(e) => setTarget(e.target.value)} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" disabled={isLoading}></textarea>
-                            </div>
-                            <div className="text-center">
-                                <button onClick={handleAnalyze} disabled={isLoading} className="bg-transparent border border-green-500 text-green-400 font-semibold py-3 px-12 hover:bg-green-500 hover:text-black transition-all duration-300 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed">{isLoading ? '> ANALYZING...' : '> EXECUTE_SCAN'}</button>
-                            </div>
+                    <div className="max-w-4xl mx-auto font-mono bg-black border border-green-500/30 p-4 h-96 flex flex-col">
+                        <div ref={terminalRef} className="flex-grow overflow-y-auto pr-2">
+                            {history.map((line, index) => (
+                                <p key={index} className={`whitespace-pre-wrap text-sm ${line.startsWith('>') ? 'text-green-400' : 'text-gray-300'}`}>{line}</p>
+                            ))}
+                             {isProcessing && <div className="terminal-output"><p></p></div>}
                         </div>
-                        {result && (
-                            <div className="mt-8">
-                                <h3 className="text-green-400 mb-2">// ANALYSIS_REPORT:</h3>
-                                <div className="bg-black border border-green-500/30 p-4 min-h-[200px] max-h-[500px] overflow-y-auto">
-                                    <pre className="whitespace-pre-wrap text-sm text-gray-300 font-sans">{result}</pre>
-                                </div>
-                            </div>
-                        )}
+                        <form onSubmit={handleFormSubmit} className="flex items-center mt-2">
+                            <span className="text-green-400 mr-2">&gt;</span>
+                            <input
+                                type="text"
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                disabled={isProcessing}
+                                className="bg-transparent border-none text-gray-300 w-full focus:outline-none"
+                                placeholder="Type a command..."
+                                autoFocus
+                            />
+                        </form>
                     </div>
                 </section>
             );
         };
 
         const ContactForm = () => {
-            const handleFormSubmit = (e) => {
-                e.preventDefault();
-                soundManager.play('submit');
-                alert("Message sent. This is a demonstration form.");
-                e.target.reset();
-            };
+            const handleFormSubmit = (e) => { e.preventDefault(); soundManager.play('submit'); alert("Message sent. This is a demonstration form."); e.target.reset(); };
             return (
-                <form onSubmit={handleFormSubmit} className="mt-12 max-w-2xl mx-auto space-y-4 font-mono">
-                    <div><label className="text-green-400 text-sm" htmlFor="email">EMAIL:</label><input id="email" type="email" placeholder="user@domain.com" className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required /></div>
-                    <div><label className="text-green-400 text-sm" htmlFor="message">MESSAGE_BRIEF:</label><textarea id="message" placeholder="Describe testing requirements..." rows={5} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required></textarea></div>
-                    <div className="text-center"><button type="submit" className="bg-transparent border border-green-500 text-green-400 font-semibold py-3 px-12 hover:bg-green-500 hover:text-black transition-all duration-300 w-full md:w-auto">&gt; SEND_MESSAGE</button></div>
-                </form>
+                <div className="max-w-2xl mx-auto">
+                    <form onSubmit={handleFormSubmit} className="space-y-4 font-mono">
+                        <div><label className="text-green-400 text-sm" htmlFor="email">EMAIL:</label><input id="email" type="email" placeholder="user@domain.com" className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required /></div>
+                        <div><label className="text-green-400 text-sm" htmlFor="message">MESSAGE_BRIEF:</label><textarea id="message" placeholder="Describe testing requirements..." rows={5} className="mt-1 bg-black border border-green-500/30 rounded-none p-3 w-full focus:outline-none focus:border-green-500 focus:shadow-[0_0_10px_rgba(57,255,20,0.3)] transition-all" required></textarea></div>
+                        <div className="text-center"><button type="submit" className="bg-transparent border border-green-500 text-green-400 font-semibold py-3 px-12 hover:bg-green-500 hover:text-black transition-all duration-300 w-full md:w-auto">&gt; SEND_MESSAGE</button></div>
+                    </form>
+                    <div className="mt-12 text-center font-mono text-sm text-gray-400">
+                        <h4 className="text-green-400 mb-2">// FOR_SECURE_COMMUNICATION</h4>
+                        <p>PGP Key Fingerprint:</p>
+                        <p className="text-gray-500 select-all">4A61 5253 4543 5552 4520 4B45 5920 4845 5245</p>
+                    </div>
+                </div>
             );
         };
 
@@ -417,31 +393,25 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                     <p>STATUS: CONNECTION_TERMINATED</p>
                     <p className="mb-4">&copy; {new Date().getFullYear()} 1YN3R // ALL RIGHTS RESERVED</p>
                     <div className="flex justify-center space-x-6">
-                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                        <a href="https://github.com/1yn3r" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        <a href="https://linkedin.com/in/1yn3r" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="https://app.hackthebox.com/profile/12345" target="_blank" rel="noopener noreferrer" aria-label="Hack The Box" className="text-gray-500 hover:text-green-400 transition-colors duration-300"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.2 0H4.8A4.8 4.8 0 000 4.8v14.4A4.8 4.8 0 004.8 24h14.4a4.8 4.8 0 004.8-4.8V4.8A4.8 4.8 0 0019.2 0zM8 17.6H4.8V8h3.2v9.6zm-1.6-11.2a1.6 1.6 0 110-3.2 1.6 1.6 0 010 3.2zm12.8 11.2h-3.2v-4.576c0-1.088-.024-2.48-1.512-2.48-1.512 0-1.744 1.184-1.744 2.4v4.656h-3.2V8h3.072v1.4h.048c.424-.8 1.448-1.648 2.92-1.648 3.12 0 3.7 2.056 3.7 4.72V17.6z"/></svg></a>
                     </div>
                 </div>
             </footer>
         );
         
         const App = () => {
-            const [loading, setLoading] = useState(true);
-            const [activeFilter, setActiveFilter] = useState('All');
-            const [selectedProject, setSelectedProject] = useState(null);
-            const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
-
+            const [loading, setLoading] = useState(true); const [activeFilter, setActiveFilter] = useState('All'); const [selectedProject, setSelectedProject] = useState(null); const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
             useEffect(() => {
                 const unlockAudio = () => { soundManager.unlock(); window.removeEventListener('click', unlockAudio); window.removeEventListener('keydown', unlockAudio); };
-                window.addEventListener('click', unlockAudio);
-                window.addEventListener('keydown', unlockAudio);
+                window.addEventListener('click', unlockAudio); window.addEventListener('keydown', unlockAudio);
                 const handleInteraction = (e) => { if (e.target.closest('a, button')) soundManager.play('click'); };
                 document.addEventListener('click', handleInteraction);
                 return () => { window.removeEventListener('click', unlockAudio); window.removeEventListener('keydown', unlockAudio); document.removeEventListener('click', handleInteraction); };
             }, []);
 
             if (loading) return <LoadingScreen onComplete={() => setLoading(false)} />;
-
             const filteredSkills = ALL_SKILLS.filter(category => activeFilter === 'All' || category.title === activeFilter);
 
             return (
@@ -451,15 +421,21 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                         <Header />
                         <main>
                             <section className="container mx-auto px-6 py-20 md:py-32 flex items-center justify-center min-h-screen">
-                                <div className="w-full max-w-4xl bg-black/50 border border-green-500/20 p-4">
-                                    <div className="bg-black/80 p-6 h-[22rem] flex flex-col justify-center">
-                                        <div className="flex items-center mb-4"><span className="h-3 w-3 rounded-full bg-red-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-yellow-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-green-500"></span></div>
-                                        <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
-                                        <TypingAnimation lines={["./execute --profile pentester", "STATUS: Analyzing vulnerabilities...", "OBJECTIVE: Fortify digital assets."]} />
-                                        <div className="mt-8 flex flex-wrap gap-4">
-                                            <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
-                                            <a href="#skills" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Skillset ]</a>
+                                <div className="w-full max-w-4xl text-center">
+                                    <div className="bg-black/50 border border-green-500/20 p-4">
+                                        <div className="bg-black/80 p-6 flex flex-col justify-center text-left">
+                                            <div className="flex items-center mb-4"><span className="h-3 w-3 rounded-full bg-red-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-yellow-500 mr-2"></span><span className="h-3 w-3 rounded-full bg-green-500"></span></div>
+                                            <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
+                                            <TypingAnimation lines={["./execute --profile pentester", "STATUS: Analyzing vulnerabilities...", "OBJECTIVE: Fortify digital assets."]} />
+                                            <div className="mt-8 flex flex-wrap gap-4">
+                                                <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
+                                                <a href="#projects" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Case Files ]</a>
+                                            </div>
                                         </div>
+                                    </div>
+                                     <div className="mt-12 bg-black/30 border border-green-500/20 p-6 text-left">
+                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_PROFESSIONAL_SUMMARY</h3>
+                                        <p className="text-gray-300">Results-driven Penetration Tester specializing in web application, network, and Active Directory security. Adept at emulating advanced threat actors to identify, exploit, and remediate critical vulnerabilities. Seeking to leverage a comprehensive skill set in offensive security to protect and fortify enterprise assets against emerging threats.</p>
                                     </div>
                                 </div>
                             </section>
@@ -467,9 +443,8 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                             <section id="about" className="container mx-auto px-6 py-20">
                                 <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white text-center font-mono terminal-glow mb-12">[ INTEL_PACKAGE: 1YN3R ]</ScrambleHeader>
                                  <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
-                                    <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_PRIMARY_DIRECTIVE</h3><p className="text-gray-400">To identify and neutralize digital threats before they manifest. I operate under the core principle that the best defense is a meticulously planned and flawlessly executed offense. My goal is to expose vulnerabilities in systems, networks, and applications to fortify them against real-world adversaries.</p></div>
-                                     <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_METHODOLOGY</h3><p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation.</p></div>
-                                    <div className="md:col-span-2 bg-black/30 border border-green-500/20 p-6">
+                                     <div className="bg-black/30 border border-green-500/20 p-6"><h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_TECHNICAL_APPROACH</h3><p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation.</p></div>
+                                     <div className="md:col-span-2 bg-black/30 border border-green-500/20 p-6">
                                         <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_CERTIFICATIONS_&_TRAINING</h3>
                                         <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-mono">
                                             <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Cyber Security 101</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> CEH</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Jr Penetration</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Web Fundamentals</li><li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Sec+</li>
@@ -479,7 +454,7 @@ Based on the provided information, no high-severity vulnerabilities are immediat
                             </section>
 
                             <section id="skills" className="container mx-auto px-6 py-20">
-                                <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</ScrambleHeader><p className="mt-4 max-w-3xl mx-auto text-gray-400">Technical domains and frameworks, from web application security to network and Active Directory exploitation.</p></header>
+                                <header className="text-center mb-12"><ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</ScrambleHeader><p className="mt-4 max-w-3xl mx-auto text-gray-400">Technical domains, frameworks, and tools, from web application security to network and Active Directory exploitation.</p></header>
                                  <div className="flex justify-center flex-wrap gap-2 mb-8 font-mono text-sm">
                                     {skillCategories.map(category => <button key={category} onClick={() => setActiveFilter(category)} className={`px-4 py-1 border transition-all duration-200 ${activeFilter === category ? 'bg-green-500 text-black border-green-500' : 'border-green-500/30 text-green-400 hover:bg-green-500/10'}`}>{category}</button>)}
                                 </div>
