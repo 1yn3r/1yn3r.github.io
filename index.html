@@ -72,6 +72,13 @@
           0% { background-position: 0 0; }
           100% { background-position: 0 100%; }
       }
+      .modal-overlay {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
     </style>
     <!-- React and ReactDOM UMD builds -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -107,35 +114,10 @@
           }
         };
 
-
-        // --- ICONS (Minimalist, technical style) ---
-
-        const OwaspIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        );
-        const WebExploitIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-          </svg>
-        );
-        const AdIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.897 1.897M18 18.72a9.094 9.094 0 00-7.5 0m7.5 0a9.094 9.094 0 01-7.5 0m-7.5 0a9.094 9.094 0 017.5 0m-7.5 0a6.75 6.75 0 000 13.5m0-13.5a6.75 6.75 0 010 13.5m0-13.5a6.75 6.75 0 00-3.75 1.043m3.75-1.043a6.75 6.75 0 013.75 1.043m-3.75-1.043V3m-3.75 1.043A6.75 6.75 0 013 4.043m3.75 0V3m0 1.043a6.75 6.75 0 00-3.75-1.043m0 0V3m3.75 0a6.75 6.75 0 01-3.75-1.043" />
-          </svg>
-        );
-         const NetworkIcon = () => (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25zM12 8.25v.01M12 12v.01M12 15.75v.01" />
-          </svg>
-        );
-
-        // --- SKILL DATA ---
+        // --- DATA ---
         const ALL_SKILLS = [
             {
                 title: "OWASP Top 10",
-                icon: <OwaspIcon />,
                 skills: [
                     { name: "A01 – Broken Access Control", details: "IDOR, Privilege Escalation" },
                     { name: "A02 – Cryptographic Failures", details: "Weak SSL/TLS, Insecure Hash, Hardcoded Secrets" },
@@ -151,7 +133,6 @@
             },
             {
                 title: "Web Exploitation",
-                icon: <WebExploitIcon />,
                 skills: [
                     { name: "Cross-Site Scripting (XSS)", details: "Stored/Reflected/DOM" },
                     { name: "Server-Side Template Injection (SSTI)", details: "" },
@@ -162,7 +143,6 @@
             },
             {
                 title: "Active Directory Attacks",
-                icon: <AdIcon />,
                 skills: [
                     { name: "Kerberos Attacks", details: "Kerberoasting, AS-REP Roasting" },
                     { name: "Credential Theft", details: "Pass-the-Hash, DCSync" },
@@ -171,12 +151,78 @@
             },
             {
                 title: "Network Attacks",
-                icon: <NetworkIcon />,
                 skills: [
                     { name: "Service Enumeration", details: "SMB/LDAP/FTP enum" },
                     { name: "Spoofing & Interception", details: "MITM, ARP Spoofing" },
                     { name: "Covert Channels", details: "DNS Tunneling, Reverse Shells with Netcat" },
                 ]
+            }
+        ];
+        
+        const PROJECTS_DATA = [
+            {
+                id: 1,
+                type: "WEB_APP",
+                title: "E-Commerce Platform Assessment",
+                description: "Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.",
+                findings: [
+                    { severity: "CRITICAL", text: "SQL Injection in API." },
+                    { severity: "HIGH", text: "Broken Access Control (ATO)." },
+                    { severity: "MED", text: "Stored XSS in review section." },
+                ],
+                objective: "Identify and validate critical vulnerabilities in a customer-facing e-commerce application before its major holiday sales launch, focusing on payment processing and user data integrity.",
+                attackChain: [
+                    "1. Mapped API endpoints and identified a legacy endpoint vulnerable to SQL Injection.",
+                    "2. Exploited SQLi to dump user credential hashes and sensitive order information.",
+                    "3. Discovered an Insecure Direct Object Reference (IDOR) in the user profile endpoint, allowing unauthorized access to other users' accounts by iterating identifiers.",
+                    "4. Successfully performed an Account Takeover (ATO) of a test administrator account.",
+                    "5. Injected a stored XSS payload into the product review field, demonstrating the ability to capture session cookies from other users, including administrators."
+                ],
+                businessImpact: "A successful breach could have led to a massive customer data leak, fraudulent transactions, and significant reputational damage, resulting in millions in potential losses and regulatory fines.",
+                status: "All critical and high-risk vulnerabilities were patched by the client's development team prior to the sales event. [REMEDIATED]"
+            },
+            {
+                id: 2,
+                type: "INTERNAL_NETWORK",
+                title: "Corporate AD Pentest",
+                description: "Assumed-breach scenario testing internal defenses and lateral movement paths.",
+                findings: [
+                    { severity: "CRITICAL", text: "Domain Admin via Kerberoasting." },
+                    { severity: "HIGH", text: "Unpatched legacy system foothold." },
+                    { severity: "HIGH", text: "LLMNR Poisoning for cred capture." },
+                ],
+                objective: "Simulate a low-privilege attacker within the corporate network and assess the pathways to achieve Domain Administrator privileges, identifying weaknesses in Active Directory configuration and segmentation.",
+                attackChain: [
+                    "1. Established initial foothold on an unpatched Windows 7 machine in the marketing department VLAN.",
+                    "2. Used Responder to perform LLMNR/NBT-NS poisoning, capturing NTLMv2 hashes from network traffic.",
+                    "3. Performed a Kerberoasting attack to extract service account hashes for services with weak SPNs.",
+                    "4. Cracked a weak service account password offline using Hashcat.",
+                    "5. Leveraged the compromised service account's privileges to perform a DCSync attack, extracting all domain credential hashes, including the krbtgt account.",
+                    "6. Forged a Golden Ticket to gain persistent, full Domain Administrator access."
+                ],
+                businessImpact: "A complete compromise of the Active Directory would grant an attacker full control over the entire corporate network, including all user accounts, servers, and sensitive data, leading to a catastrophic security incident.",
+                status: "Remediation guidance focused on network segmentation, patching policies, disabling legacy protocols, and implementing strong password policies for service accounts. [REMEDIATED]"
+            },
+            {
+                id: 3,
+                type: "MOBILE_APP",
+                title: "FinTech Mobile App (iOS/Android)",
+                description: "In-depth static/dynamic analysis of a mobile banking application and its API.",
+                findings: [
+                    { severity: "CRITICAL", text: "Hardcoded API keys in binary." },
+                    { severity: "HIGH", text: "No certificate pinning (MitM)." },
+                    { severity: "MED", text: "Insecure local data storage." },
+                ],
+                objective: "Evaluate the security posture of a mobile banking application, focusing on insecure data storage, API vulnerabilities, and susceptibility to Man-in-the-Middle (MitM) attacks.",
+                attackChain: [
+                    "1. Performed static analysis on the Android APK and discovered hardcoded third-party service API keys.",
+                    "2. Set up a MitM proxy (Burp Suite) to intercept all mobile application traffic.",
+                    "3. Confirmed lack of certificate pinning, allowing for decryption and manipulation of HTTPS traffic.",
+                    "4. Intercepted API requests to identify endpoints for balance transfers and modified requests to transfer funds between test accounts without proper server-side validation.",
+                    "5. Used Frida to bypass root detection and access the application's local data storage, finding unencrypted user credentials and transaction history."
+                ],
+                businessImpact: "Vulnerabilities could allow an attacker to intercept user credentials, manipulate financial transactions, and extract sensitive data, leading to direct financial theft and loss of customer trust.",
+                status: "Client implemented certificate pinning, removed all hardcoded secrets from the binary, and enforced secure local data encryption. [REMEDIATED]"
             }
         ];
 
@@ -217,7 +263,6 @@
         };
 
         // --- COMPONENTS ---
-
         const LoadingScreen = ({ onComplete }) => {
             const [lines, setLines] = useState([]);
             const bootSequence = [
@@ -262,7 +307,7 @@
             const [displayText, setDisplayText] = useState('');
 
             useEffect(() => {
-                setDisplayText(''); // Reset on text change
+                setDisplayText('');
                 if (text) {
                     let i = 0;
                     const interval = setInterval(() => {
@@ -305,6 +350,52 @@
             );
         };
         
+        const ProjectDetailModal = ({ project, onClose }) => {
+            useEffect(() => {
+                const handleEsc = (event) => {
+                    if (event.keyCode === 27) onClose();
+                };
+                window.addEventListener('keydown', handleEsc);
+                return () => window.removeEventListener('keydown', handleEsc);
+            }, [onClose]);
+
+            return (
+                <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 modal-overlay" onClick={onClose}>
+                    <div className="w-full max-w-3xl bg-[#0d0d0d] border border-green-500/30 font-mono text-sm" onClick={e => e.stopPropagation()}>
+                        <header className="p-3 border-b border-green-500/30 flex justify-between items-center">
+                            <h2 className="text-green-400 terminal-glow">CASE_FILE: {project.title}</h2>
+                            <button onClick={onClose} className="text-red-500 hover:text-white">[ close ]</button>
+                        </header>
+                        <div className="p-6 max-h-[80vh] overflow-y-auto">
+                            <div className="mb-4">
+                                <h3 className="text-green-400 mb-2">// OBJECTIVE</h3>
+                                <p className="text-gray-300 font-sans">{project.objective}</p>
+                            </div>
+                            <div className="mb-4">
+                                <h3 className="text-green-400 mb-2">// ATTACK_CHAIN</h3>
+                                <ul className="space-y-1 text-gray-300">
+                                    {project.attackChain.map((step, index) => (
+                                        <li key={index} className="flex">
+                                            <span className="text-green-600 mr-2">{`[STEP ${index+1}]`}</span>
+                                            <p className="font-sans flex-1">{step.substring(step.indexOf(' ')+1)}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="mb-4">
+                                <h3 className="text-green-400 mb-2">// BUSINESS_IMPACT</h3>
+                                <p className="text-gray-300 font-sans">{project.businessImpact}</p>
+                            </div>
+                            <div>
+                                <h3 className="text-green-400 mb-2">// STATUS</h3>
+                                <p className="text-yellow-400">{project.status}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+        
         const ScrambleHeader = ({ as: Component = 'h2', children, ...props }) => {
             const { text, scramble, reset } = useScrambleText(children);
             return <Component onMouseEnter={scramble} onMouseLeave={reset} {...props}>{text}</Component>;
@@ -332,7 +423,7 @@
                            const timeout = setTimeout(() => {
                                setCurrentLineIndex(currentLineIndex + 1);
                                setDisplayText('');
-                           }, 1000); // Pause before next line
+                           }, 1000);
                            return () => clearTimeout(timeout);
                         }
                     }
@@ -354,6 +445,7 @@
             const [loading, setLoading] = useState(true);
             const {text: brandText, scramble: scrambleBrand, reset: resetBrand} = useScrambleText("1YN3R");
             const [activeFilter, setActiveFilter] = useState('All');
+            const [selectedProject, setSelectedProject] = useState(null);
             const skillCategories = ['All', ...ALL_SKILLS.map(cat => cat.title)];
 
             useEffect(() => {
@@ -396,8 +488,9 @@
 
             return (
                 <div id="home" className="bg-transparent text-gray-300">
+                    {selectedProject && <ProjectDetailModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
                     <div className="min-h-screen">
-                        <header className="sticky top-0 z-50 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-green-500/20">
+                        <header className="sticky top-0 z-40 bg-[#0d0d0d]/80 backdrop-blur-sm border-b border-green-500/20">
                             <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
                                 <div className="text-2xl font-bold font-mono text-white tracking-wider" onMouseEnter={scrambleBrand} onMouseLeave={resetBrand}>
                                     <span className="text-green-400 terminal-glow">$</span> {brandText}
@@ -427,7 +520,6 @@
                         </header>
 
                         <main>
-                            {/* Hero Section */}
                             <section className="container mx-auto px-6 py-20 md:py-32 flex items-center justify-center">
                                 <div className="w-full max-w-4xl bg-black/50 border border-green-500/20 p-4">
                                     <div className="bg-black/80 p-6 h-64 flex flex-col justify-center">
@@ -448,30 +540,30 @@
                                 </div>
                             </section>
                             
-                            {/* Intel Section (About) */}
                             <section id="about" className="container mx-auto px-6 py-20">
                                 <ScrambleHeader className="text-3xl md:text-4xl font-bold text-white text-center font-mono terminal-glow mb-12">[ INTEL_PACKAGE: 1YN3R ]</ScrambleHeader>
-                                 <div className="grid md:grid-cols-5 gap-8 items-center">
-                                    <div className="md:col-span-3">
-                                        <h3 className="text-2xl font-bold text-green-400 font-mono mb-4">&gt; Threat Emulation Specialist</h3>
-                                        <p className="mb-4 text-gray-400">My methodology is rooted in offensive security tactics. I emulate real-world adversaries to pressure-test defenses, identify attack vectors, and uncover critical vulnerabilities before they are exploited. My expertise spans across modern cloud environments, complex corporate networks, and critical web applications.</p>
-                                        <ul className="space-y-3 font-mono text-sm">
-                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Proactive vulnerability discovery & exploit validation.</li>
-                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Objective-based, realistic attack simulations.</li>
-                                            <li className="flex"><span className="text-green-400 mr-2">[+]</span> Actionable remediation reports with clear risk metrics.</li>
-                                        </ul>
+                                 <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+                                    <div className="bg-black/30 border border-green-500/20 p-6">
+                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_PRIMARY_DIRECTIVE</h3>
+                                        <p className="text-gray-400">To identify and neutralize digital threats before they manifest. I operate under the core principle that the best defense is a meticulously planned and flawlessly executed offense. My goal is to expose vulnerabilities in systems, networks, and applications to fortify them against real-world adversaries.</p>
                                     </div>
-                                     <div className="md:col-span-2 flex justify-center items-center">
-                                        <div className="w-64 h-64 border-2 border-green-500/30 p-2 bg-black/30">
-                                            <div className="w-full h-full border border-green-500/30 flex items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-32 h-32 text-green-400 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                                            </div>
-                                        </div>
+                                     <div className="bg-black/30 border border-green-500/20 p-6">
+                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_METHODOLOGY</h3>
+                                        <p className="text-gray-400">Leveraging a blend of automated scanning and manual, intelligence-driven testing, I emulate the Tactics, Techniques, and Procedures (TTPs) of modern threat actors. Every engagement is a bespoke operation, designed to pressure-test defenses and provide clear, actionable intelligence for remediation.</p>
+                                    </div>
+                                    <div className="md:col-span-2 bg-black/30 border border-green-500/20 p-6">
+                                        <h3 className="text-xl font-bold text-green-400 font-mono mb-3">//_CERTIFICATIONS_&_TRAINING</h3>
+                                        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-mono">
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Cyber Security 101</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> CEH</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Jr Penetration</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Web Fundamentals</li>
+                                            <li className="text-gray-300"><span className="text-green-500 mr-2">[+]</span> Sec+</li>
+                                        </ul>
                                     </div>
                                  </div>
                             </section>
 
-                            {/* Skills Section */}
                             <section id="skills" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
                                     <ScrambleHeader className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ SKILL_MATRIX ]</ScrambleHeader>
@@ -501,65 +593,40 @@
                                 </div>
                             </section>
                             
-                            {/* Case Files Section (Projects) */}
                             <section id="projects" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
                                     <ScrambleHeader className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ CASE_FILES: ENGAGEMENT_LOGS ]</ScrambleHeader>
                                     <p className="mt-4 max-w-2xl mx-auto text-gray-400">Anonymized summaries of recent penetration testing projects and outcomes.</p>
                                 </header>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono">
-                                    {/* Project Card 1 */}
-                                    <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-                                        <div className="p-4 border-b border-green-500/20">
-                                          <p className="text-xs text-green-400">TYPE: WEB_APP</p>
-                                          <h3 className="text-lg font-semibold text-white">E-Commerce Platform Assessment</h3>
-                                        </div>
-                                        <div className="p-4 flex-grow text-sm">
-                                            <p className="text-gray-400 mb-4 font-sans">Comprehensive pentest focusing on OWASP Top 10 and business logic flaws.</p>
-                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
-                                            <ul className="space-y-1 text-gray-300">
-                                                <li><span className="text-red-500">[CRITICAL]</span> SQL Injection in API.</li>
-                                                <li><span className="text-orange-500">[HIGH]</span> Broken Access Control (ATO).</li>
-                                                <li><span className="text-yellow-500">[MED]</span> Stored XSS in review section.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    {/* Project Card 2 */}
-                                     <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-                                        <div className="p-4 border-b border-green-500/20">
-                                          <p className="text-xs text-green-400">TYPE: INTERNAL_NETWORK</p>
-                                          <h3 className="text-lg font-semibold text-white">Corporate AD Pentest</h3>
-                                        </div>
-                                        <div className="p-4 flex-grow text-sm">
-                                            <p className="text-gray-400 mb-4 font-sans">Assumed-breach scenario testing internal defenses and lateral movement paths.</p>
-                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
-                                            <ul className="space-y-1 text-gray-300">
-                                                <li><span className="text-red-500">[CRITICAL]</span> Domain Admin via Kerberoasting.</li>
-                                                <li><span className="text-orange-500">[HIGH]</span> Unpatched legacy system foothold.</li>
-                                                <li><span className="text-orange-500">[HIGH]</span> LLMNR Poisoning for cred capture.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    {/* Project Card 3 */}
-                                    <div className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-                                        <div className="p-4 border-b border-green-500/20">
-                                          <p className="text-xs text-green-400">TYPE: MOBILE_APP</p>
-                                          <h3 className="text-lg font-semibold text-white">FinTech Mobile App (iOS/Android)</h3>
-                                        </div>
-                                        <div className="p-4 flex-grow text-sm">
-                                            <p className="text-gray-400 mb-4 font-sans">In-depth static/dynamic analysis of a mobile banking application and its API.</p>
-                                            <h4 className="font-semibold text-gray-200 mb-2">FINDINGS:</h4>
-                                            <ul className="space-y-1 text-gray-300">
-                                                <li><span className="text-red-500">[CRITICAL]</span> Hardcoded API keys in binary.</li>
-                                                <li><span className="text-orange-500">[HIGH]</span> No certificate pinning (MitM).</li>
-                                                <li><span className="text-yellow-500">[MED]</span> Insecure local data storage.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    {PROJECTS_DATA.map(project => {
+                                        const severityColors = { CRITICAL: "text-red-500", HIGH: "text-orange-500", MED: "text-yellow-500" };
+                                        return (
+                                            <div key={project.id} className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                                <div className="p-4 border-b border-green-500/20">
+                                                    <p className="text-xs text-green-400">TYPE: {project.type}</p>
+                                                    <h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3>
+                                                </div>
+                                                <div className="p-4 flex-grow text-sm">
+                                                    <p className="text-gray-400 mb-4 font-sans">{project.description}</p>
+                                                    <h4 className="font-semibold text-gray-200 mb-2">KEY_FINDINGS:</h4>
+                                                    <ul className="space-y-1 text-gray-300">
+                                                        {project.findings.map((finding, index) => (
+                                                            <li key={index}><span className={severityColors[finding.severity]}>[{finding.severity}]</span> {finding.text}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                                <div className="p-4 mt-auto">
+                                                    <button onClick={() => setSelectedProject(project)} className="w-full text-center bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 hover:bg-green-500/20 transition-all duration-300">
+                                                        [ VIEW DETAILS ]
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </section>
 
-                            {/* Contact Section */}
                             <section id="contact" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
                                      <ScrambleHeader className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ OPEN_SECURE_CHANNEL ]</ScrambleHeader>
@@ -581,7 +648,6 @@
                             </section>
                         </main>
 
-                        {/* Footer */}
                         <footer className="bg-black/50 border-t border-green-500/20">
                              <div className="container mx-auto px-6 py-8 text-center text-gray-500 font-mono text-xs">
                                 <p>STATUS: CONNECTION_TERMINATED</p>
