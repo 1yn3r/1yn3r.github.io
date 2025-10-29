@@ -4,30 +4,29 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
     
     <!-- SEO & Metadata -->
     <title>1YN3R // Penetration Tester Portfolio</title>
     <meta name="description" content="Portfolio of 1YN3R, a penetration tester and cybersecurity professional specializing in web app security, network attacks, and Active Directory exploitation. View projects, skills, and experience." />
     <meta name="author" content="1YN3R (Hoang Cuong)" />
     <!-- TODO: Replace 'https://your-github-username.github.io/your-repo-name/' with your actual GitHub Pages URL -->
-    <link rel="canonical" href="https://your-github-username.github.io/your-repo-name/" />
+    <link rel="canonical" href="https://1yn3r.github.io/" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://your-github-username.github.io/your-repo-name/" />
+    <meta property="og:url" content="https://1yn3r.github.io/" />
     <meta property="og:title" content="1YN3R // Penetration Tester Portfolio" />
     <meta property="og:description" content="Explore the portfolio of a skilled penetration tester, featuring detailed case files, a comprehensive skill matrix, and an interactive threat analyzer." />
-    <meta property="og:image" content="https://your-github-username.github.io/your-repo-name/og-image.png" />
+    <meta property="og:image" content="https://1yn3r.github.io/og-image.png" />
 
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://your-github-username.github.io/your-repo-name/" />
+    <meta property="twitter:url" content="https://1yn3r.github.io/" />
     <meta property="twitter:title" content="1YN3R // Penetration Tester Portfolio" />
     <meta property="twitter:description" content="Explore the portfolio of a skilled penetration tester, featuring detailed case files, a comprehensive skill matrix, and an interactive threat analyzer." />
-    <meta property="twitter:image" content="https://your-github-username.github.io/your-repo-name/og-image.png" />
+    <meta property="twitter:image" content="https://1yn3r.github.io/og-image.png" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -54,9 +53,6 @@
     <!-- Analytics - TODO: Replace with your actual Umami ID if you use it -->
     <script async src="https://analytics.umami.is/script.js" data-website-id="YOUR-UMAMI-WEBSITE-ID"></script>
     
-=======
-    <title>Penetration Tester Portfolio // 1YN3R</title>
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,19 +153,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <!-- Babel for JSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<<<<<<< HEAD
-=======
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0"
-  }
-}
-</script>
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
 </head>
 <body>
     <div class="scanline-vignette"></div>
@@ -205,11 +188,8 @@
             { id: 11, type: "TOOL_CONTRIBUTION", title: "Cameradar - RTSP Stream Scanner", description: "Contributed to 'Cameradar', an open-source tool written in Go, designed to scan for and access unprotected RTSP video streams on network devices.", findings: [{ severity: "INFO", text: "Improved scanning efficiency." }, { severity: "INFO", text: "Added new device signatures." }, { severity: "INFO", text: "Fixed bugs in network protocol handling." }], objective: "To enhance the tool's capabilities and deepen my understanding of network scanning techniques, IoT device security, and the Go programming language.", attackChain: ["1. Analyzed the existing codebase to identify performance bottlenecks in the network scanning module.", "2. Refactored parts of the RTSP handshake logic to handle edge cases and reduce timeouts.", "3. Researched and added signatures for several new models of IP cameras, expanding the tool's detection capabilities.", "4. Submitted pull requests with detailed explanations and test cases, collaborating with the project maintainer."], businessImpact: "Participation in widely-used open-source security tools showcases a commitment to the community, collaborative development skills, and a deeper understanding of real-world device vulnerabilities.", status: "[CONTRIBUTION]", toolsUsed: ["Go", "RTSP Protocol", "Git", "Nmap"], githubLink: "https://github.com/1yn3r/cameradar" }
         ];
 
-<<<<<<< HEAD
         const HIGHLIGHTED_PROJECTS = PROJECTS_DATA.filter(p => [1, 2, 7].includes(p.id));
 
-=======
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
         const TIMELINE_DATA = [
             { year: "2021-2022", title: "Endpoint Security Engineer, HPT", description: "Deployed and managed enterprise endpoint security solutions, specializing in the Kaspersky Security Center suite. Responsible for policy configuration, incident response, and system hardening for large-scale client networks." },
             { year: "2022", title: "Pivot to Offensive Security", description: "Began a dedicated self-study curriculum focused on penetration testing methodologies, leveraging platforms like TryHackMe and Hack The Box to build foundational offensive skills." },
@@ -290,30 +270,7 @@
 
             return { text, scramble, reset };
         };
-<<<<<<< HEAD
         
-=======
-
-        // --- SERVICES ---
-        const analyzeThreat = async (target) => {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    const lowerCaseTarget = target.toLowerCase();
-                    if (lowerCaseTarget.includes('network error')) {
-                        return reject(new Error('503 Service Unavailable. Connection to analysis engine failed.'));
-                    }
-                    if (lowerCaseTarget.includes('bad request')) {
-                        return reject(new Error('400 Bad Request. The provided input was malformed or invalid.'));
-                    }
-                    if (lowerCaseTarget.includes('sql') || lowerCaseTarget.includes('database')) {
-                        return resolve(`### AI-Generated Threat Analysis Report\n\n**Target:** User-provided snippet\n**Analysis Engine:** Gemini (Simulated)\n---\n#### 1. Potential SQL Injection (Critical)\n- **Description:** The input processing appears to construct a database query using string concatenation. If user-supplied data is not properly sanitized or parameterized, an attacker could inject malicious SQL commands to bypass authentication, exfiltrate data, or corrupt the database.\n- **Recommendation:** Use parameterized queries or prepared statements to prevent SQL injection attacks.\n\n#### 2. Insecure Error Handling (Medium)\n- **Description:** The application might be revealing verbose error messages to the user. These messages could leak sensitive information about the backend infrastructure, database schema, or framework versions.\n- **Recommendation:** Implement generic, non-descriptive error pages and log detailed errors on the server-side only.`);
-                    }
-                    return resolve(`### AI-Generated Threat Analysis Report\n\n**Target:** User-provided snippet\n**Analysis Engine:** Gemini (Simulated)\n---\nBased on the provided information, no high-severity vulnerabilities are immediately apparent. However, a comprehensive security review would require access to the full source code and a dynamic testing environment. Consider the following general security best practices:\n\n- **Input Validation:** Ensure all user-supplied data is strictly validated on the server-side.\n- **Dependency Management:** Regularly scan for and update outdated or vulnerable third-party libraries.\n- **Secure Configuration:** Follow security hardening guides for all components of the application stack.`);
-                }, 1500); // Simulate network delay
-            });
-        };
-
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
         // --- COMPONENTS ---
         const LoadingScreen = ({ onComplete }) => {
             const [lines, setLines] = useState([]);
@@ -361,11 +318,8 @@
             const navLinks = [
                 { href: "#home", label: "home" },
                 { href: "#about", label: "about" },
-<<<<<<< HEAD
                 { href: "CV.pdf", label: "download cv", isExternal: true },
                 { href: "#highlights", label: "highlights" },
-=======
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                 { href: "#timeline", label: "timeline" },
                 { href: "#certifications", label: "certs" },
                 { href: "#skills", label: "skills" },
@@ -383,7 +337,6 @@
                             <span className="text-green-400 terminal-glow">$</span> {brandText}
                         </a>
                         <ul className="hidden md:flex items-center space-x-8 font-mono text-sm">
-<<<<<<< HEAD
                             {navLinks.map(link => 
                                 <li key={link.href}>
                                     <a href={link.href} 
@@ -394,9 +347,6 @@
                                     </a>
                                 </li>
                             )}
-=======
-                            {navLinks.map(link => <li key={link.href}><a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">[ {link.label} ]</a></li>)}
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </ul>
                         <button onClick={() => setMobileMenuOpen(p => !p)} className="md:hidden text-white" aria-label="Open menu">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -406,7 +356,6 @@
                     </nav>
                     <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-black/90 font-mono`}>
                         <ul className="flex flex-col items-center space-y-4 py-4">
-<<<<<<< HEAD
                              {navLinks.map(link => 
                                 <li key={link.href}>
                                     <a href={link.href} 
@@ -418,9 +367,6 @@
                                     </a>
                                 </li>
                             )}
-=======
-                            {navLinks.map(link => <li key={link.href}><a href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ {link.label} ]</a></li>)}
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </ul>
                     </div>
                 </header>
@@ -615,16 +561,10 @@
         
         const ThreatAnalyzer = () => {
             const [history, setHistory] = useState([
-<<<<<<< HEAD
                 "AI Threat Analyzer [Version 1.2.0-static]",
                 "Copyright (c) 2024 1YN3R. All rights reserved.",
                 "NOTE: API connection disabled for static deployment.",
                 "This is a demonstration shell. Enter 'help' to see available commands."
-=======
-                "AI Threat Analyzer [Version 1.1.0]",
-                "Copyright (c) 2024 1YN3R. All rights reserved.",
-                "Enter 'help' to see available commands."
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
             ]);
             const [inputValue, setInputValue] = useState('');
             const [isProcessing, setIsProcessing] = useState(false);
@@ -636,7 +576,6 @@
                 }
             }, [history]);
 
-<<<<<<< HEAD
             const handleCommand = (command) => {
                 const newHistory = [...history, `> ${command}`];
                 setHistory(newHistory);
@@ -655,50 +594,6 @@
                         break;
                     case 'help':
                         setHistory(prev => [...prev, "Available commands:\n  analyze <target> - [DISABLED] Analyzes a target description.\n  clear            - Clears the terminal screen.\n  help             - Shows this help message."]);
-=======
-            const streamResponse = (response) => {
-                let currentIndex = 0;
-                setHistory(prev => [...prev, '']);
-                const interval = setInterval(() => {
-                    if (currentIndex < response.length) {
-                        setHistory(prev => {
-                            const newHistory = [...prev];
-                            newHistory[newHistory.length - 1] += response[currentIndex];
-                            return newHistory;
-                        });
-                        currentIndex++;
-                    } else {
-                        clearInterval(interval);
-                        setIsProcessing(false);
-                    }
-                }, 10);
-            };
-
-            const handleCommand = async (command) => {
-                const newHistory = [...history, `> ${command}`];
-                setHistory(newHistory);
-                const [cmd, ...args] = command.trim().split(' ');
-                const target = args.join(' ');
-                
-                switch (cmd.toLowerCase()) {
-                    case 'analyze':
-                        if (!target) {
-                            setHistory(prev => [...prev, 'Error: Missing target for analysis. Usage: analyze <target_description>']);
-                            setIsProcessing(false);
-                            return;
-                        }
-                        setHistory(prev => [...prev, '[+] Initializing scan engine...', '[*] Probing target...', '[!] Potential vector identified...']);
-                        try {
-                            const analysisResult = await analyzeThreat(target);
-                            streamResponse(analysisResult);
-                        } catch (error) {
-                            const errorMessage = `[!] ANALYSIS FAILED\n\n---\nERROR: ${error.message}\n---\n\n### DEBUGGING_SUGGESTIONS:\n1. Check network connection simulation ('network error').\n2. Verify input is not malformed ('bad request').\n3. The analysis service might be temporarily unavailable.`;
-                            streamResponse(errorMessage);
-                        }
-                        break;
-                    case 'help':
-                        setHistory(prev => [...prev, "Available commands:\n  analyze <target> - Analyzes a target description for vulnerabilities.\n  clear            - Clears the terminal screen.\n  help             - Shows this help message."]);
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         setIsProcessing(false);
                         break;
                     case 'clear':
@@ -724,21 +619,13 @@
                 <section id="analyzer" className="container mx-auto px-6 py-20 bg-black/30 border-y border-green-500/20">
                     <header className="text-center mb-12">
                         <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ INTERACTIVE_ANALYSIS_TERMINAL ]</ScrambleHeader>
-<<<<<<< HEAD
                         <p className="mt-4 text-gray-400 max-w-3xl mx-auto">This is a demonstration of the threat analyzer terminal. Due to security constraints on static sites, the connection to the live AI is disabled.</p>
-=======
-                        <p className="mt-4 text-gray-400 max-w-3xl mx-auto">Powered by a simulated Gemini engine. Use the `analyze` command to scan a code snippet or application description for potential vulnerabilities. Do not enter sensitive data.</p>
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                     </header>
                     <div className="max-w-4xl mx-auto font-mono bg-black border border-green-500/30 p-4 h-96 flex flex-col">
                         <div ref={terminalRef} className="flex-grow overflow-y-auto pr-2">
                             {history.map((line, index) => (
                                 <p key={index} className={`whitespace-pre-wrap text-sm ${line.startsWith('>') ? 'text-green-400' : 'text-gray-300'}`}>{line}</p>
                             ))}
-<<<<<<< HEAD
-=======
-                            {isProcessing && <div className="terminal-output"><p></p></div>}
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </div>
                         <form onSubmit={handleFormSubmit} className="flex items-center mt-2">
                             <span className="text-green-400 mr-2">&gt;</span>
@@ -773,10 +660,6 @@
                 
                 window.location.href = `mailto:hc223390@gmail.com?subject=${subject}&body=${body}`;
         
-<<<<<<< HEAD
-=======
-                // Optionally reset form after a delay
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                 setTimeout(() => {
                     setEmail('');
                     setMessage('');
@@ -939,21 +822,13 @@
                         break;
                     case 'ls':
                     case 'dir':
-<<<<<<< HEAD
                         console.log("Available sections: #home, #about, #highlights, #timeline, #certifications, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
-=======
-                        console.log("Available sections: #home, #about, #timeline, #certifications, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         break;
                     case 'help':
                         console.log([
                             "Available commands:",
                             "  goto <section>  - Navigates to the specified section.",
-<<<<<<< HEAD
                             "  open <site>     - Opens a social profile (github, linkedin, tryhackme).",
-=======
-                            "  open <site>     - Opens a social profile (github, linkedin, tryhackme, htb).",
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                             "  filter <type> <keyword> - Filters content (e.g., 'filter skills web', 'filter projects ad'). Use 'filter clear' to reset.",
                             "  ls              - Lists all available sections.",
                             "  help            - Shows this help message.",
@@ -969,11 +844,7 @@
                         if (socialLinks[target]) {
                             window.open(socialLinks[target], '_blank');
                         } else {
-<<<<<<< HEAD
                             console.warn(`Unknown site: ${target}. Available: github, linkedin, tryhackme.`);
-=======
-                            console.warn(`Unknown site: ${target}. Available: github, linkedin, tryhackme, htb.`);
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         }
                         break;
                     case 'filter':
@@ -1041,12 +912,9 @@
                                                     src="https://media.licdn.com/dms/image/v2/D5603AQGEDGsTjMR0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692039784157?e=1762992000&v=beta&t=SPR5-kSBzBnAaH5Qndl0upYJs5vMG4oc2FoHddcqLYo" 
                                                     alt="1YN3R Avatar" 
                                                     className="w-32 h-32 md:w-40 md:h-40 object-cover border-2 border-green-500/50 shadow-[0_0_15px_rgba(57,255,20,0.3)]"
-<<<<<<< HEAD
                                                     width="160"
                                                     height="160"
                                                     loading="lazy"
-=======
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                                                 />
                                                 <div className="flex-1">
                                                     <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
@@ -1056,10 +924,7 @@
                                                     </p>
                                                     <div className="mt-8 flex flex-wrap gap-4">
                                                         <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
-<<<<<<< HEAD
                                                         <a href="CV.pdf" target="_blank" rel="noopener noreferrer" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Download CV ]</a>
-=======
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                                                         <a href="#projects" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Case Files ]</a>
                                                     </div>
                                                 </div>
@@ -1081,7 +946,6 @@
                                 </div>
                             </section>
 
-<<<<<<< HEAD
                             <section id="highlights" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
                                     <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ MISSION_HIGHLIGHTS ]</ScrambleHeader>
@@ -1118,8 +982,6 @@
                                     ))}
                                 </div>
                             </section>
-=======
->>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
 
                             <section id="timeline" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
