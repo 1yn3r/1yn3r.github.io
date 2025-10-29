@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Replace 'https://1yn3r.github.io/' with your actual GitHub Pages URL
+Sitemap: https://1yn3r.github.io/sitemap.xml
