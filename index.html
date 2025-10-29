@@ -4,7 +4,59 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
+    
+    <!-- SEO & Metadata -->
+    <title>1YN3R // Penetration Tester Portfolio</title>
+    <meta name="description" content="Portfolio of 1YN3R, a penetration tester and cybersecurity professional specializing in web app security, network attacks, and Active Directory exploitation. View projects, skills, and experience." />
+    <meta name="author" content="1YN3R (Hoang Cuong)" />
+    <!-- TODO: Replace 'https://your-github-username.github.io/your-repo-name/' with your actual GitHub Pages URL -->
+    <link rel="canonical" href="https://your-github-username.github.io/your-repo-name/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-github-username.github.io/your-repo-name/" />
+    <meta property="og:title" content="1YN3R // Penetration Tester Portfolio" />
+    <meta property="og:description" content="Explore the portfolio of a skilled penetration tester, featuring detailed case files, a comprehensive skill matrix, and an interactive threat analyzer." />
+    <meta property="og:image" content="https://your-github-username.github.io/your-repo-name/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://your-github-username.github.io/your-repo-name/" />
+    <meta property="twitter:title" content="1YN3R // Penetration Tester Portfolio" />
+    <meta property="twitter:description" content="Explore the portfolio of a skilled penetration tester, featuring detailed case files, a comprehensive skill matrix, and an interactive threat analyzer." />
+    <meta property="twitter:image" content="https://your-github-username.github.io/your-repo-name/og-image.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Hoang Cuong (1YN3R)",
+        "alternateName": "1YN3R",
+        "url": "https://your-github-username.github.io/your-repo-name/",
+        "jobTitle": "Penetration Tester",
+        "knowsAbout": ["Cybersecurity", "Penetration Testing", "Web Application Security", "Network Security", "Active Directory"],
+        "image": "https://media.licdn.com/dms/image/v2/D5603AQGEDGsTjMR0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692039784157?e=1762992000&v=beta&t=SPR5-kSBzBnAaH5Qndl0upYJs5vMG4oc2FoHddcqLYo",
+        "sameAs": [
+          "https://github.com/1yn3r",
+          "https://linkedin.com/in/1yn3r",
+          "https://tryhackme.com/p/1yn3r"
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Analytics - TODO: Replace with your actual Umami ID if you use it -->
+    <script async src="https://analytics.umami.is/script.js" data-website-id="YOUR-UMAMI-WEBSITE-ID"></script>
+    
+=======
     <title>Penetration Tester Portfolio // 1YN3R</title>
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,6 +157,8 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <!-- Babel for JSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<<<<<<< HEAD
+=======
 <script type="importmap">
 {
   "imports": {
@@ -115,6 +169,7 @@
   }
 }
 </script>
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
 </head>
 <body>
     <div class="scanline-vignette"></div>
@@ -150,6 +205,11 @@
             { id: 11, type: "TOOL_CONTRIBUTION", title: "Cameradar - RTSP Stream Scanner", description: "Contributed to 'Cameradar', an open-source tool written in Go, designed to scan for and access unprotected RTSP video streams on network devices.", findings: [{ severity: "INFO", text: "Improved scanning efficiency." }, { severity: "INFO", text: "Added new device signatures." }, { severity: "INFO", text: "Fixed bugs in network protocol handling." }], objective: "To enhance the tool's capabilities and deepen my understanding of network scanning techniques, IoT device security, and the Go programming language.", attackChain: ["1. Analyzed the existing codebase to identify performance bottlenecks in the network scanning module.", "2. Refactored parts of the RTSP handshake logic to handle edge cases and reduce timeouts.", "3. Researched and added signatures for several new models of IP cameras, expanding the tool's detection capabilities.", "4. Submitted pull requests with detailed explanations and test cases, collaborating with the project maintainer."], businessImpact: "Participation in widely-used open-source security tools showcases a commitment to the community, collaborative development skills, and a deeper understanding of real-world device vulnerabilities.", status: "[CONTRIBUTION]", toolsUsed: ["Go", "RTSP Protocol", "Git", "Nmap"], githubLink: "https://github.com/1yn3r/cameradar" }
         ];
 
+<<<<<<< HEAD
+        const HIGHLIGHTED_PROJECTS = PROJECTS_DATA.filter(p => [1, 2, 7].includes(p.id));
+
+=======
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
         const TIMELINE_DATA = [
             { year: "2021-2022", title: "Endpoint Security Engineer, HPT", description: "Deployed and managed enterprise endpoint security solutions, specializing in the Kaspersky Security Center suite. Responsible for policy configuration, incident response, and system hardening for large-scale client networks." },
             { year: "2022", title: "Pivot to Offensive Security", description: "Began a dedicated self-study curriculum focused on penetration testing methodologies, leveraging platforms like TryHackMe and Hack The Box to build foundational offensive skills." },
@@ -230,6 +290,9 @@
 
             return { text, scramble, reset };
         };
+<<<<<<< HEAD
+        
+=======
 
         // --- SERVICES ---
         const analyzeThreat = async (target) => {
@@ -250,6 +313,7 @@
             });
         };
 
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
         // --- COMPONENTS ---
         const LoadingScreen = ({ onComplete }) => {
             const [lines, setLines] = useState([]);
@@ -297,6 +361,11 @@
             const navLinks = [
                 { href: "#home", label: "home" },
                 { href: "#about", label: "about" },
+<<<<<<< HEAD
+                { href: "CV.pdf", label: "download cv", isExternal: true },
+                { href: "#highlights", label: "highlights" },
+=======
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                 { href: "#timeline", label: "timeline" },
                 { href: "#certifications", label: "certs" },
                 { href: "#skills", label: "skills" },
@@ -314,7 +383,20 @@
                             <span className="text-green-400 terminal-glow">$</span> {brandText}
                         </a>
                         <ul className="hidden md:flex items-center space-x-8 font-mono text-sm">
+<<<<<<< HEAD
+                            {navLinks.map(link => 
+                                <li key={link.href}>
+                                    <a href={link.href} 
+                                       className="text-gray-300 hover:text-white transition-colors duration-300"
+                                       {...(link.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                    >
+                                        [ {link.label} ]
+                                    </a>
+                                </li>
+                            )}
+=======
                             {navLinks.map(link => <li key={link.href}><a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-300">[ {link.label} ]</a></li>)}
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </ul>
                         <button onClick={() => setMobileMenuOpen(p => !p)} className="md:hidden text-white" aria-label="Open menu">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -324,7 +406,21 @@
                     </nav>
                     <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-black/90 font-mono`}>
                         <ul className="flex flex-col items-center space-y-4 py-4">
+<<<<<<< HEAD
+                             {navLinks.map(link => 
+                                <li key={link.href}>
+                                    <a href={link.href} 
+                                       onClick={() => setMobileMenuOpen(false)} 
+                                       className="text-gray-300 hover:text-white"
+                                       {...(link.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                    >
+                                        [ {link.label} ]
+                                    </a>
+                                </li>
+                            )}
+=======
                             {navLinks.map(link => <li key={link.href}><a href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">[ {link.label} ]</a></li>)}
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </ul>
                     </div>
                 </header>
@@ -519,9 +615,16 @@
         
         const ThreatAnalyzer = () => {
             const [history, setHistory] = useState([
+<<<<<<< HEAD
+                "AI Threat Analyzer [Version 1.2.0-static]",
+                "Copyright (c) 2024 1YN3R. All rights reserved.",
+                "NOTE: API connection disabled for static deployment.",
+                "This is a demonstration shell. Enter 'help' to see available commands."
+=======
                 "AI Threat Analyzer [Version 1.1.0]",
                 "Copyright (c) 2024 1YN3R. All rights reserved.",
                 "Enter 'help' to see available commands."
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
             ]);
             const [inputValue, setInputValue] = useState('');
             const [isProcessing, setIsProcessing] = useState(false);
@@ -533,6 +636,26 @@
                 }
             }, [history]);
 
+<<<<<<< HEAD
+            const handleCommand = (command) => {
+                const newHistory = [...history, `> ${command}`];
+                setHistory(newHistory);
+                const [cmd, ...args] = command.trim().split(' ');
+                
+                switch (cmd.toLowerCase()) {
+                    case 'analyze':
+                        const analysisResult = [
+                            "ERROR: Secure Connection Failed.",
+                            "The Gemini analysis engine requires a secure server-side proxy to protect the API key.",
+                            "Direct client-side API calls are disabled in this static environment to prevent key exposure.",
+                            "To see this feature in action, please view the project's non-static version or contact the developer."
+                        ].join("\n");
+                        setHistory(prev => [...prev, analysisResult]);
+                        setIsProcessing(false);
+                        break;
+                    case 'help':
+                        setHistory(prev => [...prev, "Available commands:\n  analyze <target> - [DISABLED] Analyzes a target description.\n  clear            - Clears the terminal screen.\n  help             - Shows this help message."]);
+=======
             const streamResponse = (response) => {
                 let currentIndex = 0;
                 setHistory(prev => [...prev, '']);
@@ -575,6 +698,7 @@
                         break;
                     case 'help':
                         setHistory(prev => [...prev, "Available commands:\n  analyze <target> - Analyzes a target description for vulnerabilities.\n  clear            - Clears the terminal screen.\n  help             - Shows this help message."]);
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         setIsProcessing(false);
                         break;
                     case 'clear':
@@ -600,14 +724,21 @@
                 <section id="analyzer" className="container mx-auto px-6 py-20 bg-black/30 border-y border-green-500/20">
                     <header className="text-center mb-12">
                         <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ INTERACTIVE_ANALYSIS_TERMINAL ]</ScrambleHeader>
+<<<<<<< HEAD
+                        <p className="mt-4 text-gray-400 max-w-3xl mx-auto">This is a demonstration of the threat analyzer terminal. Due to security constraints on static sites, the connection to the live AI is disabled.</p>
+=======
                         <p className="mt-4 text-gray-400 max-w-3xl mx-auto">Powered by a simulated Gemini engine. Use the `analyze` command to scan a code snippet or application description for potential vulnerabilities. Do not enter sensitive data.</p>
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                     </header>
                     <div className="max-w-4xl mx-auto font-mono bg-black border border-green-500/30 p-4 h-96 flex flex-col">
                         <div ref={terminalRef} className="flex-grow overflow-y-auto pr-2">
                             {history.map((line, index) => (
                                 <p key={index} className={`whitespace-pre-wrap text-sm ${line.startsWith('>') ? 'text-green-400' : 'text-gray-300'}`}>{line}</p>
                             ))}
+<<<<<<< HEAD
+=======
                             {isProcessing && <div className="terminal-output"><p></p></div>}
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         </div>
                         <form onSubmit={handleFormSubmit} className="flex items-center mt-2">
                             <span className="text-green-400 mr-2">&gt;</span>
@@ -642,7 +773,10 @@
                 
                 window.location.href = `mailto:hc223390@gmail.com?subject=${subject}&body=${body}`;
         
+<<<<<<< HEAD
+=======
                 // Optionally reset form after a delay
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                 setTimeout(() => {
                     setEmail('');
                     setMessage('');
@@ -805,13 +939,21 @@
                         break;
                     case 'ls':
                     case 'dir':
+<<<<<<< HEAD
+                        console.log("Available sections: #home, #about, #highlights, #timeline, #certifications, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
+=======
                         console.log("Available sections: #home, #about, #timeline, #certifications, #skills, #arsenal, #projects, #ctfs, #analyzer, #contact");
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         break;
                     case 'help':
                         console.log([
                             "Available commands:",
                             "  goto <section>  - Navigates to the specified section.",
+<<<<<<< HEAD
+                            "  open <site>     - Opens a social profile (github, linkedin, tryhackme).",
+=======
                             "  open <site>     - Opens a social profile (github, linkedin, tryhackme, htb).",
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                             "  filter <type> <keyword> - Filters content (e.g., 'filter skills web', 'filter projects ad'). Use 'filter clear' to reset.",
                             "  ls              - Lists all available sections.",
                             "  help            - Shows this help message.",
@@ -827,7 +969,11 @@
                         if (socialLinks[target]) {
                             window.open(socialLinks[target], '_blank');
                         } else {
+<<<<<<< HEAD
+                            console.warn(`Unknown site: ${target}. Available: github, linkedin, tryhackme.`);
+=======
                             console.warn(`Unknown site: ${target}. Available: github, linkedin, tryhackme, htb.`);
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                         }
                         break;
                     case 'filter':
@@ -895,6 +1041,12 @@
                                                     src="https://media.licdn.com/dms/image/v2/D5603AQGEDGsTjMR0BQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692039784157?e=1762992000&v=beta&t=SPR5-kSBzBnAaH5Qndl0upYJs5vMG4oc2FoHddcqLYo" 
                                                     alt="1YN3R Avatar" 
                                                     className="w-32 h-32 md:w-40 md:h-40 object-cover border-2 border-green-500/50 shadow-[0_0_15px_rgba(57,255,20,0.3)]"
+<<<<<<< HEAD
+                                                    width="160"
+                                                    height="160"
+                                                    loading="lazy"
+=======
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                                                 />
                                                 <div className="flex-1">
                                                     <h1 className="font-mono text-2xl md:text-4xl text-white mb-2"><span className="text-green-400">$</span> Hoang Cuong</h1>
@@ -904,6 +1056,10 @@
                                                     </p>
                                                     <div className="mt-8 flex flex-wrap gap-4">
                                                         <a href="#contact" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Initiate Contact ]</a>
+<<<<<<< HEAD
+                                                        <a href="CV.pdf" target="_blank" rel="noopener noreferrer" className="font-mono text-sm bg-green-500/10 border border-green-500/30 text-green-400 px-6 py-2 hover:bg-green-500/20 transition-all duration-300">[ Download CV ]</a>
+=======
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
                                                         <a href="#projects" className="font-mono text-sm bg-gray-500/10 border border-gray-500/30 text-gray-300 px-6 py-2 hover:bg-gray-500/20 transition-all duration-300">[ Review Case Files ]</a>
                                                     </div>
                                                 </div>
@@ -925,6 +1081,45 @@
                                 </div>
                             </section>
 
+<<<<<<< HEAD
+                            <section id="highlights" className="container mx-auto px-6 py-20">
+                                <header className="text-center mb-12">
+                                    <ScrambleHeader as="h2" className="text-3xl md:text-4xl font-bold text-white font-mono terminal-glow">[ MISSION_HIGHLIGHTS ]</ScrambleHeader>
+                                    <p className="mt-4 max-w-3xl mx-auto text-gray-400">A curated selection of key engagements showcasing diverse expertise and tangible impact.</p>
+                                </header>
+                                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                    {HIGHLIGHTED_PROJECTS.map(project => (
+                                        <div key={project.id} className="bg-black/30 border border-green-500/20 flex flex-col transition-all duration-300 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                                            <div className="p-4 border-b border-green-500/20">
+                                                <p className="text-xs text-green-400">TYPE: {project.type.replace(/_/g, ' ')}</p>
+                                                <h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3>
+                                            </div>
+                                            <div className="p-4 flex-grow">
+                                                <p className="text-sm text-gray-400 font-sans mb-4">{project.description}</p>
+                                                <div className="font-mono text-xs space-y-2">
+                                                    <p className="text-green-400">// IMPACT_METRIC</p>
+                                                    <p className="text-gray-300 pl-2">
+                                                      <span className="text-green-600">&gt; </span> 
+                                                      {project.id === 1 ? "Critical SQLi leading to data exposure" : project.id === 2 ? "Achieved full Domain Admin control" : "Built functional SOC monitoring stack"}
+                                                    </p>
+                                                    <p className="text-green-400">// KEY_TECH</p>
+                                                    <p className="text-gray-300 pl-2">
+                                                       <span className="text-green-600">&gt; </span> 
+                                                       {project.toolsUsed.slice(0, 3).join(', ')}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="p-4 mt-auto">
+                                                <button onClick={() => setSelectedProject(project)} className="w-full text-center bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 hover:bg-green-500/20 transition-all duration-300 font-mono text-sm">
+                                                    [ VIEW_FULL_REPORT ]
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+=======
+>>>>>>> 597ee1b66babdc9dc48cb5add6fc745c333c9a22
 
                             <section id="timeline" className="container mx-auto px-6 py-20">
                                 <header className="text-center mb-12">
