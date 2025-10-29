@@ -1,0 +1,5 @@
+{
+  "name": "Penetration Tester Portfolio",
+  "description": "An interactive portfolio for a penetration tester, designed to look and feel like a terminal interface. It showcases skills, projects, experience, and includes an AI-powered threat analyzer simulation.",
+  "requestFramePermissions": []
+}
